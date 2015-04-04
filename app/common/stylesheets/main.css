@@ -1,0 +1,33 @@
+/* Partials */
+/* Typography */
+/* Colors */
+/* Modules */
+/* Partials */
+#home div.banner {
+  padding-top: 120px;
+  text-align: center; }
+  #home div.banner h1 {
+    font-size: 45px;
+    color: #40B5FF; }
+  #home div.banner button {
+    margin-top: 10px;
+    font-size: 25px;
+    color: #fff;
+    background-color: #40B5FF;
+    border: none;
+    border-radius: 3px; }
+
+/* Globals */
+html, body, div, span, h1, h2, h3, h4,
+h5, h6, p, a, img, i, ol, ul, li, form,
+label, table, caption {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  font-family: Arial, Helvetica, sans-serif; }
+
+navigation-bar {
+  background-color: #40B5FF; }
+
+/*# sourceMappingURL=main.css.map */

@@ -5,44 +5,38 @@ module.exports =
   # See styling options for tabs and other native components in app/common/native-styles/ios.css or app/common/native-styles/android.css
   tabs: [
     {
-      title: "Index"
-      id: "index"
-      location: "example#getting-started" # Supersonic module#view type navigation
+      title: "Items"
+      id: "items"
+      location: "common#home"
     }
     {
-      title: "Settings"
-      id: "settings"
-      location: "example#settings"
+      title: "Recipes"
+      id: "recipes"
+      location: "common#recipes"
     }
     {
-      title: "Internet"
-      id: "internet"
-      location: "http://google.com" # URLs are supported!
+      title: "Shopping List"
+      id: "shopping-list"
+      location: "common#shopping-list"
     }
   ]
 
-  # rootView:
-  #   location: "example#getting-started"
 
   preloads: [
     {
-      id: "learn-more"
-      location: "example#learn-more"
+      id: "items"
+      location: "common#items"
     }
     {
-      id: "using-the-scanner"
-      location: "example#using-the-scanner"
+      id: "recipes"
+      location: "common#recipes"
+    }
+    {
+      id: "shopping-list"
+      location: "common#shopping-list"
     }
   ]
 
-  # drawers:
-  #   left:
-  #     id: "leftDrawer"
-  #     location: "example#drawer"
-  #     showOnAppLoad: false
-  #   options:
-  #     animation: "swingingDoor"
-  #
-  # initialView:
-  #   id: "initialView"
-  #   location: "example#initial-view"
+
+  initialView:
+    location: "common#home"

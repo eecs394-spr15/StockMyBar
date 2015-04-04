@@ -1,0 +1,21 @@
+
+/* Typography */
+$base-font-family: Arial, Helvetica, sans-serif;
+$base-font-size: 13px;
+$base-line-height: 1.4;
+
+
+
+/* Colors */
+$color-1: #40B5FF;
+
+
+
+/* Modules */
+@import "../modules/all";
+
+
+
+/* Partials */
+@import "home";
+@import "items";
