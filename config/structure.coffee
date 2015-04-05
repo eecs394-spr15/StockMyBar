@@ -5,9 +5,14 @@ module.exports =
   # See styling options for tabs and other native components in app/common/native-styles/ios.css or app/common/native-styles/android.css
   tabs: [
     {
+      title: "Home"
+      id: "home"
+      location: "common#home"
+    }
+    {
       title: "Items"
       id: "items"
-      location: "common#home"
+      location: "common#items"
     }
     {
       title: "Recipes"

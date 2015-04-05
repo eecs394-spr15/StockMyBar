@@ -4,7 +4,7 @@
  ***********************************************************/
 
 navigation-bar {
-  background-color: #00B5FF;
+  background-color: #40B5FF;
   color: #ffffff;
 }
 
@@ -34,14 +34,18 @@ tab-bar tab-bar-item:selected {
   color: #1596f7;
 }
 
-tab-bar-item#settings {
-  background-image: url(icons/cog.svg);
-}
-
-tab-bar-item#index {
+tab-bar-item#home {
   background-image: url(icons/home.svg);
 }
 
-tab-bar-item#internet {
-  background-image: url(icons/search.svg);
+tab-bar-item#items {
+  background-image: url(icons/items.svg);
+}
+
+tab-bar-item#recipes {
+  background-image: url(icons/recipe.svg);
+}
+
+tab-bar-item#shopping-list {
+  background-image: url(icons/shopping-list.svg);
 }

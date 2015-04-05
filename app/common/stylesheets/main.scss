@@ -1,6 +1,5 @@
 
 /* Partials */
-// @import "native/ios";
 @import "partials/base";
 
 /* Globals */
@@ -13,8 +12,4 @@ label, table, caption, {
 
 html, body {
 	font-family: $base-font-family;
-}
-
-navigation-bar {
-	background-color: $color-1;
 }
