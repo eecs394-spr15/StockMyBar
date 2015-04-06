@@ -1,6 +1,11 @@
 
 /* Typography */
+@font-face {
+	font-family: "lovelo";
+	src: url('../../../fonts/lovelo/lovelo.otf');
+}
 $base-font-family: Arial, Helvetica, sans-serif;
+$fixed-font-family: "lovelo";
 $base-font-size: 13px;
 $base-line-height: 1.4;
 
@@ -19,3 +24,4 @@ $color-1: #40B5FF;
 /* Partials */
 @import "home";
 @import "items";
+@import "drawer";

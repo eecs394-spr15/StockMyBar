@@ -45,3 +45,12 @@ module.exports =
 
   initialView:
     location: "common#home"
+
+
+  drawers:
+    left:
+      id: "leftDrawer"
+      location: "common#drawer"
+      showOnAppLoad: false
+    options:
+      animation: "swingingDoor"
