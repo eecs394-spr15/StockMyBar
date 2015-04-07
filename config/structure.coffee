@@ -7,35 +7,23 @@ module.exports =
     {
       title: "Home"
       id: "home"
-      location: "common#home"
+      location: "inputs#home"
     }
     {
       title: "Items"
       id: "items"
-      location: "common#items"
+      location: "inputs#items"
     }
     {
       title: "Results"
       id: "results"
-      location: "common#results"
-    }
-  ]
-
-
-  preloads: [
-    {
-      id: "items"
-      location: "common#items"
-    }
-    {
-      id: "results"
-      location: "common#results"
+      location: "results#results"
     }
   ]
 
 
   initialView:
-    location: "common#home"
+    location: "inputs#home"
 
 
   drawers:
