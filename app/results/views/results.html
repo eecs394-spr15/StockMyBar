@@ -5,21 +5,9 @@
 
 	<section class="recipes">
 		<ul>
-			<li>
+			<li ng-repeat="drink in drinks">
 				<i class="fa fa-glass"></i>
-				<h2 class="title">Long Island Iced Tea</h2>
-			</li>
-			<li>
-				<i class="fa fa-glass"></i>
-				<h2 class="title">Mojito</h2>
-			</li>
-			<li>
-				<i class="fa fa-glass"></i>
-				<h2 class="title">Mimosa</h2>
-			</li>
-			<li>
-				<i class="fa fa-glass"></i>
-				<h2 class="title">Margarita</h2>
+				<h2 class="title">{{drink}}</h2>
 			</li>
 		</ul>
 	</section>
@@ -36,11 +24,7 @@
 		<div class="need ingredient-list">
 			<h3>You Need</h3>
 			<ul>
-				<li>White rum</li>
-				<li>Gin</li>
-				<li>Tequila</li>
-				<li>Triple sec</li>
-				<li>Gomme Syrup</li>
+				<li ng-repeat="ingredient in activeDrink.ingredients">{{ingredient}}</li>
 			</ul>
 		</div>
 	</section>
