@@ -15,14 +15,9 @@ module.exports =
       location: "common#items"
     }
     {
-      title: "Recipes"
-      id: "recipes"
-      location: "common#recipes"
-    }
-    {
-      title: "Shopping List"
-      id: "shopping-list"
-      location: "common#shopping-list"
+      title: "Results"
+      id: "results"
+      location: "common#results"
     }
   ]
 
@@ -33,12 +28,8 @@ module.exports =
       location: "common#items"
     }
     {
-      id: "recipes"
-      location: "common#recipes"
-    }
-    {
-      id: "shopping-list"
-      location: "common#shopping-list"
+      id: "results"
+      location: "common#results"
     }
   ]
 

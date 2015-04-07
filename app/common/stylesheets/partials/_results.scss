@@ -1,0 +1,60 @@
+main.results {
+
+	section.recipes {
+		margin: 0 auto;
+		width: 95%;
+
+		ul {
+			padding: 5px 0;
+			list-style: none;
+
+			li {
+				margin-bottom: 5px;
+				padding: 5px 10px;
+				border: 1px solid #333;
+				overflow: auto;
+
+				i {
+					float: left;
+					font-size: 20px;
+					color: #555;
+				}
+				h2 {
+					float: left;
+					font-size: 20px;
+					color: #555;
+				}
+			}
+		}
+	}
+	section.ingredient-data {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 140px;
+		border-top: 1px solid #999;
+		z-index: 10;
+		background-color: #fff;
+
+		div.ingredient-list {
+			width: 50%;
+			vertical-align: top;
+			text-align: center;
+
+			ul {
+
+
+				li {
+
+				}
+			}
+		}
+		div.have {
+			float: left;
+		}
+		div.need {
+			float: right;
+		}
+	}
+}
