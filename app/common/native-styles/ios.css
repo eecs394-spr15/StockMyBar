@@ -42,10 +42,8 @@ tab-bar-item#items {
   background-image: url(icons/items.svg);
 }
 
-tab-bar-item#recipes {
+tab-bar-item#results {
   background-image: url(icons/recipe.svg);
 }
 
-tab-bar-item#shopping-list {
-  background-image: url(icons/shopping-list.svg);
-}
+
