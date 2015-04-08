@@ -5,7 +5,6 @@ Parse.Cloud.define("hello", function(request, response) {
 });
 
 Parse.Cloud.define("search4Recipes", function(request, response) {
-<<<<<<< Updated upstream
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("name", request.params.ingredientNames);
     queryIngred.find({
@@ -39,7 +38,6 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
         response.error("ingredient lookup failed");
     }
     });
-=======
 	var queryIngred = new Parse.Query("Ingredients");
 	queryIngred.containedIn("name", request.params.ingredientNames);
 	queryIngred.find({
@@ -73,5 +71,4 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
 		response.error("ingredient lookup failed");
 	}
 	});
->>>>>>> Stashed changes
 });
