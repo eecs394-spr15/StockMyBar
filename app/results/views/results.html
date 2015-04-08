@@ -5,14 +5,15 @@
 
 	<section class="recipes">
 		<ul>
-			<li ng-repeat="drink in drinks">
+			<li ng-repeat="drink in drinks" ng-click="activateDrink($index)" ng-class="{active: $index == selected}">
 				<i class="fa fa-glass"></i>
-				<h2 class="title">{{drink}}</h2>
+				<h2 class="title">{{drink.name}}</h2>
 			</li>
 		</ul>
 	</section>
 
-	<section class="ingredient-data">
+	<section class="active-recipe">
+		<h2 class="title">{{activeDrink.name}}</h2>
 		<div class="have ingredient-list">
 			<h3>You Have</h3>
 			<ul>

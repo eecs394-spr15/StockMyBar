@@ -42,28 +42,30 @@ main.results section.recipes {
       overflow: auto; }
       main.results section.recipes ul li i {
         float: left;
+        margin-right: 7px;
         font-size: 20px;
         color: #555; }
       main.results section.recipes ul li h2 {
         float: left;
         font-size: 20px;
         color: #555; }
-main.results section.ingredient-data {
+main.results section.active-recipe {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 140px;
+  background-color: #fff;
   border-top: 1px solid #999;
   z-index: 10;
-  background-color: #fff; }
-  main.results section.ingredient-data div.ingredient-list {
+  overflow: auto; }
+  main.results section.active-recipe div.ingredient-list {
     width: 50%;
     vertical-align: top;
     text-align: center; }
-  main.results section.ingredient-data div.have {
+  main.results section.active-recipe div.have {
     float: left; }
-  main.results section.ingredient-data div.need {
+  main.results section.active-recipe div.need {
     float: right; }
 
 section.drawer {
