@@ -13,10 +13,10 @@
 #     The script loads each line of recipes.txt into the database.
 
 
-
 import sys
 import httplib
 import ast
+import json
 
 APPLICATION_ID = "Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe"
 REST_API_KEY = "Qq5YS1S7xxfIkczi0vPyY747WwR8UdQIP7Nbac0h"
@@ -63,7 +63,7 @@ def add_ingredient(ingredient_name):
     """
     Adds an ingredient to the ingredient database
     """
-    ingredient_object = '{"name": "'+ingredient_name+'"}'
+    ingredient_object = json.dumps({'name': ingredient_name})
     return add_object('Ingredients', ingredient_object)
 
 
@@ -74,20 +74,17 @@ def add_recipe_prompt():
     recipe_raw = raw_input('Enter recipe: ')
     if not recipe_raw:
         return
-    add_recipe(recipe_raw)
+    add_recipe(make_recipe_from_string(recipe_raw))
     add_recipe_prompt()
 
 
-def add_recipe(recipe_raw):
+def add_recipe(recipe):
     """
     Adds a recipe to the recipe database
     """
-    tokenized_recipe = recipe_raw.split('=')
-    recipe_name = tokenized_recipe[0].strip()
-    recipe_ingredients = [ingredient.strip() for ingredient in tokenized_recipe[1].split(',')]
     known_ingredients = request_table('Ingredients')
-    ingredient_ids = '['
-    for recipe_ingredient in recipe_ingredients:
+    matching_ingredients = []
+    for recipe_ingredient in recipe['ingredients']:
         match_id = None
         for known_ingredient in known_ingredients:
             if known_ingredient['name'].lower() == recipe_ingredient.lower():
@@ -95,10 +92,24 @@ def add_recipe(recipe_raw):
                 break
         if not match_id:
             match_id = add_ingredient(recipe_ingredient)
-        ingredient_ids += '"' + match_id + '",'
-    ingredient_ids = ingredient_ids[:-1] + ']'
-    recipe_object = "{\"name\": \""+recipe_name+"\", \"ingredients\": "+ingredient_ids+"}"
-    add_object('Recipes', recipe_object)
+        matching_ingredients.append(match_id)
+    recipe_id = add_object('Recipes', json.dumps({'name': recipe['name']}))
+    relations = [{'recipe': {'__type': 'Pointer', 'className': 'Recipes', 'objectId': recipe_id},
+                  'ingredient': {'__type': 'Pointer', 'className': 'Ingredients', 'objectId': ingredient}}
+                 for ingredient in matching_ingredients]
+    for relation in relations:
+        add_object('Join_Table', json.dumps(relation))
+
+
+def make_recipe_from_string(recipe_raw):
+    """
+    Converts a string representation of a recipe into a python dictionary
+    """
+    tokenized_recipe = recipe_raw.split('=')
+    return {
+        'name': tokenized_recipe[0].strip(),
+        'ingredients': [ingredient.strip() for ingredient in tokenized_recipe[1].split(',')]
+    }
 
 
 def load_recipes():
@@ -107,7 +118,7 @@ def load_recipes():
     """
     with open('recipes.txt') as recipe_file:
         for line in recipe_file.readlines():
-            add_recipe(line)
+            add_recipe(make_recipe_from_string(line))
 
 
 # Main function (checks sys args and executes above functions
