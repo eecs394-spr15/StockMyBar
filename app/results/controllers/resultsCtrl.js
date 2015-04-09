@@ -5,9 +5,10 @@ angular
 	.module('results')
 	.controller('ResultsCtrl', function($scope, supersonic) {
 		$scope.recipes = [];
+		$scope.test = ''
 		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
-		Parse.Cloud.run("search4Recipes", {ingredientNames: ["apple"]}, function(results) {
-			$scope.recipes = results;
+		Parse.Cloud.run("hello", function(results) {
+			$scope.test = results;
 		});
 
 
