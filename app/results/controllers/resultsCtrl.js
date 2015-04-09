@@ -18,7 +18,8 @@ angular
 		$scope.noneActive = true;
 		$scope.activateRecipe = function(index) {
 			$scope.noneActive = false;
-			$scope.activeRecipe = $scope.recipes[index];
+			$scope.selected = index;
+			$scope.activeRecipe =  $scope.recipes[index];
 			recipeId = $scope.activeRecipe.get('objectId');
 			var query = new Parse.Query("Join_Table");
 			query.include("ingredient");
