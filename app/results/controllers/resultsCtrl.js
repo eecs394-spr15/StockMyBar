@@ -65,7 +65,21 @@ angular
 		$scope.noneActive = true;
 		$scope.activateRecipe = function(index) {
 			$scope.noneActive = false;
+			$scope.neededIngredients = [];
 			$scope.activeRecipe = $scope.recipes[index];
+			recipeId = $scope.activeRecipe.id;
+			var query = Parse.Query("Join_Table");
+			query.include("ingredient");
+			query.equalTo("recipe", recipeId);
+			query.find({
+  				success: function(results) {
+  					for (var i = 0; i < results.length; i++) {
+  						var result = results[i];
+  						var test = result.get("ingredient");
+  						$scope.neededIngredients.push(test);
+  					}
+  				}
+  			});
 		};
 
 
