@@ -1,9 +1,9 @@
-<main class="items">
+<main class="items" ng-controller="InputCtrl">
 	<super-navbar class="navbar">
 	  	<super-navbar-title>Items</super-navbar-title>
 	  	<super-navbar-button side="right" class="add">Add Item</super-navbar-button>
 	</super-navbar>
-	<div ng-controller="InputController">
+	<div>
         <ul class="item-list list">
             <li class="item" ng-repeat="item in barContents">{{item}}</li>
         </ul>
