@@ -4,11 +4,12 @@
 angular
 	.module('results')
 	.controller('ResultsCtrl', function($scope, supersonic) {
+		ingList = ['bourbon'];
 		$scope.recipes = [];
-		$scope.test = ''
 		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
-		Parse.Cloud.run("hello", function(results) {
-			$scope.test = results;
+
+		Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, function(results) {
+			$scope.recipes = results;
 		});
 
 
