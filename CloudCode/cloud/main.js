@@ -4,6 +4,7 @@ Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!!!!!");
 });
 
+
 Parse.Cloud.define("search4Recipes", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("name", request.params.ingredientNames);
@@ -11,6 +12,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
     success: function(results1) {
         var queryJT = new Parse.Query("Join_Table");
         queryJT.containedIn("ingredient", results1);
+        queryJT.include("recipe");
         queryJT.find({
         success: function(results2) {
             var recipeList = [];
@@ -26,49 +28,16 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
                     recipeList.push(results2[i].get("recipe"));
                 }
             }
-            response.success(recipeList.length);
+		    response.success(recipeList);
+
         },
         error: function() {
-            response.error("11")
+            response.error("11");
         }
         });
-        //response.success("22");
     },
     error: function() {
         response.error("ingredient lookup failed");
     }
     });
-	var queryIngred = new Parse.Query("Ingredients");
-	queryIngred.containedIn("name", request.params.ingredientNames);
-	queryIngred.find({
-	success: function(results1) {
-		var queryJT = new Parse.Query("Join_Table");
-		queryJT.containedIn("ingredient", results1);
-		queryJT.find({
-		success: function(results2) {
-			var recipeList = [];
-			for(var i = 0; i < results2.length; i++){
-				var repeat = false;
-				for(var j = 0; j < recipeList.length; j++){
-					if(results2[i].get("recipe").id == recipeList[j].id){
-						repeat = true;
-						break;
-					}
-				}
-				if(!repeat){
-					recipeList.push(results2[i].get("recipe"));
-				}
-			}
-			response.success(recipeList.length);
-		},
-		error: function() {
-			response.error("11")
-		}
-		});
-		//response.success("22");
-	},
-	error: function() {
-		response.error("ingredient lookup failed");
-	}
-	});
 });
