@@ -10,73 +10,91 @@ main.home {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #40B5FF; }
+  background-color: #eeeced; }
   main.home div.banner {
     position: absolute;
     top: 50%;
-    margin-top: -65px;
+    margin-top: -35px;
     width: 100%;
     text-align: center; }
     main.home div.banner h1 {
       font-family: "lovelo";
       font-size: 40px;
-      color: #fff; }
+      color: #71747b; }
     main.home div.banner button {
       margin-top: 12px;
-      font-size: 22px;
+      padding: 8px 14px;
+      font-size: 20px;
       color: #fff;
-      background-color: #40B5FF;
-      border: 1px solid #fff;
+      background-color: #34cbc6;
+      border: none;
       border-radius: 3px; }
 
-main.results section.recipes {
-  margin: 0 auto;
-  width: 95%; }
-  main.results section.recipes ul {
-    padding: 5px 0 150px 0;
-    list-style: none; }
-    main.results section.recipes ul li {
+main.results {
+  background-color: #eeeced; }
+  main.results section.recipes {
+    margin: 0 auto;
+    width: 95%; }
+    main.results section.recipes ul {
+      padding: 5px 0 150px 0;
+      list-style: none; }
+      main.results section.recipes ul li {
+        margin-bottom: 5px;
+        padding: 5px 10px;
+        background-color: #fff;
+        box-shadow: 1px  0    0 #d6d7d8, 0    1px  1px #cccdce, -1px 0    0 #d6d7d8, 0    -1px 0 #e7e8e9;
+        overflow: auto; }
+        main.results section.recipes ul li i {
+          float: left;
+          margin-right: 7px;
+          padding: 8px;
+          font-size: 20px;
+          color: #fff;
+          background-color: #ddd;
+          border-radius: 50%; }
+        main.results section.recipes ul li h2 {
+          float: left;
+          padding: 6px 0;
+          font-size: 18px;
+          color: #555; }
+      main.results section.recipes ul li.active i {
+        background-color: #777; }
+      main.results section.recipes ul li.active h2 {
+        color: #56bcd5; }
+  main.results section.active-recipe {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+    height: 140px;
+    background-color: #666;
+    box-shadow: 0 -1px 0 #e7e8e9;
+    z-index: 10;
+    overflow: auto; }
+    main.results section.active-recipe h2.title {
       margin-bottom: 5px;
-      padding: 5px 10px;
-      box-shadow: 1px  0    0 #d6d7d8, 0    1px  1px #cccdce, -1px 0    0 #d6d7d8, 0    -1px 0 #e7e8e9;
-      overflow: auto; }
-      main.results section.recipes ul li i {
-        float: left;
-        margin-right: 7px;
-        font-size: 20px;
-        color: #555; }
-      main.results section.recipes ul li h2 {
-        float: left;
-        font-size: 20px;
-        color: #555; }
-main.results section.active-recipe {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding: 10px;
-  width: 100%;
-  height: 140px;
-  background-color: #fff;
-  border-top: 1px solid #ddd;
-  z-index: 10;
-  overflow: auto; }
-  main.results section.active-recipe h2.title {
-    margin-bottom: 5px;
-    font-size: 22px;
-    color: #444; }
-  main.results section.active-recipe h2.title.none-active {
-    color: #888; }
-  main.results section.active-recipe div.ingredient-list {
-    float: left;
-    width: 115px;
-    vertical-align: top; }
-    main.results section.active-recipe div.ingredient-list h3 {
-      font-size: 18px;
-      color: #555; }
-    main.results section.active-recipe div.ingredient-list ul li {
-      padding-left: 5px; }
-  main.results section.active-recipe div.have {
-    margin-right: 20px; }
+      font-size: 20px;
+      color: #56bcd5; }
+    main.results section.active-recipe h2.title.none-active {
+      font-size: 19px;
+      color: #aaa; }
+    main.results section.active-recipe div.ingredient-list {
+      float: left;
+      vertical-align: top; }
+      main.results section.active-recipe div.ingredient-list h3 {
+        font-size: 16px;
+        color: #ccc; }
+      main.results section.active-recipe div.ingredient-list ul li {
+        display: inline-block;
+        margin-right: 4px;
+        font-size: 14px;
+        color: #aaa; }
+      main.results section.active-recipe div.ingredient-list ul li::after {
+        content: ","; }
+      main.results section.active-recipe div.ingredient-list ul li:last-child::after {
+        content: "";
+        margin-right: 0; }
 
 section.drawer {
   position: absolute;
@@ -99,6 +117,7 @@ label, table, caption {
   padding: 0; }
 
 html, body {
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #eeeced; }
 
 /*# sourceMappingURL=main.css.map */

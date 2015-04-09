@@ -1,3 +1,5 @@
+/* Input controller */
+
 angular
 	.module('inputs', ['common'])
     .controller('InputCtrl', function ($scope, MyBarService) {
