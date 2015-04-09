@@ -5,6 +5,7 @@
 
 	<section class="recipes">
 		<ul>
+			<li>{{test}}</li>
 			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
 				<i class="fa fa-glass"></i>
 				<h2 class="title">{{recipe.get("name")}}</h2>
@@ -15,17 +16,11 @@
 	<section class="active-recipe">
 		<h2 class="title none-active" ng-if="noneActive">Choose a recipe...</h2>
 		<div ng-if="!noneActive">
-			<h2 class="title">{{activeRecipe.name}}</h2>
-			<div class="have ingredient-list">
-				<h3>You Have</h3>
-				<ul>
-					<li ng-repeat="ingredient in userHas">{{ingredient}}</li>
-				</ul>
-			</div>
+			<h2 class="title">{{activeRecipe.get("name")}}</h2>
 			<div class="need ingredient-list">
 				<h3>You Need</h3>
 				<ul>
-					<li ng-repeat="ingredient in activeRecipe.ingredients">{{ingredient}}</li>
+					<li ng-repeat="ingredient in neededIngredients">{{ingredient}}</li>
 				</ul>
 			</div>
 		</div>
