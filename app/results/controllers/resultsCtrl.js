@@ -5,52 +5,58 @@ angular
 	.module('results')
 	.controller('ResultsCtrl', function($scope, supersonic) {
 
+		$scope.userHas = ["Lemon Juice", "Tequila", "Cola"];
 
-		// Initialize Parse
-		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
-
-		
-		// Query the Recipe table, inject into DOM
-		var recipeQuery = new Parse.Query("Recipes");
-		recipeQuery.find({
-
-			success: function(results) {
-				$scope.drinks = [];
-				for (var i=0; i<results.length; i++) {
-					$scope.drinks[i] = {
-						name: results[i].get("name"),
-					};
-				}
+		$scope.recipes = [
+			{
+				name: "Recipe 1",
+				ingredients: ["Ingredient 1", "Ingredient 2", "Ingredient 3"]
 			},
-
-			error: function(error) {
-				supersonic.logger.log("Parse request failed.");
-			}
-		});
-
-
-		// Query the Join_Table table, inject into DOM
-		var ingredientQuery = new Parse.Query("Join_Table");
-		ingredientQuery.find({
-
-			success: function(results) {
-				$scope.ingredients = [];
-				for (var i=0; i<results.length; i++) {
-					$scope.ingredients[i] = {
-						name: results[i]
-					};
-				}
+			{
+				name: "Recipe 2",
+				ingredients: ["Ingredient 4", "Ingredient 5", "Ingredient 6"]
 			},
-
-			error: function(error) {
-				supersonic.logger.log("Parse request failed.");
+			{
+				name: "Recipe 3",
+				ingredients: ["Ingredient 7", "Ingredient 8", "Ingredient 9"]
+			},
+			{
+				name: "Recipe 4",
+				ingredients: ["Ingredient 10", "Ingredient 11", "Ingredient 12"]
+			},
+			{
+				name: "Recipe 5",
+				ingredients: ["Ingredient 13", "Ingredient 14", "Ingredient 15"]
+			},
+			{
+				name: "Recipe 6",
+				ingredients: ["Ingredient 16", "Ingredient 17", "Ingredient 18"]
+			},
+			{
+				name: "Recipe 7",
+				ingredients: ["Ingredient 19", "Ingredient 20", "Ingredient 21"]
+			},
+			{
+				name: "Recipe 8",
+				ingredients: ["Ingredient 22", "Ingredient 23", "Ingredient 24"]
+			},
+			{
+				name: "Recipe 9",
+				ingredients: ["Ingredient 25", "Ingredient 26", "Ingredient 27"]
+			},
+			{
+				name: "Recipe 10",
+				ingredients: ["Ingredient 28", "Ingredient 29", "Ingredient 30"]
 			}
-		});
+		];
 
 
-		// Change activeDrink on UI click
-		$scope.activateDrink = function(index) {
-			$scope.activeDrink = $scope.drinks[index];
+
+		// Change activeRecipe on UI click
+		$scope.noneActive = true;
+		$scope.activateRecipe = function(index) {
+			$scope.noneActive = false;
+			$scope.activeRecipe = $scope.recipes[index];
 		};
 
 
