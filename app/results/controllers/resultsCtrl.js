@@ -2,14 +2,17 @@
 
 
 angular
-	.module('results')
-	.controller('ResultsCtrl', function($scope, supersonic) {
-		ingList = ['bourbon'];
+	.module('results', ['common'])
+	.controller('ResultsCtrl', function ($scope, supersonic, MyBarService) {
+		
+		ingList = MyBarService.barContents;
+		supersonic.logger.log(ingList);
 		$scope.recipes = [];
 		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
 
 		Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, function(results) {
 			$scope.recipes = results;
+
 		});
 
 
