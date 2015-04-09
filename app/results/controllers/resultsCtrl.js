@@ -26,15 +26,19 @@ angular
 			query.equalTo("recipe", $scope.activeRecipe);
 			query.find({
   				success: function(results) {
-					$scope.neededIngredients = results;
 					ingredientList = [];
+					haveIngredientList = [];
   					for (var i = 0; i < results.length; i++) {
-						currentName = results[i].get("ingredient").get("name")
-						if (ingList.indexOf(currentName) == -1)
+						currentName = results[i].get("ingredient").get("name");
+						if (ingList.indexOf(currentName) == -1) {
 							ingredientList.push(currentName);
+						} else {
+							haveIngredientList.push(currentName);
+						}
   					}
 
 					$scope.neededIngredients = ingredientList;
+					$scope.haveIngredients = haveIngredientList;
 					$scope.$apply()
   				},
 				error: function(error) {

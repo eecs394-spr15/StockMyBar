@@ -17,6 +17,12 @@
 		<div ng-if="!noneActive">
 			<h2 class="title">{{activeRecipe.get("name")}}</h2>
 			<div class="need ingredient-list">
+				<h3>You Have</h3>
+				<ul>
+					<li ng-repeat="ingredient in haveIngredients">{{ingredient}}</li>
+				</ul>
+			</div>
+			<div class="need ingredient-list">
 				<h3>You Need</h3>
 				<ul>
 					<li ng-repeat="ingredient in neededIngredients">{{ingredient}}</li>
