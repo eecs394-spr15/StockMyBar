@@ -1,7 +1,7 @@
 /* Input controller */
 
 angular
-	.module('inputs', ['common'])
+	.module('inputs')
     .controller('InputCtrl', function ($scope, MyBarService, supersonic) {
         $scope.checkedIngredients = [];
         $scope.allIngredients = [];
@@ -13,7 +13,8 @@ angular
                     temp_barContents.push($scope.checkedIngredients[i].item);
                 }
             }
-            MyBarService.barContents = temp_barContents;
+            MyBarService.setBarContents(temp_barContents);
+            supersonic.logger.log(MyBarService.getBarContents());
         };
         MyBarService.getAllIngredients().then(function() {
             $scope.allIngredients = MyBarService.allIngredients;

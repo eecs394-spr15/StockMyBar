@@ -1,14 +1,14 @@
 /* Results controller */
 
 angular
-	.module('results', ['common'])
+	.module('results')
 	.controller('ResultsCtrl', function ($scope, supersonic, MyBarService) {
 		var ingList = [];
 		$scope.recipes = [];
 		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
 
 		var barContentsUpdated = function() {
-			ingList = MyBarService.barContents;
+			ingList = MyBarService.getBarContents();
 			$scope.recipes = [];
 			Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, function(results) {
 				$scope.recipes = results;
@@ -17,8 +17,8 @@ angular
 		};
 
         var stopListening = supersonic.ui.views.current.whenVisible( function() {
-            if(MyBarService.barContents != ingList) {
-                supersonic.logger.log('Updating List:' + MyBarService.barContents);
+			supersonic.logger.log('Updated List:' + MyBarService.getBarContents());
+            if(MyBarService.getBarContents() != ingList) {
                 barContentsUpdated();
             }
         });

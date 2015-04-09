@@ -4,7 +4,7 @@ angular
 	.module('common')
 	.factory('MyBarService', function() {
         factory = {};
-        factory.barContents = [];
+        var barContents = [];
         factory.allIngredients = [];
         factory.getAllIngredients = function() {
             Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
@@ -17,6 +17,12 @@ angular
                 }
                 }
             });
+        };
+        factory.getBarContents = function() {
+            return barContents;
+        };
+        factory.setBarContents = function(newVal) {
+            barContents = newVal;
         };
         return factory;
     });
