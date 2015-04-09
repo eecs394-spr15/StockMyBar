@@ -5,45 +5,30 @@
 
 	<section class="recipes">
 		<ul>
-			<li>
+			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
 				<i class="fa fa-glass"></i>
-				<h2 class="title">Long Island Iced Tea</h2>
-			</li>
-			<li>
-				<i class="fa fa-glass"></i>
-				<h2 class="title">Mojito</h2>
-			</li>
-			<li>
-				<i class="fa fa-glass"></i>
-				<h2 class="title">Mimosa</h2>
-			</li>
-			<li>
-				<i class="fa fa-glass"></i>
-				<h2 class="title">Margarita</h2>
+				<h2 class="title">{{recipe.get("name")}}</h2>
 			</li>
 		</ul>
 	</section>
 
-	<section class="ingredient-data">
-		<div class="have ingredient-list">
-			<h3>You Have</h3>
-			<ul>
-				<li>Lemon Juice</li>
-				<li>Tequila</li>
-				<li>Cola</li>
-			</ul>
-		</div>
-		<div class="need ingredient-list">
-			<h3>You Need</h3>
-			<ul>
-				<li>White rum</li>
-				<li>Gin</li>
-				<li>Tequila</li>
-				<li>Triple sec</li>
-				<li>Gomme Syrup</li>
-			</ul>
+	<section class="active-recipe">
+		<h2 class="title none-active" ng-if="noneActive">Choose a recipe...</h2>
+		<div ng-if="!noneActive">
+			<h2 class="title">{{activeRecipe.name}}</h2>
+			<div class="have ingredient-list">
+				<h3>You Have</h3>
+				<ul>
+					<li ng-repeat="ingredient in userHas">{{ingredient}}</li>
+				</ul>
+			</div>
+			<div class="need ingredient-list">
+				<h3>You Need</h3>
+				<ul>
+					<li ng-repeat="ingredient in activeRecipe.ingredients">{{ingredient}}</li>
+				</ul>
+			</div>
 		</div>
 	</section>
-
 
 </main>
