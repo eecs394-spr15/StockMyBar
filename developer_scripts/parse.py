@@ -11,6 +11,9 @@
 #     2. Purge our Parse database
 #     3. Run >> python parse.py load_recipes
 #     The script loads each line of recipes.txt into the database.
+#
+# Calling cloud functions:
+#     Run >> python parse.py run <function_name> <arguments_in_json_format>
 
 
 import sys
@@ -24,7 +27,21 @@ headers = {
         "X-Parse-Application-Id": APPLICATION_ID,
         "X-Parse-REST-API-Key": REST_API_KEY,
         "Content-Type": 'application/json'
-    }
+}
+
+
+def run_cloud_function(funct, args):
+    """
+    Calls a cloud function with arguments (formatted as a JSON string)
+    """
+    conn = httplib.HTTPSConnection('api.parse.com')
+    conn.request("POST", "/1/functions/"+funct, args, headers)
+    response = conn.getresponse()
+    if response.status == 200:
+        return ast.literal_eval(response.read())
+    else:
+        print response.status, response.reason, response.read()
+        return False
 
 
 def add_object(table, obj):
@@ -130,5 +147,8 @@ if __name__ == '__main__':
         add_recipe_prompt()
     elif args[0] == 'load_recipes':
         load_recipes()
+    elif args[0] == 'run':
+        print json.dumps(ast.literal_eval(str(args[2])))
+        print run_cloud_function(args[1], json.dumps(ast.literal_eval(str(args[2]))))
     else:
         show_usage()
