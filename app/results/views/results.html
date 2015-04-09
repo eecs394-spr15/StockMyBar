@@ -16,15 +16,15 @@
 		<h2 class="title none-active" ng-if="noneActive">Choose a recipe...</h2>
 		<div ng-if="!noneActive">
 			<h2 class="title">{{activeRecipe.get("name")}}</h2>
-			<div class="need ingredient-list">
-				<h3>You Have</h3>
+			<div class="have ingredient-list">
 				<ul>
+					<h3>Have</h3>
 					<li ng-repeat="ingredient in haveIngredients">{{ingredient}}</li>
 				</ul>
 			</div>
 			<div class="need ingredient-list">
-				<h3>You Need</h3>
 				<ul>
+					<h3>Need</h3>
 					<li ng-repeat="ingredient in neededIngredients">{{ingredient}}</li>
 				</ul>
 			</div>

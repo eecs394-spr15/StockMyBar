@@ -79,22 +79,27 @@ main.results {
     main.results section.active-recipe h2.title.none-active {
       font-size: 19px;
       color: #aaa; }
-    main.results section.active-recipe div.ingredient-list {
-      float: left;
-      vertical-align: top; }
-      main.results section.active-recipe div.ingredient-list h3 {
-        font-size: 16px;
-        color: #ccc; }
-      main.results section.active-recipe div.ingredient-list ul li {
-        display: inline-block;
-        margin-right: 4px;
-        font-size: 14px;
-        color: #aaa; }
-      main.results section.active-recipe div.ingredient-list ul li::after {
-        content: ","; }
-      main.results section.active-recipe div.ingredient-list ul li:last-child::after {
-        content: "";
-        margin-right: 0; }
+    main.results section.active-recipe div.ingredient-list ul h3 {
+      display: inline-block;
+      margin-right: 3px;
+      font-size: 16px;
+      color: #505050; }
+    main.results section.active-recipe div.ingredient-list ul li {
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 4px;
+      padding: 0px 6px;
+      font-size: 14px;
+      color: #eee;
+      border-radius: 3px; }
+    main.results section.active-recipe div.ingredient-list ul li:last-child {
+      margin-right: 0; }
+    main.results section.active-recipe div.ingredient-list.have {
+      margin-bottom: 5px; }
+      main.results section.active-recipe div.ingredient-list.have ul li {
+        background-color: #60C497; }
+    main.results section.active-recipe div.ingredient-list.need ul li {
+      background-color: #FF7566; }
 
 section.drawer {
   position: absolute;
