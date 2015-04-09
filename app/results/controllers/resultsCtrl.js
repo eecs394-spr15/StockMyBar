@@ -3,16 +3,25 @@
 angular
 	.module('results', ['common'])
 	.controller('ResultsCtrl', function ($scope, supersonic, MyBarService) {
-		ingList = MyBarService.barContents;
+		var ingList = [];
 		$scope.recipes = [];
 		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
 
-		Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, function(results) {
-			$scope.recipes = results;
+		var barContentsUpdated = function() {
+			ingList = MyBarService.barContents;
+			$scope.recipes = [];
+			Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, function(results) {
+				$scope.recipes = results;
+				$scope.$apply();
+			});
+		};
 
-		});
-
-
+        var stopListening = supersonic.ui.views.current.whenVisible( function() {
+            if(MyBarService.barContents != ingList) {
+                supersonic.logger.log('Updating List:' + MyBarService.barContents);
+                barContentsUpdated();
+            }
+        });
 
 		// Change activeRecipe on UI click
 		$scope.noneActive = true;
