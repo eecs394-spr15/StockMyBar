@@ -16,11 +16,18 @@ angular
             }
             supersonic.data.channel('barContents').publish(temp_barContents);
         };
-        MyBarService.getAllIngredients().then(function() {
+        $scope.clearAllItems = function() {
+            $scope.checkedIngredients = [];
+            reset();
+            $scope.updateService();
+        };
+        MyBarService.getAllIngredients().then(function() {reset();});
+        var reset = function() {
+            supersonic.logger.log("Resetting ingredients");
             $scope.allIngredients = MyBarService.allIngredients;
             angular.forEach($scope.allIngredients,function(item){
                 $scope.checkedIngredients.push({item:item,checked:false});
             });
             $scope.$apply();
-        });
+        }
     });

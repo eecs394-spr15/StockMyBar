@@ -10,7 +10,7 @@ angular
 			// Updates possible recipes anytime the user's bar contents change
 			ingList = newVal;
 			Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
-			Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, {
+			Parse.Cloud.run("search4Recipes2", {ingredientNames: ingList}, {
 				success: function(results) {
 					$scope.recipes = results;
 					$scope.$apply();
