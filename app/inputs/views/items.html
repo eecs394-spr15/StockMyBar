@@ -6,7 +6,12 @@
 	
 	<div>
         <ul class="item-list list">
-            <li class="item" ng-repeat="item in barContents">{{item}}</li>
+			<li class="item item-checkbox" ng-repeat="item in allIngredients">
+				<label class="checkbox">
+				<input type="checkbox" ng-model="checkedIngredients[$index].checked" ng-click="updateService()">
+				</label>
+				{{item}}
+			</li>
         </ul>
 	</div>
 

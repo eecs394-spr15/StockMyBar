@@ -1,18 +1,24 @@
 /* Results controller */
 
 angular
-	.module('results', ['common'])
+	.module('results')
 	.controller('ResultsCtrl', function ($scope, supersonic, MyBarService) {
-		ingList = MyBarService.barContents;
+		var ingList = [];
 		$scope.recipes = [];
-		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
 
-		Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, function(results) {
-			$scope.recipes = results;
-
+		supersonic.data.channel('barContents').subscribe( function(newVal) {
+			// Updates possible recipes anytime the user's bar contents change
+			ingList = newVal;
+			Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
+			Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, {
+				success: function(results) {
+					$scope.recipes = results;
+					$scope.$apply();
+				}, error: function(error) {
+					supersonic.logger.log(error);
+				}
+			});
 		});
-
-
 
 		// Change activeRecipe on UI click
 		$scope.noneActive = true;
