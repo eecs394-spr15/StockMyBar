@@ -5,23 +5,26 @@ angular
 	.controller('ResultsCtrl', function ($scope, supersonic, MyBarService) {
 		var ingList = [];
 		$scope.recipes = [];
-		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
 
-		var barContentsUpdated = function() {
-			ingList = MyBarService.getBarContents();
+		supersonic.data.channel('barContents').subscribe( function(newVal) {
+			ingList = newVal;
+			supersonic.logger.log('Updated List: ' + ingList);
+		});
+
+		supersonic.ui.views.current.whenVisible( function() {
+			supersonic.logger.log("Tabs changed");
 			$scope.recipes = [];
-			Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, function(results) {
-				$scope.recipes = results;
-				$scope.$apply();
+			Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
+			Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, {
+				success: function(results) {
+					supersonic.logger.log('Results: ' + results);
+					$scope.recipes = results;
+					$scope.$apply();
+				}, error: function(error) {
+					supersonic.logger.log(error);
+				}
 			});
-		};
-
-        var stopListening = supersonic.ui.views.current.whenVisible( function() {
-			supersonic.logger.log('Updated List:' + MyBarService.getBarContents());
-            if(MyBarService.getBarContents() != ingList) {
-                barContentsUpdated();
-            }
-        });
+		});
 
 		// Change activeRecipe on UI click
 		$scope.noneActive = true;

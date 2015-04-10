@@ -13,8 +13,12 @@ angular
                     temp_barContents.push($scope.checkedIngredients[i].item);
                 }
             }
-            MyBarService.setBarContents(temp_barContents);
-            supersonic.logger.log(MyBarService.getBarContents());
+            supersonic.data.channel('barContents').publish(temp_barContents);
+            supersonic.logger.log(temp_barContents);
+            //supersonic.data.model('barContent').find(0).then( function(data) {
+            //    data.barContents = temp_barContents;
+            //    data.save();
+            //});
         };
         MyBarService.getAllIngredients().then(function() {
             $scope.allIngredients = MyBarService.allIngredients;
