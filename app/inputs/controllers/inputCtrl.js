@@ -14,7 +14,7 @@ angular
                 }
             }
             supersonic.data.channel('barContents').publish(temp_barContents);
-            supersonic.logger.log(temp_barContents);
+            //supersonic.logger.log(temp_barContents);
             //supersonic.data.model('barContent').find(0).then( function(data) {
             //    data.barContents = temp_barContents;
             //    data.save();
