@@ -7,57 +7,18 @@ angular
 		$scope.recipes = [];
 
 		supersonic.data.channel('barContents').subscribe( function(newVal) {
+			// Updates possible recipes anytime the user's bar contents change
 			ingList = newVal;
 			Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
-			//Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, {
-			//	success: function(results) {
-			//		supersonic.logger.log('Results: ' + results);
-			//		$scope.recipes = results;
-			//		$scope.$apply();
-			//	}, error: function(error) {
-			//		supersonic.logger.log(error);
-			//	}
-			//});
 			Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, {
 				success: function(results) {
-					supersonic.logger.log(results);
 					$scope.recipes = results;
 					$scope.$apply();
 				}, error: function(error) {
 					supersonic.logger.log(error);
 				}
 			});
-			//supersonic.logger.log('Updated List: ' + ingList);
 		});
-
-		//var stopListening = supersonic.ui.views.current.whenVisible( function() {
-		//	supersonic.logger.log("Tabs changed");
-		//	$scope.recipes = [];
-		//	Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
-		//	var query = new Parse.Query("Ingredients");
-		//	return query.find({
-		//		success: function(results) {
-		//			supersonic.logger.log(results);
-		//		}, error: function(error) {
-		//			supersonic.logger.log(error);
-		//		}
-		//	});
-		//	stopListening();
-		//	Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, {
-		//		success: function(results) {
-		//			supersonic.logger.log('Results: ' + results);
-		//			$scope.recipes = results;
-		//			$scope.$apply();
-		//		}, error: function(error) {
-		//			supersonic.logger.log(error);
-		//		}
-		//	});
-		//});
-
-		//var stopListening = supersonic.ui.views.current.whenVisible( function() {
-		//	supersonic.logger.debug("This view is now visible");
-		//	stopListening();
-		//});
 
 		// Change activeRecipe on UI click
 		$scope.noneActive = true;

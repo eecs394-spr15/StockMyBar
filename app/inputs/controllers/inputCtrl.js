@@ -6,6 +6,7 @@ angular
         $scope.checkedIngredients = [];
         $scope.allIngredients = [];
         $scope.updateService = function() {
+            // Updates user's bar contents whenever they make a new selection in the Items view
             $scope.recipes = [];
             temp_barContents = [];
             for (var i = 0; i < $scope.checkedIngredients.length; i++) {
@@ -14,11 +15,6 @@ angular
                 }
             }
             supersonic.data.channel('barContents').publish(temp_barContents);
-            //supersonic.logger.log(temp_barContents);
-            //supersonic.data.model('barContent').find(0).then( function(data) {
-            //    data.barContents = temp_barContents;
-            //    data.save();
-            //});
         };
         MyBarService.getAllIngredients().then(function() {
             $scope.allIngredients = MyBarService.allIngredients;
