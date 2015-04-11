@@ -12,11 +12,11 @@
 	</section>
 	<section>
         <ul class="item-list list">
-			<li class="item item-checkbox" ng-repeat="item in allIngredients | filter: searchBarText">
+			<li class="item item-checkbox" ng-repeat="item in allIngredients | filter: searchBarText | orderBy: 'name'">
 				<label class="checkbox">
-				<input type="checkbox" ng-model="checkedIngredients[$index].checked" ng-click="updateService()">
+				<input type="checkbox" ng-model="checkedIngredients[item.name]" ng-click="updateService()">
 				</label>
-				{{item}}
+				{{item.name}}
 			</li>
         </ul>
 	</section>
