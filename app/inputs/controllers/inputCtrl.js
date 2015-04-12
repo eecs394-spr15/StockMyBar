@@ -31,5 +31,8 @@ angular
             });
             supersonic.logger.log($scope.checkedIngredients);
             $scope.$apply();
-        }
+        };
+        $scope.clearSearchBarText = function() {
+            $scope.searchBarText = '';
+        };
     });

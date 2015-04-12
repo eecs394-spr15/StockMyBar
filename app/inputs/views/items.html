@@ -8,6 +8,7 @@
 		<label class="item-input-wrapper">
 			<i class="icon super-ios7-search placeholder-icon"></i>
 			<input type="search" placeholder="Search" ng-model="searchBarText">
+			<i class="icon super-close-circled placeholder-icon" ng-if="searchBarText" ng-click="clearSearchBarText()"></i>
 		</label>
 	</section>
 	<section>
