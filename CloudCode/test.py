@@ -10,4 +10,3 @@ connection.request('POST', '/1/functions/search4Recipes', json.dumps({
      })
 result = json.loads(connection.getresponse().read())
 print result
-#print (result[0].ingredInHand[0].name)
