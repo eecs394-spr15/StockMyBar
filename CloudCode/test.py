@@ -1,7 +1,7 @@
 import json,httplib
 connection = httplib.HTTPSConnection('api.parse.com', 443)
 connection.connect()
-connection.request('POST', '/1/functions/search4Recipes2', json.dumps({
+connection.request('POST', '/1/functions/search4Recipes', json.dumps({
        "ingredientNames": ["coffee"]
      }), {
        "X-Parse-Application-Id": "Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe",
