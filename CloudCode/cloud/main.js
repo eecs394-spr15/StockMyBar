@@ -4,60 +4,37 @@ Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!!!!!");
 });
  
+
 Parse.Cloud.define("search4Recipes", function(request, response) {
-    var Recipe = Parse.Object.extend("Recipes");
-    var Ingredient = Parse.Object.extend("Ingredients",{
-        initialize: function(){
-            //this.set("objectId", attrs.get("objectId"));
-            //this.set("name", attrs.name);
-            this.ingredListInHand = [];
-            this.ingredListOffHand = [];
-        }
-    });
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("name", request.params.ingredientNames);
     queryIngred.find({
     success: function(results1) {
         var queryJT = new Parse.Query("Join_Table");
-        queryJT.containedIn("ingredient", results1);
         queryJT.include("recipe");
         queryJT.include("ingredient");
+        queryJT.containedIn("ingredient", results1);
         queryJT.find({
         success: function(results2) {
-            var ingredLengthList = [];
-            var recipeList = [];
+            var recipeList = new Array();
             var recipeJSList = new Array();
             var addRecipe;
             var addRecipeJS;
-            var addIngred;
-            var addIngredPart;
             var addIngredPartJS;
             for(var i = 0; i < results2.length; i++){
                 var repeat = false;               
                 addRecipe = results2[i].get("recipe");
-                addIngred = results2[i].get("ingredient");
-
-                addRecipeJS = new Object();
-                addRecipeJS.id = results2[i].get("recipe").id;
-                addRecipeJS.name = results2[i].get("recipe").get("name");
-                addIngredPart = {id: addIngred.id, name: addIngred.get("name")};
-                addIngredPartJS = new Object();
-                addIngredPartJS.id = addIngred.id;
-                addIngredPartJS.name = addIngred.get("name");
-                for(var j = 0; j < recipeList.length; j++){
-                    if(addRecipe.id == recipeList[j].id){
+                addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"));
+                addIngredPartJS = createIngredPartJS(results2[i].get("ingredient").id, results2[i].get("ingredient").get("name"));
+                for(var j = 0; j < recipeJSList.length; j++){
+                    if(addRecipeJS.id == recipeJSList[j].id){
                         repeat = true;
-                        recipeList[j].ingredListInHand.push(addIngredPart);
                         recipeJSList[j].ingredListInHand.push(addIngredPartJS);
                         break;
                     }
                 }
                 if(!repeat){
-                    addRecipe.ingredListInHand = [addIngredPart];
-                    addRecipeJS.ingredListInHand = new Array();
                     addRecipeJS.ingredListInHand.push(addIngredPartJS);
-                    addRecipe.ingredListOffHand = [];
-                    addRecipeJS.ingredListOffHand = new Array();
                     recipeList.push(addRecipe);
                     recipeJSList.push(addRecipeJS);
                 }
@@ -66,52 +43,29 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             queryAllIngred.include("recipe");
             queryAllIngred.include("ingredient");
             queryAllIngred.containedIn("recipe",recipeList);
-            var addToOffHand = true;
             queryAllIngred.find({
             success: function(results3) {
+                var addToOffHand = true;
                 for(var n=0; n < results3.length; n++){
-                    addRecipe = results3[n].get("recipe");
-                    addIngred = results3[n].get("ingredient");
-                    addIngredPart = {id: addIngred.id, name: addIngred.get("name")};
-                    addIngredPartJS = new Object();
-                    addIngredPartJS.id = addIngred.id;
-                    addIngredPartJS.name = addIngred.get("name");
-                    for(var m=0; m < recipeList.length; m++){
-                        if (addRecipe.id == recipeList[m].id){
-                            //recipeList[m].numAll++;
+                    addIngredPartJS = createIngredPartJS(results3[n].get("ingredient").id, results3[n].get("ingredient").get("name"));
+                    for(var m=0; m < recipeJSList.length; m++){
+                        if (results3[n].get("recipe").id == recipeJSList[m].id){
                             addToOffHand = true;
-                            for(var l=0; l<recipeList[m].ingredListInHand.length;l++){
-                                if(recipeList[m].ingredListInHand[l].id == addIngredPart.id){
+                            for(var l=0; l<recipeJSList[m].ingredListInHand.length;l++){
+                                if(recipeJSList[m].ingredListInHand[l].id == addIngredPartJS.id){
                                     addToOffHand = false;
                                     break;
                                 }
                             }
                             if (addToOffHand){
-                                recipeList[m].ingredListOffHand.push(addIngredPart);
                                 recipeJSList[m].ingredListOffHand.push(addIngredPartJS);
                             }
                         }
                     }
                 }
-                recipeList.sort(function(a,b){
-                    if (a.ingredListOffHand.length < b.ingredListOffHand.length)
-                        return -1;
-                    if (a.ingredListOffHand.length > b.ingredListOffHand.length)
-                        return 1;
-                    return 0;
-                });
                 recipeJSList.sort(function(a,b){
                     return a.ingredListOffHand.length - b.ingredListOffHand.length;
                 });
-                /*
-                var newResults = new Array();
-                for(var i=0;i<recipeList.length;i++){
-                    var temp = JSON.stringify(recipeJSList.pop());
-                    newResults.push(temp);
-                }
-                */
-                //response.success(JSON.stringify(newResults));
-                //response.success(JSON.stringify(recipeJSList));
                 response.success(recipeJSList);
             },
             error: function(){
@@ -129,3 +83,20 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
     }
     });
 });
+
+function createRecipeJS(id,name){
+    var obj = new Object(); 
+    obj.id = id; 
+    obj.name = name; 
+    obj.ingredListInHand = new Array();
+    obj.ingredListOffHand = new Array();
+    return obj; 
+}  
+
+function createIngredPartJS(id,name){
+    var obj = new Object(); 
+    obj.id = id; 
+    obj.name = name; 
+    return obj; 
+} 
+
