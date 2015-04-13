@@ -7,11 +7,7 @@
 		<ul>
 			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
 				<i class="fa fa-glass"></i>
-<<<<<<< HEAD
-				<h2 class="title">{{recipe.get("name")}}</h2>
-=======
 				<h2 class="title">{{recipe.name}}</h2>
->>>>>>> feature/database-algorithm
 			</li>
 		</ul>
 	</section>
@@ -19,29 +15,17 @@
 	<section class="active-recipe">
 		<h2 class="title none-active" ng-if="noneActive">Choose a recipe...</h2>
 		<div ng-if="!noneActive">
-<<<<<<< HEAD
-			<h2 class="title">{{activeRecipe.get("name")}}</h2>
-			<div class="have ingredient-list">
-				<ul>
-					<h3>Have</h3>
-					<li ng-repeat="ingredient in haveIngredients">{{ingredient}}</li>
-=======
 			<h2 class="title">{{activeRecipe.name}}</h2>
 			<div class="have ingredient-list">
 				<ul>
 					<h3>Have</h3>
 					<li ng-repeat="ingredient in haveIngredients">{{ingredient.name}}</li>
->>>>>>> feature/database-algorithm
 				</ul>
 			</div>
 			<div class="need ingredient-list">
 				<ul>
 					<h3>Need</h3>
-<<<<<<< HEAD
-					<li ng-repeat="ingredient in neededIngredients">{{ingredient}}</li>
-=======
 					<li ng-repeat="ingredient in neededIngredients">{{ingredient.name}}</li>
->>>>>>> feature/database-algorithm
 				</ul>
 			</div>
 		</div>
