@@ -12,7 +12,11 @@ angular
             success: function(results) {
                 factory.allIngredients = [];
                 for(var i=0; i<results.length; i++) {
+<<<<<<< HEAD
                     factory.allIngredients.push({name: results[i].get("name")});
+=======
+                    factory.allIngredients.push(results[i].get("name"));
+>>>>>>> feature/database-algorithm
                 }
                 }
             });
