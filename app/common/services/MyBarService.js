@@ -6,6 +6,7 @@ angular
         factory = {};
         factory.allIngredients = [];
         factory.getAllIngredients = function() {
+            supersonic.logger.log("Getting all ingredients from database");
             Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
             var query = new Parse.Query("Ingredients");
             return query.find({

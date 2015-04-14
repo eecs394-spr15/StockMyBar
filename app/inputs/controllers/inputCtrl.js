@@ -13,8 +13,8 @@ angular
                 if (value) {
                     temp_barContents.push(key);
                 }
-                supersonic.data.channel('barContents').publish(temp_barContents);
             });
+            supersonic.data.channel('barContents').publish(temp_barContents);
         };
         $scope.clearAllItems = function() {
             $scope.checkedIngredients = {};
@@ -25,9 +25,11 @@ angular
         var reset = function() {
             supersonic.logger.log("Resetting ingredients");
             $scope.allIngredients = MyBarService.allIngredients;
+            supersonic.logger.log($scope.allIngredients);
             angular.forEach($scope.allIngredients,function(item){
                 $scope.checkedIngredients[item.name] = false;
             });
+            supersonic.logger.log($scope.checkedIngredients);
             $scope.$apply();
         };
         $scope.clearSearchBarText = function() {

@@ -7,6 +7,7 @@ angular
 		$scope.recipes = [];
 		$scope.noneActive = true;
 		supersonic.data.channel('barContents').subscribe( function(newVal) {
+            supersonic.logger.log("Updating barContents");
 			// Updates possible recipes anytime the user's bar contents change
 			ingList = newVal;
 			Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
@@ -29,5 +30,6 @@ angular
 			$scope.activeRecipe =  $scope.recipes[index];
 			$scope.neededIngredients = $scope.recipes[index].ingredListOffHand;
 			$scope.haveIngredients = $scope.recipes[index].ingredListInHand;
+			$scope.apply();
 		};
 	});
