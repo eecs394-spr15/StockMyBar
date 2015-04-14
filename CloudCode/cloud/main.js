@@ -5,6 +5,22 @@ Parse.Cloud.define("hello", function(request, response) {
 });
  
 
+function createRecipeJS(id,name){
+    var obj = new Object(); 
+    obj.id = id; 
+    obj.name = name; 
+    obj.ingredListOffHand = new Array();
+    obj.ingredListInHand = new Array();
+    return obj; 
+}  
+
+function createIngredPartJS(id,name){
+    var obj = new Object(); 
+    obj.id = id; 
+    obj.name = name; 
+    return obj; 
+} 
+
 Parse.Cloud.define("search4Recipes", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("name", request.params.ingredientNames);
@@ -13,7 +29,8 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
         var queryJT = new Parse.Query("Join_Table");
         queryJT.include("recipe");
         queryJT.include("ingredient");
-        queryJT.containedIn("ingredient", results1);
+        queryJT.containedIn("ingredient", results1);                
+        queryJT.limit(1000);
         queryJT.find({
         success: function(results2) {
             var recipeList = new Array();
@@ -43,6 +60,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             queryAllIngred.include("recipe");
             queryAllIngred.include("ingredient");
             queryAllIngred.containedIn("recipe",recipeList);
+            queryAllIngred.limit(1000);
             queryAllIngred.find({
             success: function(results3) {
                 var addToOffHand = true;
@@ -51,7 +69,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
                     for(var m=0; m < recipeJSList.length; m++){
                         if (results3[n].get("recipe").id == recipeJSList[m].id){
                             addToOffHand = true;
-                            for(var l=0; l<recipeJSList[m].ingredListInHand.length;l++){
+                            for(var l=0; l<(recipeJSList[m].ingredListInHand).length;l++){
                                 if(recipeJSList[m].ingredListInHand[l].id == addIngredPartJS.id){
                                     addToOffHand = false;
                                     break;
@@ -60,6 +78,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
                             if (addToOffHand){
                                 recipeJSList[m].ingredListOffHand.push(addIngredPartJS);
                             }
+                            break;
                         }
                     }
                 }
@@ -95,19 +114,4 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
     });
 });
 
-function createRecipeJS(id,name){
-    var obj = new Object(); 
-    obj.id = id; 
-    obj.name = name; 
-    obj.ingredListInHand = new Array();
-    obj.ingredListOffHand = new Array();
-    return obj; 
-}  
-
-function createIngredPartJS(id,name){
-    var obj = new Object(); 
-    obj.id = id; 
-    obj.name = name; 
-    return obj; 
-} 
 
