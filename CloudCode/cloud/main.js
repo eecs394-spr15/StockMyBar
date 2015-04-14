@@ -64,6 +64,17 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
                     }
                 }
                 recipeJSList.sort(function(a,b){
+                    if ((a.ingredListOffHand.length - b.ingredListOffHand.length) == 0){
+                        if (a.name > b.name){
+                            return 1;
+                        }
+                        else if(a.name < b.name){
+                            return -1;
+                        }
+                        else{
+                            return 0;
+                        }
+                    }
                     return a.ingredListOffHand.length - b.ingredListOffHand.length;
                 });
                 response.success(recipeJSList);
