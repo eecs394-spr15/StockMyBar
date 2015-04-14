@@ -3,21 +3,21 @@
 angular
 	.module('inputs')
     .controller('InputCtrl', function ($scope, MyBarService, supersonic) {
-        $scope.checkedIngredients = [];
+        $scope.checkedIngredients = {};
         $scope.allIngredients = [];
         $scope.updateService = function() {
             // Updates user's bar contents whenever they make a new selection in the Items view
             $scope.recipes = [];
             temp_barContents = [];
-            for (var i = 0; i < $scope.checkedIngredients.length; i++) {
-                if ($scope.checkedIngredients[i].checked) {
-                    temp_barContents.push($scope.checkedIngredients[i].item);
+            angular.forEach($scope.checkedIngredients, function (value, key) {
+                if (value) {
+                    temp_barContents.push(key);
                 }
-            }
-            supersonic.data.channel('barContents').publish(temp_barContents);
+                supersonic.data.channel('barContents').publish(temp_barContents);
+            });
         };
         $scope.clearAllItems = function() {
-            $scope.checkedIngredients = [];
+            $scope.checkedIngredients = {};
             reset();
             $scope.updateService();
         };
@@ -26,8 +26,11 @@ angular
             supersonic.logger.log("Resetting ingredients");
             $scope.allIngredients = MyBarService.allIngredients;
             angular.forEach($scope.allIngredients,function(item){
-                $scope.checkedIngredients.push({item:item,checked:false});
+                $scope.checkedIngredients[item.name] = false;
             });
             $scope.$apply();
-        }
+        };
+        $scope.clearSearchBarText = function() {
+            $scope.searchBarText = '';
+        };
     });
