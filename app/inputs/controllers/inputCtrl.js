@@ -5,6 +5,7 @@ angular
     .controller('InputCtrl', function ($scope, MyBarService, supersonic) {
         $scope.checkedIngredients = {};
         $scope.allIngredients = [];
+        $scope.barContents = ['apple'];
         $scope.updateService = function() {
             // Updates user's bar contents whenever they make a new selection in the Items view
             $scope.recipes = [];
@@ -35,4 +36,9 @@ angular
         $scope.clearSearchBarText = function() {
             $scope.searchBarText = '';
         };
+        supersonic.data.channel('barContents').subscribe( function(newVal) {
+            $scope.barContents = newVal;
+            supersonic.logger.log('Noticed change');
+            $scope.$apply();
+        });
     });
