@@ -5,40 +5,45 @@ angular
     .controller('InputCtrl', function ($scope, MyBarService, supersonic) {
         $scope.checkedIngredients = {};
         $scope.allIngredients = [];
-        $scope.barContents = [];
+        $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+        supersonic.device.ready.then( function() {
+            supersonic.logger.log(localStorage.barContents);
+            supersonic.data.channel('barContents').publish(JSON.parse(localStorage.barContents));
+        });
 
-        $scope.updateBarContents = function(itemName) {
-            //// Updates user's bar contents whenever they make a new selection in the Items view
-            //supersonic.logger.log('before update: '+$scope.barContents);
-            //supersonic.logger.log('before update according to service: '+MyBarService.barContents);
-            var tempContents = $scope.barContents;
-            if ($scope.checkedIngredients[itemName]) {
-                $scope.barContents.push(itemName);
-                //supersonic.logger.log("Checked");
-            } else {
-                $scope.barContents.splice($scope.barContents.indexOf(itemName), 1);
-                //supersonic.logger.log("Unchecked");
-            }
-            //supersonic.bind($scope, 'barContents');
-            $scope.$apply();
-            //supersonic.logger.log($scope.barContents);
+        $scope.clearSearchBarText = function() {
+            $scope.searchBarText = '';
+            supersonic.ui.navigationBar.update({overrideBackButton: true});
         };
-        function reset() {
-            //supersonic.logger.log("Resetting ingredients");
+
+        $scope.confirm = function() {
+            // Called when user pressed "CONFIRM" button
+            angular.forEach($scope.checkedIngredients, function(value, key) {
+                // Add newly checked ingredients to user's bar
+                if (value) {
+                    $scope.barContents.push(key);
+                }
+            });
+
+            // Save and share changes to user's bar
+            localStorage.barContents = JSON.stringify($scope.barContents);
+            supersonic.data.channel('barContents').publish($scope.barContents);
+
+            // Re-enable bottom tabs and return to previous view
+            supersonic.ui.tabs.show();
+            supersonic.ui.layers.pop();
+        };
+
+        supersonic.data.channel('allIngredients').subscribe( function(newVal) {
+            $scope.allIngredients = newVal;
             angular.forEach($scope.allIngredients,function(item){
                 $scope.checkedIngredients[item.name] = false;
             });
-            //supersonic.logger.log($scope.checkedIngredients);
             $scope.$apply();
-        }
-        $scope.clearSearchBarText = function() {
-            $scope.searchBarText = '';
-        };
-        supersonic.data.channel('allIngredients').subscribe( function(newVal) {
-            $scope.allIngredients = newVal;
-            reset();
-            $scope.$apply();
-            //supersonic.logger.log($scope.allIngredients);
         });
-        supersonic.bind($scope, 'barContents');
+
+        supersonic.data.channel('barContents').subscribe(function(message) {
+            $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+            $scope.$apply();
+        });
     });
