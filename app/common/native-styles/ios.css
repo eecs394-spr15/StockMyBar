@@ -4,34 +4,36 @@
  ***********************************************************/
 
 navigation-bar {
-  background-color: #40B5FF;
-  color: #ffffff;
+  color: #71747b;
+  background-color: #fff;
+  border-bottom: 1px #eee solid;
 }
 
 navigation-bar title {
-  color: #ffffff;
+  color: #71747b;
   font-size: 18px;
   font-weight: 600;
 }
 
 navigation-bar button, navigation-bar back-bar-button {
-  color: #ffffff;
+  color: #71747b;
   font-weight: 300;
 }
 
 tab-bar {
-  background-color: #1a1a1a;
-  border-top: 1px #d8d8d8 solid;
+  color: #34cbc6;
+  background-color: #fff;
+  border-top: 1px #eee solid;
 }
 
 tab-bar tab-bar-item {
-  color: #b0b1b4;
+  color: #71747b;
   font-family: "Avenir";
   font-size: 10px;
 }
 
 tab-bar tab-bar-item:selected {
-  color: #6BB5FF;
+  color: #34cbc6;
 }
 
 tab-bar-item#home {

@@ -1,0 +1,24 @@
+<main class="items" ng-controller="InputCtrl">
+    <super-navbar class="navbar">
+        <super-navbar-title>Add Items</super-navbar-title>
+    </super-navbar>
+    <section class="bar bar-header item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon super-ios7-search placeholder-icon"></i>
+            <input type="search" placeholder="Search" ng-model="searchBarText">
+            <i class="icon super-close-circled placeholder-icon" ng-if="searchBarText" ng-click="clearSearchBarText()"></i>
+        </label>
+    </section>
+    <section>
+        <ul class="item-list list">
+            <li class="item item-checkbox" ng-repeat="item in allIngredients | addItemsList:barContents:searchBarText | orderBy: 'name'">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="checkedIngredients[item.name]" ng-click="supersonic.device.vibrate()">
+                </label>
+                {{item.name}}
+            </li>
+        </ul>
+    </section>
+    <button class="confirm" ng-click="confirm()">Confirm</button>
+
+</main>

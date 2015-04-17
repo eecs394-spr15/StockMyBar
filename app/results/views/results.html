@@ -17,15 +17,15 @@
 		<div ng-if="!noneActive">
 			<h2 class="title">{{activeRecipe.name}}</h2>
 			<div class="have ingredient-list">
-				<h3>You Have</h3>
 				<ul>
-					<li ng-repeat="ingredient in userHas">{{ingredient}}</li>
+					<h3>Have</h3>
+					<li ng-repeat="ingredient in haveIngredients">{{ingredient.name}}</li>
 				</ul>
 			</div>
 			<div class="need ingredient-list">
-				<h3>You Need</h3>
 				<ul>
-					<li ng-repeat="ingredient in activeRecipe.ingredients">{{ingredient}}</li>
+					<h3>Need</h3>
+					<li ng-repeat="ingredient in neededIngredients">{{ingredient.name}}</li>
 				</ul>
 			</div>
 		</div>
