@@ -10,12 +10,12 @@ module.exports =
       location: "inputs#home"
     }
     {
-      title: "Items"
+      title: "My Bar"
       id: "items"
       location: "inputs#items"
     }
     {
-      title: "Results"
+      title: "Recipes"
       id: "results"
       location: "results#results"
     }

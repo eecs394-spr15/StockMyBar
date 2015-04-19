@@ -69,11 +69,14 @@ main.results {
 			}
 			li.active {
 
-				i {
-					background-color: #777;
-				}
-				h2 {
-					color: $color-accent-2;
+				div.recipe-left {
+					
+					i {
+						background-color: #777;
+					}
+					h2 {
+						color: $color-accent-2;
+					}
 				}
 			}
 		}

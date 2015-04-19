@@ -96,9 +96,9 @@ main.results {
               color: #fff;
               background-color: #aaa;
               border: none; }
-      main.results section.recipes ul li.active i {
+      main.results section.recipes ul li.active div.recipe-left i {
         background-color: #777; }
-      main.results section.recipes ul li.active h2 {
+      main.results section.recipes ul li.active div.recipe-left h2 {
         color: #56bcd5; }
   main.results section.active-recipe {
     position: fixed;
