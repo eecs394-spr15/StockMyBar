@@ -13,7 +13,6 @@ angular
 
         supersonic.data.channel('barContents').subscribe(function(message) {
             $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
-            supersonic.logger.log($scope.barContents);
             $scope.$apply();
         });
 

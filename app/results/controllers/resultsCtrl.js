@@ -3,11 +3,11 @@
 angular
 	.module('results')
 	.controller('ResultsCtrl', function ($scope, supersonic) {
+
 		var ingList = [];
 		$scope.recipes = [];
 		$scope.noneActive = true;
 		supersonic.data.channel('barContents').subscribe( function(newVal) {
-            supersonic.logger.log("Updating barContents");
 			// Updates possible recipes anytime the user's bar contents change
 			ingList = newVal;
 			Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
@@ -16,12 +16,28 @@ angular
 					$scope.recipes = results;
 					$scope.noneActive = true;
 					$scope.selected = null;
+					for (var i=0; i<$scope.recipes.length; i++) {
+						$scope.recipes[i].count = 0;
+					}
 					$scope.$apply();
 				}, error: function(error) {
 					supersonic.logger.log(error);
 				}
 			});
 		});
+
+		supersonic.logger.log('hi');
+
+
+		// Update recipe quantity
+		$scope.incrementCount = function(index) {
+			$scope.recipes[index].count++;
+		}
+		$scope.decrementCount = function(index) {
+			if ($scope.recipes[index].count > 0) {
+				$scope.recipes[index].count--;
+			}
+		}
 
 		// Change activeRecipe on UI click
 		$scope.activateRecipe = function(index) {

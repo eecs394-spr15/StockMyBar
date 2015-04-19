@@ -6,18 +6,16 @@
 	<section class="recipes">
 		<ul>
 			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
-				<i class="fa fa-glass"></i>
-				<div align="right">
+				<div class="recipe-left">
+					<i class="fa fa-glass"></i>
 					<h2 class="title">{{recipe.name}}</h2>
-					<button ng-click="count = count + 1" ng-init="count=0">
-	  				+
-					</button>
-					<button ng-click="count = count - 1" ng-init="count=0">
-						-
-					</button>
-					<span>
-	  				Num: {{count}}
-					</span>
+				</div>
+				<div class="quantity">
+					<span>{{recipe.count}}</span>
+					<div class="quantity-buttons">
+						<button ng-click="incrementCount($index)">+</button>
+						<button ng-click="decrementCount($index)">-</button>
+					</div>
 				</div>
 			</li>
 		</ul>
