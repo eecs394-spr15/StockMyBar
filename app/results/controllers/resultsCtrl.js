@@ -2,7 +2,7 @@
 
 angular
 	.module('results')
-	.controller('ResultsCtrl', function ($scope, supersonic, MyBarService) {
+	.controller('ResultsCtrl', function ($scope, supersonic) {
 		var ingList = [];
 		$scope.recipes = [];
 		$scope.noneActive = true;
@@ -30,6 +30,6 @@ angular
 			$scope.activeRecipe =  $scope.recipes[index];
 			$scope.neededIngredients = $scope.recipes[index].ingredListOffHand;
 			$scope.haveIngredients = $scope.recipes[index].ingredListInHand;
-			$scope.apply();
+			$scope.$apply();
 		};
 	});

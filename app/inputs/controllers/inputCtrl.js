@@ -5,34 +5,45 @@ angular
     .controller('InputCtrl', function ($scope, MyBarService, supersonic) {
         $scope.checkedIngredients = {};
         $scope.allIngredients = [];
-        $scope.updateService = function() {
-            // Updates user's bar contents whenever they make a new selection in the Items view
-            $scope.recipes = [];
-            temp_barContents = [];
-            angular.forEach($scope.checkedIngredients, function (value, key) {
+        $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+        supersonic.device.ready.then( function() {
+            supersonic.logger.log(localStorage.barContents);
+            supersonic.data.channel('barContents').publish(JSON.parse(localStorage.barContents));
+        });
+
+        $scope.clearSearchBarText = function() {
+            $scope.searchBarText = '';
+            supersonic.ui.navigationBar.update({overrideBackButton: true});
+        };
+
+        $scope.confirm = function() {
+            // Called when user pressed "CONFIRM" button
+            angular.forEach($scope.checkedIngredients, function(value, key) {
+                // Add newly checked ingredients to user's bar
                 if (value) {
-                    temp_barContents.push(key);
+                    $scope.barContents.push(key);
                 }
             });
-            supersonic.data.channel('barContents').publish(temp_barContents);
+
+            // Save and share changes to user's bar
+            localStorage.barContents = JSON.stringify($scope.barContents);
+            supersonic.data.channel('barContents').publish($scope.barContents);
+
+            // Re-enable bottom tabs and return to previous view
+            supersonic.ui.tabs.show();
+            supersonic.ui.layers.pop();
         };
-        $scope.clearAllItems = function() {
-            $scope.checkedIngredients = {};
-            reset();
-            $scope.updateService();
-        };
-        MyBarService.getAllIngredients().then(function() {reset();});
-        var reset = function() {
-            supersonic.logger.log("Resetting ingredients");
-            $scope.allIngredients = MyBarService.allIngredients;
-            supersonic.logger.log($scope.allIngredients);
+
+        supersonic.data.channel('allIngredients').subscribe( function(newVal) {
+            $scope.allIngredients = newVal;
             angular.forEach($scope.allIngredients,function(item){
                 $scope.checkedIngredients[item.name] = false;
             });
-            supersonic.logger.log($scope.checkedIngredients);
             $scope.$apply();
-        };
-        $scope.clearSearchBarText = function() {
-            $scope.searchBarText = '';
-        };
+        });
+
+        supersonic.data.channel('barContents').subscribe(function(message) {
+            $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+            $scope.$apply();
+        });
     });

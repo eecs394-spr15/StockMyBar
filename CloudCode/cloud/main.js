@@ -1,27 +1,6 @@
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
-Parse.Cloud.define("hello", function(request, response) {
-  response.success("Hello world!!!!!");
-});
- 
 
-function createRecipeJS(id,name){
-    var obj = new Object(); 
-    obj.id = id; 
-    obj.name = name; 
-    obj.ingredListOffHand = new Array();
-    obj.ingredListInHand = new Array();
-    return obj; 
-}  
 
-function createIngredPartJS(id,name){
-    var obj = new Object(); 
-    obj.id = id; 
-    obj.name = name; 
-    return obj; 
-} 
-
-Parse.Cloud.define("search4Recipes", function(request, response) {
+Parse.Cloud.define("search4Recipes2", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("name", request.params.ingredientNames);
     queryIngred.find({
@@ -29,7 +8,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
         var queryJT = new Parse.Query("Join_Table");
         queryJT.include("recipe");
         queryJT.include("ingredient");
-        queryJT.containedIn("ingredient", results1);                
+        queryJT.containedIn("ingredient", results1);
         queryJT.limit(1000);
         queryJT.find({
         success: function(results2) {
@@ -39,7 +18,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             var addRecipeJS;
             var addIngredPartJS;
             for(var i = 0; i < results2.length; i++){
-                var repeat = false;               
+                var repeat = false;
                 addRecipe = results2[i].get("recipe");
                 addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"));
                 addIngredPartJS = createIngredPartJS(results2[i].get("ingredient").id, results2[i].get("ingredient").get("name"));
@@ -56,7 +35,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
                     recipeJSList.push(addRecipeJS);
                 }
             }
-            var queryAllIngred = new Parse.Query("Join_Table");  
+            var queryAllIngred = new Parse.Query("Join_Table");
             queryAllIngred.include("recipe");
             queryAllIngred.include("ingredient");
             queryAllIngred.containedIn("recipe",recipeList);
@@ -83,19 +62,15 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
                     }
                 }
                 recipeJSList.sort(function(a,b){
-                    if ((a.ingredListOffHand.length - b.ingredListOffHand.length) == 0){
-                        if (a.name > b.name){
-                            return 1;
-                        }
-                        else if(a.name < b.name){
-                            return -1;
-                        }
-                        else{
-                            return 0;
-                        }
+                    var lengthA = a.ingredListOffHand.length;
+                    var lengthB = b.ingredListOffHand.length;
+                    if (lengthA < lengthB) {
+                        return lengthA - lengthB;
                     }
-                    return a.ingredListOffHand.length - b.ingredListOffHand.length;
-                });
+                    else {
+                        return lengthB - lengthA;
+                    }
+                    });
                 response.success(recipeJSList);
             },
             error: function(){
