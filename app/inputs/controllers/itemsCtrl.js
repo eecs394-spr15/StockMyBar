@@ -6,6 +6,9 @@ angular
 
 
         $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+        setTimeout(function() {
+            supersonic.data.channel('barContents').publish($scope.barContents);
+        }, 1000);
 
 
         $scope.clearAllItems = function() {
