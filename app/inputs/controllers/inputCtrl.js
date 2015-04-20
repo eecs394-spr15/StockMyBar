@@ -3,6 +3,13 @@
 angular
 	.module('inputs')
     .controller('InputCtrl', function ($scope, MyBarService, supersonic) {
+
+        /* Deal with tabs when this view is visible */
+        var stopListening = supersonic.ui.views.current.whenVisible( function() {
+            supersonic.ui.tabs.hide();
+        });
+
+
         $scope.checkedIngredients = {};
         $scope.allIngredients = [];
         $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
@@ -11,15 +18,16 @@ angular
             supersonic.data.channel('barContents').publish(JSON.parse(localStorage.barContents));
         });
 
+
+        /* Clear search bar */
         $scope.clearSearchBarText = function() {
             $scope.searchBarText = '';
-            supersonic.ui.navigationBar.update({overrideBackButton: true});
         };
 
+
+        /* Called when user pressed "CONFIRM" button */
         $scope.confirm = function() {
-            // Called when user pressed "CONFIRM" button
             angular.forEach($scope.checkedIngredients, function(value, key) {
-                // Add newly checked ingredients to user's bar
                 if (value) {
                     $scope.barContents.push(key);
                 }
@@ -28,10 +36,6 @@ angular
             // Save and share changes to user's bar
             localStorage.barContents = JSON.stringify($scope.barContents);
             supersonic.data.channel('barContents').publish($scope.barContents);
-
-            // Re-enable bottom tabs and return to previous view
-            supersonic.ui.tabs.show();
-            supersonic.ui.layers.pop();
         };
 
         supersonic.data.channel('allIngredients').subscribe( function(newVal) {

@@ -3,6 +3,14 @@
 angular
 	.module('inputs')
     .controller('ItemsCtrl', function ($scope, supersonic) {
+
+
+        /* Deal with tabs when this view is visible */
+        var stopListening = supersonic.ui.views.current.whenVisible( function() {
+            supersonic.ui.tabs.show();
+        });
+
+
         $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
 
         $scope.clearAllItems = function() {
@@ -18,7 +26,6 @@ angular
 
         $scope.addItems = function() {
             // Open Add Items menu
-            supersonic.ui.tabs.hide();
             var view = new supersonic.ui.View('inputs#itemSelect');
             supersonic.ui.layers.push(view);
         }

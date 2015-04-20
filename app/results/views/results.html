@@ -1,7 +1,10 @@
 <main class="results" ng-controller="ResultsCtrl">
+
+
 	<super-navbar class="navbar">
 	  	<super-navbar-title>Results</super-navbar-title>
 	</super-navbar>
+
 
 	<section class="recipes">
 		<ul>
@@ -21,6 +24,7 @@
 		</ul>
 	</section>
 
+
 	<section class="active-recipe">
 		<h2 class="title none-active" ng-if="noneActive">Choose a recipe...</h2>
 		<div ng-if="!noneActive">
@@ -39,5 +43,6 @@
 			</div>
 		</div>
 	</section>
+
 
 </main>
