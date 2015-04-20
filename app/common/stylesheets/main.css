@@ -60,6 +60,7 @@ main.results {
         overflow: auto; }
         main.results section.recipes ul li div.recipe-left {
           float: left;
+<<<<<<< HEAD
           padding: 5px 10px; }
           main.results section.recipes ul li div.recipe-left i {
             display: inline-block;
@@ -97,9 +98,24 @@ main.results {
               background-color: #aaa;
               border: none; }
       main.results section.recipes ul li.active div.recipe-left i {
+=======
+          padding: 6px 0;
+          font-size: 18px;
+          color: #555; }
+        main.results section.recipes ul li img {
+          padding: 3px 0;
+          width: 0px;
+          height: 0px; }
+      main.results section.recipes ul li.active i {
+>>>>>>> feature/shopping_cart
         background-color: #777; }
       main.results section.recipes ul li.active div.recipe-left h2 {
         color: #56bcd5; }
+      main.results section.recipes ul li.active img {
+        visibility: visible;
+        width: 2em;
+        height: 2em;
+        float: right; }
   main.results section.active-recipe {
     position: fixed;
     bottom: 0;

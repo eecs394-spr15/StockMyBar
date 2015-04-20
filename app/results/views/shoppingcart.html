@@ -1,0 +1,15 @@
+<main class="results" ng-controller="ShoppingCartCtrl">
+	<super-navbar class="navbar">
+	  	<super-navbar-title>Shopping Cart</super-navbar-title>
+	</super-navbar>
+
+	<section class="recipes">
+		<p>{{shoppingList.length}}</p>
+		<ul>
+			<li ng-repeat="recipe in shoppingList" ng-click="" ng-class="{active: $index == selected}">
+				<i class="fa fa-glass"></i>
+				<h2 class="title">{{recipe.name}}</h2>
+			</li>
+		</ul>
+	</section>
+</main>

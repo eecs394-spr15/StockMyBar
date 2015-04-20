@@ -66,6 +66,11 @@ main.results {
 						}
 					}
 				}
+				img{
+					padding: 3px 0;
+					width: 0px;
+					height: 0px;
+				}
 			}
 			li.active {
 
@@ -77,6 +82,12 @@ main.results {
 					h2 {
 						color: $color-accent-2;
 					}
+				}
+				img {
+					visibility: visible;
+					width: 2em;
+					height: 2em;
+					float: right;
 				}
 			}
 		}
