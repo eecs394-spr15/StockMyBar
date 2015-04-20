@@ -74,19 +74,17 @@ Parse.Cloud.define("search4Recipes2", function(request, response) {
                 response.success(recipeJSList);
             },
             error: function(){
-                response.error("result3 no!!!");
+                response.error("result3 no!!");
             }
             });
         },
         error: function() {
-            response.error("result2 no!!!");
+            response.error("result2 no!!");
         }
         });
     },
     error: function() {
-        response.error("result1 no!!!");
+        response.error("result1 no!!");
     }
     });
 });
-
-
