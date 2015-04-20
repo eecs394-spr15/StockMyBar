@@ -17,6 +17,13 @@ angular
             supersonic.data.channel('barContents').publish($scope.barContents);
         };
 
+				$scope.cancel = function(item) {
+						var pos = $scope.barContents.indexOf(item)
+						$scope.barContents.splice(pos,1)
+						supersonic.logger.log($scope.barContents);
+						localStorage.barContents = JSON.stringify($scope.barContents);
+						supersonic.data.channel('barContents').publish($scope.barContents);
+				};
 
         supersonic.data.channel('barContents').subscribe(function(message) {
             $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
