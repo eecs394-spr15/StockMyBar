@@ -5,13 +5,8 @@ angular
     .controller('ItemsCtrl', function ($scope, supersonic) {
 
 
-        /* Deal with tabs when this view is visible */
-        var stopListening = supersonic.ui.views.current.whenVisible( function() {
-            supersonic.ui.tabs.show();
-        });
-
-
         $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+
 
         $scope.clearAllItems = function() {
             $scope.barContents = [];
@@ -19,14 +14,16 @@ angular
             supersonic.data.channel('barContents').publish($scope.barContents);
         };
 
+
         supersonic.data.channel('barContents').subscribe(function(message) {
             $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
             $scope.$apply();
         });
 
+
+        /* Open Add Items menu */
         $scope.addItems = function() {
-            // Open Add Items menu
-            var view = new supersonic.ui.View('inputs#itemSelect');
-            supersonic.ui.layers.push(view);
+            supersonic.ui.modal.show("inputs#itemSelect");
+            supersonic.logger.log($scope.barContents);
         }
     });
