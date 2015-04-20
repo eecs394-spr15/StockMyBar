@@ -57,9 +57,6 @@ angular
 			$scope.haveIngredients = $scope.recipes[index].ingredListInHand;
 			$scope.$apply();
 		};
-<<<<<<< HEAD
-	});
-=======
 
 		$scope.addToCart = function(index) {
 			//supersonic.logger.log(index);
@@ -75,4 +72,3 @@ angular
 		};
 		
 	});
->>>>>>> feature/shopping_cart

@@ -5,7 +5,6 @@
 	  	<super-navbar-title>Results</super-navbar-title>
 	  	<super-navbar-button side="right" location = "results#shoppingcart">Shopping Cart</super-navbar-button>
 	</super-navbar>
-<<<<<<< HEAD
 
 
 	<section class="recipes">
@@ -22,15 +21,7 @@
 						<button ng-click="decrementCount($index)">-</button>
 					</div>
 				</div>
-=======
-	<p>{{shoppingList.length}}</p>
-	<section class="recipes">
-		<ul>
-			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
-				<i class="fa fa-glass"></i>
-				<h2 class="title">{{recipe.name}}</h2>
 				<img ng-src = "../../icons/add_to_cart.svg"  ng-click = "addToCart($index)"/>
->>>>>>> feature/shopping_cart
 			</li>
 		</ul>
 	</section>
