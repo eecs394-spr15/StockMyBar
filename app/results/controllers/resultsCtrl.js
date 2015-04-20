@@ -41,6 +41,12 @@ angular
 			}
 		}
 
+		$scope.reset = function() {
+			angular.forEach($scope.recipes, function(value,key) {
+				$scope.recipes[key].count=0;
+			});
+		}
+
 		/* Change activeRecipe on UI click */
 		$scope.activateRecipe = function(index) {
 			$scope.noneActive = false;
