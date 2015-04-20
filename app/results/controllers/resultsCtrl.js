@@ -29,10 +29,9 @@ angular
 			});
 		});
 
-		supersonic.logger.log('hi');
 
 
-		// Update recipe quantity
+		/* Update recipe quantity */
 		$scope.incrementCount = function(index) {
 			$scope.recipes[index].count++;
 		}
@@ -42,7 +41,7 @@ angular
 			}
 		}
 
-		// Change activeRecipe on UI click
+		/* Change activeRecipe on UI click */
 		$scope.activateRecipe = function(index) {
 			$scope.noneActive = false;
 			$scope.selected = index;
@@ -52,17 +51,14 @@ angular
 			$scope.$apply();
 		};
 
+
+		/* Add recipe to shopping cart */
 		$scope.addToCart = function(index) {
-			//supersonic.logger.log(index);
 			$scope.shoppingList.push($scope.recipes[index]);
-			supersonic.logger.log($scope.shoppingList[$scope.shoppingList.length-1].name);
 			$scope.temp = 100;
 			supersonic.data.channel('haha').publish('8');
 			$scope.apply();
 		};
 
-		$scope.cartLength = function(){
-			return $scope.shoppingList.length;
-		};
-		
+
 	});

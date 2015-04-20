@@ -12,6 +12,8 @@
 			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
 				<div class="recipe-left">
 					<i class="fa fa-glass"></i>
+					<!-- <i class="icon super-pricetag"></i> -->
+					<i class="fa fa-cart-plus"></i>
 					<h2 class="title">{{recipe.name}}</h2>
 				</div>
 				<div class="quantity">
@@ -21,7 +23,6 @@
 						<button ng-click="decrementCount($index)">-</button>
 					</div>
 				</div>
-				<img ng-src = "../../icons/add_to_cart.svg"  ng-click = "addToCart($index)"/>
 			</li>
 		</ul>
 	</section>

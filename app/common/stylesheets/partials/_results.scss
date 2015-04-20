@@ -23,17 +23,21 @@ main.results {
 					padding: 5px 10px;
 
 					i {
-						display: inline-block;
 						margin-right: 7px;
 						padding: 8px;
+						width: 35px;
+						text-align: center;
 						font-size: 20px;
 						color: #fff;
 						background-color: #ddd;
 						border-radius: 50%;
 					}
+					i.fa-glass { display: inline-block; }
+					i.fa-cart-plus { display: none; }
 					h2 {
 						display: inline-block;
 						width: 200px;
+						vertical-align: top;
 						white-space: nowrap;
 						overflow: hidden;
 						text-overflow: ellipsis;
@@ -66,28 +70,21 @@ main.results {
 						}
 					}
 				}
-				img{
-					padding: 3px 0;
-					width: 0px;
-					height: 0px;
-				}
 			}
 			li.active {
 
 				div.recipe-left {
 					
-					i {
+					i.fa-glass {
+						display: none;
+					}
+					i.fa-cart-plus {
+						display: inline-block;
 						background-color: #777;
 					}
 					h2 {
 						color: $color-accent-2;
 					}
-				}
-				img {
-					visibility: visible;
-					width: 2em;
-					height: 2em;
-					float: right;
 				}
 			}
 		}
