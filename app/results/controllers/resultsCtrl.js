@@ -5,11 +5,18 @@ angular
 	.controller('ResultsCtrl', function ($scope, supersonic) {
 
 
+<<<<<<< HEAD
+=======
+		/* Deal with tabs when this view is visible */
+        var stopListening = supersonic.ui.views.current.whenVisible( function() {
+            supersonic.ui.tabs.show();
+        });
+
+>>>>>>> feature/shopping-cart-view
 		var ingList = [];
 		$scope.recipes = [];
 		$scope.shoppingList = [];
 		$scope.noneActive = true;
-		$scope.temp = 10;
 		supersonic.data.channel('barContents').subscribe( function(newVal) {
 			// Updates possible recipes anytime the user's bar contents change
 			ingList = newVal;
@@ -29,9 +36,13 @@ angular
 			});
 		});
 
+<<<<<<< HEAD
 
 
 		/* Update recipe quantity */
+=======
+		// Update recipe quantity
+>>>>>>> feature/shopping-cart-view
 		$scope.incrementCount = function(index) {
 			$scope.recipes[index].count++;
 		}
@@ -61,8 +72,13 @@ angular
 		/* Add recipe to shopping cart */
 		$scope.addToCart = function(index) {
 			$scope.shoppingList.push($scope.recipes[index]);
+<<<<<<< HEAD
 			$scope.temp = 100;
 			supersonic.data.channel('haha').publish('8');
+=======
+			localStorage.shoppingList = JSON.stringify($scope.shoppingList);
+			supersonic.logger.log(localStorage.shoppingList.length);
+>>>>>>> feature/shopping-cart-view
 			$scope.apply();
 		};
 
