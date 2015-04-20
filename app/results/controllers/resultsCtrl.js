@@ -10,12 +10,10 @@ angular
             supersonic.ui.tabs.show();
         });
 
-
 		var ingList = [];
 		$scope.recipes = [];
 		$scope.shoppingList = [];
 		$scope.noneActive = true;
-		$scope.temp = 10;
 		supersonic.data.channel('barContents').subscribe( function(newVal) {
 			// Updates possible recipes anytime the user's bar contents change
 			ingList = newVal;
@@ -34,9 +32,6 @@ angular
 				}
 			});
 		});
-
-		supersonic.logger.log('hi');
-
 
 		// Update recipe quantity
 		$scope.incrementCount = function(index) {
@@ -59,11 +54,9 @@ angular
 		};
 
 		$scope.addToCart = function(index) {
-			//supersonic.logger.log(index);
 			$scope.shoppingList.push($scope.recipes[index]);
-			supersonic.logger.log($scope.shoppingList[$scope.shoppingList.length-1].name);
-			$scope.temp = 100;
-			supersonic.data.channel('haha').publish('8');
+			localStorage.shoppingList = JSON.stringify($scope.shoppingList);
+			supersonic.logger.log(localStorage.shoppingList.length);
 			$scope.apply();
 		};
 
