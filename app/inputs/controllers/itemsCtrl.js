@@ -7,6 +7,20 @@ angular
 
         $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
 
+      //need to implement deleting ingredient from recipe list after user swiped left
+
+         $scope.showActions = false;
+
+        $scope.delete = function () {
+           $scope.showActions = !$scope.showActions;
+        };
+        $scope.showDeleteButton = function(index){
+            $scope.showActions = true;
+            $scope.selected = index;
+            supersonic.logger.log("we have index" + index);
+     
+        };
+
 
         $scope.clearAllItems = function() {
             $scope.barContents = [];

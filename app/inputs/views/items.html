@@ -10,9 +10,24 @@
 
 	<section>
 		<ul class="item-list list">
-			<li class="item" ng-repeat="item in barContents | orderBy: ''">{{item}}</li>
+			<div ng-show="!showActions">
+				<li class="item" ng-swipe-left="showDeleteButton($index)" ng-repeat="item in barContents | orderBy: ''">{{item}}</li>
+			</div>
+			<div ng-show="showActions" ng-swipe-right="showActions = false">
+				<li class="item" ng-repeat="item in barContents | orderBy: ''">
+				<button ng-show="selected==$index" ng-click="delete()" style="height:100%; width:25%;display:inline;background-color: red;color: white;">Delete</button>
+				{{item}}</li>
+			</div>
 		</ul>
 	</section>
 
 
 </main>
+<!--
+<div ng-show="!showActions" ng-swipe-right="showActions = true">
+				<li class="item" ng-repeat="item in barContents | orderBy: ''">{{item}}</li>
+			</div>
+			<div ng-show="showActions" ng-swipe-left="showActions = false">
+				<li class="item" ng-repeat="item in barContents | orderBy: ''">{{item}}</li>
+				<button ng-show="var1" ng-click="delete()" style="height: 44px;width: 109px;border: 0;background-color: red;color: white;font-size: 18px;font-weight: bold;cursor:pointer;">Delete</button>
+			</div> -->
