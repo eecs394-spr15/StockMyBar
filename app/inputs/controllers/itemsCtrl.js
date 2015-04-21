@@ -20,8 +20,6 @@ angular
         $scope.showDeleteButton = function(index){
             $scope.showActions = true;
             $scope.selected = index;
-            supersonic.logger.log("we have index" + index);
-     
         };
 
 
