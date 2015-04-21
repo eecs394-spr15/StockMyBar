@@ -1,15 +1,21 @@
 <main class="items" ng-controller="ItemsCtrl">
+
+
 	<super-navbar class="navbar">
 		<super-navbar-title>My Bar</super-navbar-title>
 		<super-navbar-button side="left" ng-click="clearAllItems()">Clear All</super-navbar-button>
-		 <super-navbar-button side="right" class="add" ng-click="addItems()">Add Items</super-navbar-button>
+		<super-navbar-button side="right" class="add" ng-click="addItems()">Add Items</super-navbar-button>
 	</super-navbar>
+
+
 	<section>
 		<ul class="item-list list">
-			<li class="item" ng-repeat="item in barContents | orderBy: ''">
+			<div  ng-swipe-right="showActions = false">
+				<li class="item" ng-swipe-left="showDeleteButton($index)" ng-swipe-left="showDeleteButton($index)" ng-repeat="item in barContents | orderBy: ''">
 				{{item}}
+				<button  ng-show="selected==$index && showActions" ng-click="cancel(item)" style="height:100%; width:25%;background-color: #CC0022; color: white;float:right">Delete</button>
 			</li>
+			</div>
 		</ul>
 	</section>
-
 </main>
