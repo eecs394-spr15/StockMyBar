@@ -10,6 +10,11 @@ module.exports =
       location: "inputs#home"
     }
     {
+      title: "Preferences"
+      id: "preferences"
+      location: "inputs#preferences"
+    }
+    {
       title: "My Bar"
       id: "items"
       location: "inputs#items"

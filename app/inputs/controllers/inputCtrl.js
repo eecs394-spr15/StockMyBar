@@ -7,6 +7,10 @@ angular
 
         $scope.checkedIngredients = {};
         $scope.allIngredients = [];
+
+        $scope.checkedPreferences = {};
+        $scope.allPreferences = [];
+        
         $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
         supersonic.device.ready.then( function() {
             supersonic.logger.log(localStorage.barContents);
@@ -43,6 +47,15 @@ angular
             });
             $scope.$apply();
         });
+
+        supersonic.data.channel('allPreferences').subscribe( function(newVal) {
+            $scope.allPreferences = newVal;
+            angular.forEach($scope.allPreferences,function(item){
+                $scope.checkedPreferences[item.name] = false;
+            });
+            $scope.$apply();
+        });
+
 
 
         supersonic.data.channel('barContents').subscribe(function(message) {

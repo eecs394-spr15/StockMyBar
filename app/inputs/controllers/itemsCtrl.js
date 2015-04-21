@@ -10,6 +10,18 @@ angular
             supersonic.data.channel('barContents').publish($scope.barContents);
         }, 1000);
 
+      //need to implement deleting ingredient from recipe list after user swiped left
+
+         $scope.showActions = false;
+
+        $scope.delete = function () {
+           $scope.showActions = !$scope.showActions;
+        };
+        $scope.showDeleteButton = function(index){
+            $scope.showActions = true;
+            $scope.selected = index;
+        };
+
 
         $scope.clearAllItems = function() {
             $scope.barContents = [];
