@@ -19,12 +19,12 @@ angular
             $scope.$apply();
         });
 
-        /*
+        
         supersonic.data.channel('barContents').subscribe(function(message) {
             $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
             $scope.$apply();
         });
-        */
+
 
         //need to implement deleting ingredient from recipe list after user swiped left
         $scope.delete = function () {
@@ -46,13 +46,20 @@ angular
         };
 
 		$scope.cancel = function(index) {
+            $scope.showActions = false;
 			var index1 = $scope.barContents.indexOf($scope.ingredList[index].id);
 			$scope.barContents.splice(index1,1);  
             $scope.ingredList.splice(index,1);
 			localStorage.barContents = JSON.stringify($scope.barContents);
             localStorage.ingredList = JSON.stringify($scope.ingredList);
+            supersonic.logger.log($scope.ingredList);
+            supersonic.logger.log($scope.barContents);
 			supersonic.data.channel('barContents').publish($scope.barContents);
 		};
+
+        $scope.showButton = function(index){
+            return $scope.showActions && (index==$scope.selected);
+        }
 
         /*
         supersonic.data.channel('barContents').subscribe(function(message) {

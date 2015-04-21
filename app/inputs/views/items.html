@@ -11,9 +11,9 @@
 	<section>
 		<ul class="item-list list">
 			<div  ng-swipe-right="showActions = false">
-				<li class="item" ng-swipe-left="showDeleteButton($index)" ng-swipe-left="showDeleteButton($index)" ng-repeat="ingred in ingredList | orderBy: ''">
+				<li class="item" ng-swipe-left="showDeleteButton($index)" ng-repeat="ingred in ingredList | orderBy: ''">
 				{{ingred.name}}
-				<button  ng-show="selected==$index && showActions" ng-click="cancel($index)" style="height:100%; width:25%;background-color: #CC0022; color: white;float:right">Delete</button>
+				<button  ng-show="showButton($index)" ng-click="cancel($index)" style="height:100%; width:25%;background-color: #CC0022; color: white;float:right">Delete</button>
 			</li>
 			</div>
 		</ul>
