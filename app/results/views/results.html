@@ -3,7 +3,7 @@
 
 	<super-navbar class="navbar">
 	  	<super-navbar-title>Results</super-navbar-title>
-	  	<super-navbar-button side="right" location = "results#shoppingcart">Shopping Cart</super-navbar-button>
+	  	<super-navbar-button side="right" location = "results#shoppingcart">Shopping List</super-navbar-button>
 			<super-navbar-button side="left" ng-click="reset()">Reset</super-navbar-button>
 	</super-navbar>
 
@@ -12,8 +12,10 @@
 		<ul>
 			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
 				<div class="recipe-left">
-					<i class="fa fa-glass"></i>
-					<i class="fa fa-cart-plus" ng-click="addToCart($index)"></i>
+					<i class="fa fa-glass" ng-hide="recipe.addedToCart"></i>
+					<i class="fa fa-cart-plus" ng-click="addToCart($index)" ng-hide="recipe.addedToCart"></i>
+					<i class="fa fa-cart-arrow-down" ng-click="removeFromCart($index)" ng-show="recipe.addedToCart"></i>
+
 					<h2 class="title">{{recipe.name}}</h2>
 				</div>
 				<div class="quantity">
