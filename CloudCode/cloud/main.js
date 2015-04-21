@@ -24,7 +24,7 @@ function createIngredPartJS(id,name){
  
 Parse.Cloud.define("search4Recipes", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
-    queryIngred.containedIn("name", request.params.ingredientNames);
+    queryIngred.containedIn("objectId", request.params.ingredientIds);
     queryIngred.find({
     success: function(results1) {
         var queryJT = new Parse.Query("Join_Table");

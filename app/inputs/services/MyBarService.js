@@ -14,7 +14,7 @@ angular
             success: function (results) {
                 factory.allIngredients = [];
                 for (var i = 0; i < results.length; i++) {
-                    factory.allIngredients.push({name: results[i].get("name")});
+                    factory.allIngredients.push({id: results[i].id, name: results[i].get("name")});
                 }
                 supersonic.data.channel('allIngredients').publish(factory.allIngredients);
             }, error: function(error) {
