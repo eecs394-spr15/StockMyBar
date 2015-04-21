@@ -6,9 +6,11 @@
 
 	<section class="recipes">
 		<ul>
-			<li ng-repeat="ingred in ingredShoppingList" >
-				<i class="fa fa-glass"></i>
-				<h2 class="title">{{ingred.name}}</h2>
+			<li ng-repeat="ingred in ingredShoppingList" ng-click="selectIngred($index)" ng-class="{active: $index == selected}">
+				<div class="recipe-left">
+					<i class="fa fa-beer"></i>
+					<h2 class="title">{{ingred.name}}</h2>
+				</div>
 			</li>
 		</ul>
 	</section>

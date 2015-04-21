@@ -8,4 +8,8 @@ angular
 			$scope.ingredShoppingList = [];
             localStorage.ingredShoppingList = JSON.stringify($scope.ingredShoppingList);
 		};
+
+		$scope.selectIngred = function(index){
+			$scope.selected = index;
+		};
     });
