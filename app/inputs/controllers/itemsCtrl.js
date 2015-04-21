@@ -6,6 +6,9 @@ angular
 
 
         $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+        setTimeout(function() {
+            supersonic.data.channel('barContents').publish($scope.barContents);
+        }, 1000);
 
       //need to implement deleting ingredient from recipe list after user swiped left
 
@@ -28,6 +31,13 @@ angular
             supersonic.data.channel('barContents').publish($scope.barContents);
         };
 
+				$scope.cancel = function(item) {
+						var pos = $scope.barContents.indexOf(item)
+						$scope.barContents.splice(pos,1)
+						supersonic.logger.log($scope.barContents);
+						localStorage.barContents = JSON.stringify($scope.barContents);
+						supersonic.data.channel('barContents').publish($scope.barContents);
+				};
 
         supersonic.data.channel('barContents').subscribe(function(message) {
             $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
