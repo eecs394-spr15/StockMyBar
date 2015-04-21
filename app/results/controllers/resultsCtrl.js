@@ -30,18 +30,19 @@ angular
 		/* Update recipe quantity */
 		$scope.incrementCount = function(index) {
 			$scope.recipes[index].count++;
-		}
+		};
+
 		$scope.decrementCount = function(index) {
 			if ($scope.recipes[index].count > 0) {
 				$scope.recipes[index].count--;
 			}
-		}
+		};
 
 		$scope.reset = function() {
 			angular.forEach($scope.recipes, function(value,key) {
 				$scope.recipes[key].count=0;
 			});
-		}
+		};
 
 		/* Change activeRecipe on UI click */
 		$scope.activateRecipe = function(index) {
@@ -66,7 +67,7 @@ angular
 		$scope.makeIngredShoppingList = function(){
 			var addToList = true;
 			for(var i=0; i<$scope.recipeShoppingList.length; i++){
-				for(var j=0; j<$scope.recipeShoppingList[i].ingredListOffHand.length; j++)
+				for(var j=0; j<$scope.recipeShoppingList[i].ingredListOffHand.length; j++){
 					addToList = true;
 					for(var k=0; k<$scope.ingredShoppingList.length; k++){
 						if ($scope.ingredShoppingList[k].id == $scope.recipeShoppingList[i].ingredListOffHand[j]){
