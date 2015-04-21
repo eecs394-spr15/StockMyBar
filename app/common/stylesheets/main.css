@@ -76,7 +76,7 @@ main.results {
             display: none; }
           main.results section.recipes ul li div.recipe-left i.fa-cart-arrow-down {
             display: inline-block;
-            background-color: #777; }
+            background-color: #60C497; }
           main.results section.recipes ul li div.recipe-left i.fa-beer {
             display: inline-block; }
           main.results section.recipes ul li div.recipe-left h2 {
@@ -114,7 +114,7 @@ main.results {
         background-color: #777; }
       main.results section.recipes ul li.active div.recipe-left i.fa-cart-arrow-down {
         display: inline-block;
-        background-color: #777; }
+        background-color: #60C497; }
       main.results section.recipes ul li.active div.recipe-left i.fa-beer {
         display: inline-block;
         background-color: #777; }
