@@ -15,14 +15,13 @@
 					<i class="fa fa-glass" ng-hide="recipe.addedToCart"></i>
 					<i class="fa fa-cart-plus" ng-click="addToCart($index)" ng-hide="recipe.addedToCart"></i>
 					<i class="fa fa-cart-arrow-down" ng-click="removeFromCart($index)" ng-show="recipe.addedToCart"></i>
-
-					<h2 class="title">{{recipe.name}}</h2>
+					<h2 style= "width: 180px; line-height:15px;"  >{{recipe.name}}</br><font size="1" style="line-height:1px" color="#00CCCC">{{recipe.ingredListOffHand.length}} ingredients needed</font></h2>
 				</div>
 				<div class="quantity">
-					<span style="background:#0000FF">{{recipe.count}}</span>
+					<span>{{recipe.count}}</span>
 					<div class="quantity-buttons">
-						<button ng-click="incrementCount($index)" style="background:#00FF00">+</button>
-						<button ng-click="decrementCount($index)" style="background:#FF0000">-</button>
+						<button ng-click="incrementCount($index)" style="background:#00EE99; border-radius: 2px">+</button>
+						<button ng-click="decrementCount($index)" style="background:#EE2200; border-radius: 2px">-</button>
 					</div>
 				</div>
 			</li>
