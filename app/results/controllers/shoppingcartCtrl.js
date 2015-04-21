@@ -1,10 +1,11 @@
 angular
     .module('results')
     .controller('ShoppingCartCtrl', function ($scope, supersonic) {
-		$scope.shoppingList = angular.isDefined(localStorage.shoppingList) ? JSON.parse(localStorage.shoppingList) : [];
-		
+
+		$scope.ingredShoppingList = angular.isDefined(localStorage.ingredShoppingList) ? JSON.parse(localStorage.ingredShoppingList) : [];
+	
 		$scope.clearAllItems = function(){
-			$scope.shoppingList = [];
-            localStorage.shoppingList = JSON.stringify($scope.shoppingList);
+			$scope.ingredShoppingList = [];
+            localStorage.ingredShoppingList = JSON.stringify($scope.ingredShoppingList);
 		};
     });
