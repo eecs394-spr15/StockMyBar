@@ -1,4 +1,4 @@
-/* MyBarService service */
+/* Input(Ingredients and Preferences) service */
 
 angular
 	.module('inputs')
@@ -14,8 +14,15 @@ angular
             return obj; 
         } 
 
-        supersonic.logger.log("Getting all ingredients from database");
+        function createPrefTagJS(id,name){
+            var obj = new Object(); 
+            obj.id = id; 
+            obj.name = name; 
+            return obj; 
+        } 
+
         Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
+
         var query = new Parse.Query("Ingredients");
         query.find({
             success: function (results) {
@@ -34,7 +41,7 @@ angular
             success: function (results) {
                 factory.allPreferences = [];
                 for (var i = 0; i < results.length; i++) {
-                    factory.allPreferences.push({name: results[i].get("name")});
+                    factory.allPreferences.push(createPrefTagJS(results[i].id,results[i].get("name")));
                 }
                 supersonic.data.channel('allPreferences').publish(factory.allPreferences);
             }, error: function(error) {
