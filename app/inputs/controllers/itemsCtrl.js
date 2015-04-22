@@ -16,6 +16,7 @@ angular
 
         supersonic.data.channel('ingredList').subscribe(function(message) {
             $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
+            supersonic.logger.log("received,ingredList:"+$scope.ingredList);
             $scope.$apply();
         });
 
