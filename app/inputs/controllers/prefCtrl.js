@@ -20,6 +20,8 @@ angular
         supersonic.device.ready.then( function() {
             supersonic.logger.log(localStorage.ingredIdList);
             supersonic.data.channel('ingredIdList').publish(JSON.parse(localStorage.ingredIdList));
+            supersonic.logger.log(localStorage.prefIdList);
+            supersonic.data.channel('prefIdList').publish(JSON.parse(localStorage.prefIdList));
         });
         
         supersonic.data.channel('allIngredients').subscribe( function(newVal) {
@@ -62,9 +64,17 @@ angular
             // Save and share changes to user's bar
             localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
             localStorage.ingredList = JSON.stringify($scope.ingredList);
+
+            localStorage.prefIdList = JSON.stringify($scope.prefIdList);
+            localStorage.prefList = JSON.stringify($scope.prefList);
+
             //supersonic.logger.log("ingredList:"+localStorage.ingredList);
             supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
             supersonic.data.channel('ingredList').publish($scope.ingredList);
+
+            supersonic.data.channel('prefIdList').publish($scope.prefIdList);
+            supersonic.data.channel('prefList').publish($scope.prefList);
+            
             supersonic.ui.modal.hide();
         };
         
