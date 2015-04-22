@@ -40,6 +40,10 @@ tab-bar-item#home {
   background-image: url(icons/home.svg);
 }
 
+tab-bar-item#preferences {
+  background-image: url(icons/heart.svg);
+}
+
 tab-bar-item#items {
   background-image: url(icons/items.svg);
 }
