@@ -23,10 +23,6 @@ angular
             $scope.allIngredients = newVal;
             angular.forEach($scope.allIngredients,function(item){
                 $scope.checkedIngredients[item.id] = false;
-                //0: not added
-                //1: not added but checked
-                //2: added
-                //item.condition = 0;
             });
             $scope.$apply();
         });
@@ -39,15 +35,6 @@ angular
             $scope.$apply();
         });
 
-
-        /*
-        supersonic.data.channel('ingredIdList').subscribe(function(message) {
-            $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
-            $scope.$apply();
-        });
-        */
-
-
         /* Clear search bar */
         $scope.clearSearchBarText = function() {
             $scope.searchBarText = '';
@@ -57,8 +44,6 @@ angular
 
         /* Called when user pressed "CONFIRM" button */
         $scope.confirm = function() {
-            //var newBarContents = [];
-            //var newIngredList = [];
             angular.forEach($scope.checkedIngredients, function(value, key) {
                 if (value) {
                     for(var i=0;i<$scope.allIngredients.length;i++){
@@ -70,9 +55,6 @@ angular
                     }
                 }
             });
-
-            //$scope.ingredIdList = newBarContents;
-            //$scope.ingredList = newIngredList;
 
             // Save and share changes to user's bar
             localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);

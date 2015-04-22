@@ -73,13 +73,6 @@ angular
             return $scope.showActions && (index==$scope.selected);
         }
 
-        /*
-        supersonic.data.channel('ingredIdList').subscribe(function(message) {
-            $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
-            $scope.$apply();
-        });
-        */
-
         /* Open Add Items menu */
         $scope.addItems = function() {
             supersonic.ui.modal.show("inputs#itemSelect");
