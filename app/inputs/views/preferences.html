@@ -1,8 +1,8 @@
-<main class="preferences" ng-controller="InputCtrl">
+<main class="items" ng-controller="PrefCtrl">
 
 
     <super-navbar class="navbar">
-        <super-navbar-title>Add Items</super-navbar-title>
+        <super-navbar-title>User Preferences</super-navbar-title>
     </super-navbar>
 
 
@@ -17,11 +17,11 @@
 
     <section>
         <ul class="item-list list">
-            <li class="item item-checkbox" ng-repeat="item in allPreferences | addItemsList:barContents:searchBarText | orderBy: 'name'">
+            <li class="item item-checkbox" ng-repeat="pref in allPreferences | orderBy: 'name'">
                 <label class="checkbox">
-                    <input type="checkbox" ng-model="checkedPreferences[item.name]" ng-click="supersonic.device.vibrate()">
+                    <input type="checkbox" ng-model="checkedPreferences[pref.id]" ng-click="supersonic.device.vibrate()">
                 </label>
-                {{item.name}}
+                {{pref.name}}
             </li>
         </ul>
     </section>
