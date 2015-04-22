@@ -11,7 +11,7 @@ angular
 		$scope.recipeShoppingList = [];
 		
 
-		supersonic.data.channel('barContents').subscribe( function(newVal) {
+		supersonic.data.channel('ingredIdList').subscribe( function(newVal) {
 			// Updates possible recipes anytime the user's bar contents change
 			ingList = newVal;
 			$scope.recipeShoppingList = [];

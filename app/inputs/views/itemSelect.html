@@ -17,7 +17,7 @@
 
     <section>
         <ul class="item-list list">
-            <li class="item item-checkbox" ng-repeat="item in allIngredients | addItemsList:barContents:searchBarText | orderBy: 'name'">
+            <li class="item item-checkbox" ng-repeat="item in allIngredients | addItemsList:ingredIdList:searchBarText | orderBy: 'name'">
                 <label class="checkbox">
                     <input type="checkbox" ng-model="checkedIngredients[item.id]" ng-click="supersonic.device.vibrate()">
                 </label>

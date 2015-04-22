@@ -4,58 +4,69 @@ angular
 	.module('inputs')
     .controller('ItemsCtrl', function ($scope, supersonic) {
 
-        $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+        $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
         $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
         $scope.showActions = false;
 
+        function createIngredPartJS(id,name){
+            var obj = new Object(); 
+            obj.id = id; 
+            obj.name = name; 
+            return obj; 
+        }
+
+        function updateIngredList(){
+            $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
+            var newList = [];
+            for(var i=0;i<$scope.ingredList.length;i++){
+                newList.push(createIngredPartJS($scope.ingredList[i].id,$scope.ingredList[i].name));
+            }
+            $scope.ingredList = newList;
+            $scope.$apply();
+        } 
         /*
         setTimeout(function() {
-            supersonic.data.channel('barContents').publish($scope.barContents);
+            supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
         }, 1000);
         */
 
         supersonic.data.channel('ingredList').subscribe(function(message) {
-            $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
-            supersonic.logger.log("received,ingredList:"+$scope.ingredList);
-            $scope.$apply();
+            updateIngredList();
         });
 
         
-        supersonic.data.channel('barContents').subscribe(function(message) {
-            $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+        supersonic.data.channel('ingredIdList').subscribe(function(message) {
+            $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
             $scope.$apply();
         });
 
 
         //need to implement deleting ingredient from recipe list after user swiped left
-        $scope.delete = function () {
-           $scope.showActions = !$scope.showActions;
-        };
-
         $scope.showDeleteButton = function(index){
             $scope.showActions = true;
             $scope.selected = index;
+            $scope.apply();
         };
 
 
         $scope.clearAllItems = function() {
-            $scope.barContents = [];
+            $scope.ingredIdList = [];
             $scope.ingredList = [];
-            localStorage.barContents = JSON.stringify($scope.barContents);
+            localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
             localStorage.ingredList = JSON.stringify($scope.ingredList);
-            supersonic.data.channel('barContents').publish($scope.barContents);
+            supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
+            $scope.apply();
         };
 
 		$scope.cancel = function(index) {
             $scope.showActions = false;
-			var index1 = $scope.barContents.indexOf($scope.ingredList[index].id);
-			$scope.barContents.splice(index1,1);  
+			var index1 = $scope.ingredIdList.indexOf($scope.ingredList[index].id);
+			$scope.ingredIdList.splice(index1,1);  
             $scope.ingredList.splice(index,1);
-			localStorage.barContents = JSON.stringify($scope.barContents);
+			localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
             localStorage.ingredList = JSON.stringify($scope.ingredList);
-            supersonic.logger.log($scope.ingredList);
-            supersonic.logger.log($scope.barContents);
-			supersonic.data.channel('barContents').publish($scope.barContents);
+			supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
+            $scope.apply();
 		};
 
         $scope.showButton = function(index){
@@ -63,8 +74,8 @@ angular
         }
 
         /*
-        supersonic.data.channel('barContents').subscribe(function(message) {
-            $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+        supersonic.data.channel('ingredIdList').subscribe(function(message) {
+            $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
             $scope.$apply();
         });
         */
@@ -72,6 +83,6 @@ angular
         /* Open Add Items menu */
         $scope.addItems = function() {
             supersonic.ui.modal.show("inputs#itemSelect");
-            supersonic.logger.log($scope.barContents);
+            supersonic.logger.log($scope.ingredIdList);
         }
     });

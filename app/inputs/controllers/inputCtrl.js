@@ -11,12 +11,12 @@ angular
         $scope.checkedPreferences = {};
         $scope.allPreferences = [];
         
-        $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+        $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
         $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
 
         supersonic.device.ready.then( function() {
-            supersonic.logger.log(localStorage.barContents);
-            supersonic.data.channel('barContents').publish(JSON.parse(localStorage.barContents));
+            supersonic.logger.log(localStorage.ingredIdList);
+            supersonic.data.channel('ingredIdList').publish(JSON.parse(localStorage.ingredIdList));
         });
         
         supersonic.data.channel('allIngredients').subscribe( function(newVal) {
@@ -41,8 +41,8 @@ angular
 
 
         /*
-        supersonic.data.channel('barContents').subscribe(function(message) {
-            $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+        supersonic.data.channel('ingredIdList').subscribe(function(message) {
+            $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
             $scope.$apply();
         });
         */
@@ -63,23 +63,22 @@ angular
                 if (value) {
                     for(var i=0;i<$scope.allIngredients.length;i++){
                         if ($scope.allIngredients[i].id == key){
-                            //temp = JSON.stringfy(JSON.parse($scope.allIngredients[i]));
                             $scope.ingredList.push($scope.allIngredients[i]);
-                            $scope.barContents.push(key);
+                            $scope.ingredIdList.push(key);
                             break;
                         }
                     }
                 }
             });
 
-            //$scope.barContents = newBarContents;
+            //$scope.ingredIdList = newBarContents;
             //$scope.ingredList = newIngredList;
 
             // Save and share changes to user's bar
-            localStorage.barContents = JSON.stringify($scope.barContents);
+            localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
             localStorage.ingredList = JSON.stringify($scope.ingredList);
             //supersonic.logger.log("ingredList:"+localStorage.ingredList);
-            supersonic.data.channel('barContents').publish($scope.barContents);
+            supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
             supersonic.data.channel('ingredList').publish($scope.ingredList);
             supersonic.ui.modal.hide();
         };
