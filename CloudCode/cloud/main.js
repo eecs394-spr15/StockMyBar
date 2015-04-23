@@ -5,12 +5,13 @@ Parse.Cloud.define("hello", function(request, response) {
 });
   
  
-function createRecipeJS(id,name){
+function createRecipeJS(id,name,description){
     var obj = new Object(); 
     obj.id = id; 
     obj.name = name; 
     obj.ingredListOffHand = new Array();
     obj.ingredListInHand = new Array();
+    obj.description = description;
     obj.addedToCart = false;
     return obj; 
 }  
@@ -29,6 +30,13 @@ function createIngredJS(id,name,description){
     obj.description = description;
     return obj; 
 } 
+
+function createPrefJS(){
+    var obj = new Object(); 
+    obj.id = id; 
+    obj.name = name; 
+    return obj; 
+}
  
 Parse.Cloud.define("search4Recipes", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
@@ -50,7 +58,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             for(var i = 0; i < results2.length; i++){
                 var repeat = false;               
                 addRecipe = results2[i].get("recipe");
-                addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"));
+                addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"), addRecipe.get("description"));
                 addIngredPartJS = createIngredPartJS(results2[i].get("ingredient").id, results2[i].get("ingredient").get("name"));
                 for(var j = 0; j < recipeJSList.length; j++){
                     if(addRecipeJS.id == recipeJSList[j].id){
@@ -139,6 +147,27 @@ Parse.Cloud.define("search4Ingreds", function(request, response) {
     },
     error: function(){
         response.error("ingred query failed!");
+    }
+    });
+});
+
+
+Parse.Cloud.define("search4RecipesByPreferences", function(request, response) {
+    var queryRecipe = new Parse.Query("Recipes");
+    queryRecipe.containedIn("tags", request.params.preferenceIds);    
+    queryRecipe.limit(1000);
+    queryRecipe.find({
+    success: function(results) {
+        var recipeList =[];
+        var addRecipe;
+        for(var i=0; i<results.length;i++){
+            addRecipe = createRecipeJS(results[i].id, results[i].get("name"), results[i].get("description"));
+            recipeList.push(addRecipe);
+        }
+        response.success(recipeList);
+    },
+    error: function() {
+        response.error("result no!!!");
     }
     });
 });
