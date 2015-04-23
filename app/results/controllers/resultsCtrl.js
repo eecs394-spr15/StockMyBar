@@ -9,7 +9,7 @@ angular
 		$scope.noneActive = true;
 		$scope.ingredShoppingList = angular.isDefined(localStorage.ingredShoppingList) ? JSON.parse(localStorage.ingredShoppingList) : [];
 		$scope.recipeShoppingList = [];
-		
+
 		function makeIngredShoppingList(){
 			$scope.ingredShoppingList = [];
 			var addToList = true;
@@ -40,6 +40,7 @@ angular
 			Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
 			Parse.Cloud.run("search4Recipes", {ingredientIds: ingList}, {
 				success: function(results) {
+					supersonic.logger.log($scope.recipes)
 					$scope.recipes = results;
 					$scope.noneActive = true;
 					$scope.selected = null;
@@ -105,5 +106,5 @@ angular
 			$scope.apply();
 
 		};
-		
+
 	});

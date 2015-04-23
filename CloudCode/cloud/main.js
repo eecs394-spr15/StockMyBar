@@ -3,20 +3,39 @@
 Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!!!!!");
 });
+<<<<<<< HEAD
+
+
+function createRecipeJS(id,name,description,directions){
+    var obj = new Object();
+    obj.id = id;
+    obj.name = name;
+=======
   
  
 function createRecipeJS(id,name,description){
     var obj = new Object(); 
     obj.id = id; 
     obj.name = name; 
+>>>>>>> master
     obj.ingredListOffHand = new Array();
     obj.ingredListInHand = new Array();
     obj.description = description;
     obj.addedToCart = false;
-    return obj; 
-}  
- 
+    obj.description = description;
+    obj.directions = directions;
+    return obj;
+}
+
 function createIngredPartJS(id,name){
+<<<<<<< HEAD
+    var obj = new Object();
+    obj.id = id;
+    obj.name = name;
+    return obj;
+}
+
+=======
     var obj = new Object(); 
     obj.id = id; 
     obj.name = name; 
@@ -31,6 +50,17 @@ function createIngredJS(id,name,description){
     return obj; 
 } 
 
+<<<<<<< HEAD
+function createIngredJS(id,name,description){
+    var obj = new Object(); 
+    obj.id = id; 
+    obj.name = name; 
+    obj.description = description;
+    return obj; 
+} 
+
+=======
+>>>>>>> MyRecipeView
 function createPrefJS(){
     var obj = new Object(); 
     obj.id = id; 
@@ -38,6 +68,7 @@ function createPrefJS(){
     return obj; 
 }
  
+>>>>>>> master
 Parse.Cloud.define("search4Recipes", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("objectId", request.params.ingredientIds);
@@ -46,7 +77,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
         var queryJT = new Parse.Query("Join_Table");
         queryJT.include("recipe");
         queryJT.include("ingredient");
-        queryJT.containedIn("ingredient", results1);                
+        queryJT.containedIn("ingredient", results1);
         queryJT.limit(1000);
         queryJT.find({
         success: function(results2) {
@@ -56,9 +87,17 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             var addRecipeJS;
             var addIngredPartJS;
             for(var i = 0; i < results2.length; i++){
-                var repeat = false;               
+                var repeat = false;
                 addRecipe = results2[i].get("recipe");
+<<<<<<< HEAD
                 addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"), addRecipe.get("description"));
+=======
+<<<<<<< HEAD
+                addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"), addRecipe.get("description"), addRecipe.get("directions"));
+=======
+                addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"), addRecipe.get("description"));
+>>>>>>> master
+>>>>>>> MyRecipeView
                 addIngredPartJS = createIngredPartJS(results2[i].get("ingredient").id, results2[i].get("ingredient").get("name"));
                 for(var j = 0; j < recipeJSList.length; j++){
                     if(addRecipeJS.id == recipeJSList[j].id){
@@ -73,7 +112,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
                     recipeJSList.push(addRecipeJS);
                 }
             }
-            var queryAllIngred = new Parse.Query("Join_Table");  
+            var queryAllIngred = new Parse.Query("Join_Table");
             queryAllIngred.include("recipe");
             queryAllIngred.include("ingredient");
             queryAllIngred.containedIn("recipe",recipeList);
@@ -130,6 +169,11 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
     }
     });
 });
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> MyRecipeView
 
 
 Parse.Cloud.define("search4Ingreds", function(request, response) {
@@ -202,3 +246,7 @@ Parse.Cloud.define("search4RecipesByPreferences", function(request, response) {
 
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> master
+>>>>>>> MyRecipeView
