@@ -24,22 +24,22 @@ angular
             $scope.ingredList = newList;
             $scope.$apply();
         }
-        /*
+        
         setTimeout(function() {
             supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
         }, 1000);
-        */
+        
 
         supersonic.data.channel('ingredList').subscribe(function(message) {
             updateIngredList();
         });
 
-
-        supersonic.data.channel('ingredIdList').subscribe(function(message) {
+        /*
+        supersonic.data.channel('ingredIdList').publish(function(message) {
             $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
             $scope.$apply();
         });
-
+        */
 
         //need to implement deleting ingredient from recipe list after user swiped left
         $scope.showDeleteButton = function(index){
