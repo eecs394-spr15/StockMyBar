@@ -6,7 +6,7 @@
 
 	<section class="recipes">
 		<ul>
-			<li ng-repeat="ingred in ingredShoppingList | orderBy: 'name' " ng-click="selectIngred($index)" ng-class="{active: $index == selected}">
+			<li ng-repeat="ingred in ingredShoppingList" ng-click="selectIngred($index)" ng-class="{active: $index == selected}">
 				<div class="recipe-left">
 					<i class="fa fa-beer"></i>
 					<h2 class="title">{{ingred.name}}</h2>
@@ -14,4 +14,13 @@
 			</li>
 		</ul>
 	</section>
+
+	<section class="active-recipe">
+		<h2 class="title none-active" ng-if="noneActive">Choose an ingredient...</h2>
+		<div ng-if="!noneActive">
+			<h2 class="title">{{activeIngred.name}}</h2>
+			<h3 class="description">Description: {{activeIngred.description}}</h3>
+		</div>
+	</section>
+
 </main>

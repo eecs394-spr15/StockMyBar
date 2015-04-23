@@ -12,7 +12,7 @@ module.exports =
     {
       title: "Preferences"
       id: "preferences"
-      location: "inputs#preferences"
+      location: "inputs#prefs"
     }
     {
       title: "My Bar"

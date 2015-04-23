@@ -52,6 +52,12 @@
 			<div class="Recipe Directions">
 					<h4 style="color:#00BB99">Directions</h4>
 					<p style="color:white">{{activeRecipe.directions}}</p>
+
+			<div class="need ingredient-list">
+				<ul>
+					<h3>Preferences</h3>
+					<li ng-repeat="ingredient in neededIngredients">{{ingredient.name}}</li>
+				</ul>
 			</div>
 		</div>
 	</section>
