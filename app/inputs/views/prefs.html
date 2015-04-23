@@ -1,0 +1,21 @@
+<main class="prefs" ng-controller="PrefCtrl">
+
+
+	<super-navbar class="navbar">
+		<super-navbar-title>Preferences</super-navbar-title>
+		<super-navbar-button side="left" ng-click="clearAllItems()">Clear All</super-navbar-button>
+		<super-navbar-button side="right" class="add" ng-click="addItems()">Add Preferences</super-navbar-button>
+	</super-navbar>
+
+
+	<section>
+		<ul class="item-list list">
+			<div  ng-swipe-right="showActions = false">
+				<li class="item" ng-swipe-left="showDeleteButton($index)" ng-repeat="pref in prefList | orderBy: 'name' ">
+					{{pref.name}}
+					<button  ng-show="showButton($index)" ng-click="cancel($index)" style="height:100%; width:25%;background-color: #CC0022; color: white;float:right">Delete</button>
+				</li>
+			</div>
+		</ul>
+	</section>
+</main>
