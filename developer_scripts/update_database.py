@@ -50,6 +50,7 @@ def main():
     ingredients = [process_raw_ingredient(ingredient) for ingredient in ingredients_raw]
     add_ingredients_to_database(ingredients, db_ingredients)
     print 'Updating recipes...'
+    db_ingredients = request_table('Ingredients')
     add_recipes_to_database(recipes, db_recipes, db_ingredients, db_join_table)
 
 
