@@ -7,9 +7,6 @@ angular
 
         $scope.checkedIngredients = {};
         $scope.allIngredients = [];
-
-        $scope.checkedPreferences = {};
-        $scope.allPreferences = [];
         
         $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
         $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
@@ -27,13 +24,6 @@ angular
             $scope.$apply();
         });
 
-        supersonic.data.channel('allPreferences').subscribe( function(newVal) {
-            $scope.allPreferences = newVal;
-            angular.forEach($scope.allPreferences,function(item){
-                $scope.checkedPreferences[item.id] = false;
-            });
-            $scope.$apply();
-        });
 
         /* Clear search bar */
         $scope.clearSearchBarText = function() {
