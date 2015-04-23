@@ -7,7 +7,7 @@ angular
 
         $scope.checkedIngredients = {};
         $scope.allIngredients = [];
-        
+
         $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
         $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
 
@@ -15,7 +15,7 @@ angular
             supersonic.logger.log(localStorage.ingredIdList);
             supersonic.data.channel('ingredIdList').publish(JSON.parse(localStorage.ingredIdList));
         });
-        
+
         supersonic.data.channel('allIngredients').subscribe( function(newVal) {
             $scope.allIngredients = newVal;
             angular.forEach($scope.allIngredients,function(item){
@@ -54,5 +54,5 @@ angular
             supersonic.data.channel('ingredList').publish($scope.ingredList);
             supersonic.ui.modal.hide();
         };
-        
+
     });

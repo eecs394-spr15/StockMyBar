@@ -3,25 +3,27 @@
 Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!!!!!");
 });
-  
- 
-function createRecipeJS(id,name){
-    var obj = new Object(); 
-    obj.id = id; 
-    obj.name = name; 
+
+
+function createRecipeJS(id,name,description,directions){
+    var obj = new Object();
+    obj.id = id;
+    obj.name = name;
     obj.ingredListOffHand = new Array();
     obj.ingredListInHand = new Array();
     obj.addedToCart = false;
-    return obj; 
-}  
- 
+    obj.description = description;
+    obj.directions = directions;
+    return obj;
+}
+
 function createIngredPartJS(id,name){
-    var obj = new Object(); 
-    obj.id = id; 
-    obj.name = name; 
-    return obj; 
-} 
- 
+    var obj = new Object();
+    obj.id = id;
+    obj.name = name;
+    return obj;
+}
+
 Parse.Cloud.define("search4Recipes", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("objectId", request.params.ingredientIds);
@@ -30,7 +32,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
         var queryJT = new Parse.Query("Join_Table");
         queryJT.include("recipe");
         queryJT.include("ingredient");
-        queryJT.containedIn("ingredient", results1);                
+        queryJT.containedIn("ingredient", results1);
         queryJT.limit(1000);
         queryJT.find({
         success: function(results2) {
@@ -40,9 +42,9 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             var addRecipeJS;
             var addIngredPartJS;
             for(var i = 0; i < results2.length; i++){
-                var repeat = false;               
+                var repeat = false;
                 addRecipe = results2[i].get("recipe");
-                addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"));
+                addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"), addRecipe.get("description"), addRecipe.get("directions"));
                 addIngredPartJS = createIngredPartJS(results2[i].get("ingredient").id, results2[i].get("ingredient").get("name"));
                 for(var j = 0; j < recipeJSList.length; j++){
                     if(addRecipeJS.id == recipeJSList[j].id){
@@ -57,7 +59,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
                     recipeJSList.push(addRecipeJS);
                 }
             }
-            var queryAllIngred = new Parse.Query("Join_Table");  
+            var queryAllIngred = new Parse.Query("Join_Table");
             queryAllIngred.include("recipe");
             queryAllIngred.include("ingredient");
             queryAllIngred.containedIn("recipe",recipeList);

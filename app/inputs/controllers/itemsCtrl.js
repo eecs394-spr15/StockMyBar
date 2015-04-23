@@ -9,10 +9,10 @@ angular
         $scope.showActions = false;
 
         function createIngredPartJS(id,name){
-            var obj = new Object(); 
-            obj.id = id; 
-            obj.name = name; 
-            return obj; 
+            var obj = new Object();
+            obj.id = id;
+            obj.name = name;
+            return obj;
         }
 
         function updateIngredList(){
@@ -23,7 +23,7 @@ angular
             }
             $scope.ingredList = newList;
             $scope.$apply();
-        } 
+        }
         /*
         setTimeout(function() {
             supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
@@ -34,7 +34,7 @@ angular
             updateIngredList();
         });
 
-        
+
         supersonic.data.channel('ingredIdList').subscribe(function(message) {
             $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
             $scope.$apply();
@@ -61,7 +61,7 @@ angular
 		$scope.cancel = function(index) {
             $scope.showActions = false;
 			var index1 = $scope.ingredIdList.indexOf($scope.ingredList[index].id);
-			$scope.ingredIdList.splice(index1,1);  
+			$scope.ingredIdList.splice(index1,1);
             $scope.ingredList.splice(index,1);
 			localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
             localStorage.ingredList = JSON.stringify($scope.ingredList);
