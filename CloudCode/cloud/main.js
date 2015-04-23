@@ -6,7 +6,6 @@ Parse.Cloud.define("hello", function(request, response) {
 
 
 
-
 function createRecipeJS(id,name,description,directions){
     var obj = new Object();
     obj.id = id;
@@ -14,7 +13,6 @@ function createRecipeJS(id,name,description,directions){
     obj.ingredListOffHand = new Array();
     obj.ingredListInHand = new Array();
     obj.addedToCart = false;
-    obj.description = description;
     obj.directions = directions;
     return obj;
 }
@@ -34,6 +32,7 @@ function createIngredJS(id,name,description){
     obj.description = description;
     return obj;
 }
+
 
 function createPrefJS(){
     var obj = new Object();
@@ -62,6 +61,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             for(var i = 0; i < results2.length; i++){
                 var repeat = false;
                 addRecipe = results2[i].get("recipe");
+
                 addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"), addRecipe.get("description"), addRecipe.get("directions"));
 
                 addIngredPartJS = createIngredPartJS(results2[i].get("ingredient").id, results2[i].get("ingredient").get("name"));

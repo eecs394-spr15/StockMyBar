@@ -10,27 +10,15 @@ angular
 		$scope.ingredShoppingList = angular.isDefined(localStorage.ingredShoppingList) ? JSON.parse(localStorage.ingredShoppingList) : [];
 		$scope.recipeShoppingList = [];
 
-		function makeIngredShoppingList(){
+		// Update recipes' cart icons when shopping list is cleared
+		supersonic.data.channel('clearShoppingList').subscribe(function() {
 			$scope.ingredShoppingList = [];
-			var addToList = true;
-			var temp;
-			for(var i=0; i<$scope.recipeShoppingList.length; i++){
-				for(var j=0; j<$scope.recipeShoppingList[i].ingredListOffHand.length; j++){
-					addToList = true;
-					for(var k=0; k<$scope.ingredShoppingList.length; k++){
-						if ($scope.ingredShoppingList[k].id == $scope.recipeShoppingList[i].ingredListOffHand[j].id){
-							addToList = false;
-							break;
-						}
-					}
-					if(addToList){
-						temp  = JSON.parse( JSON.stringify( $scope.recipeShoppingList[i].ingredListOffHand[j] ) );
-						$scope.ingredShoppingList.push(temp);
-					}
-				}
+			$scope.recipeShoppingList = [];
+			for(var i=0; i<$scope.recipes.length; i++){
+				$scope.recipes[i].addedToCart = false;
 			}
-			localStorage.ingredShoppingList = JSON.stringify($scope.ingredShoppingList);
-		}
+			$scope.$apply();
+		});
 
 		supersonic.data.channel('ingredIdList').subscribe( function(newVal) {
 			// Updates possible recipes anytime the user's bar contents change
@@ -54,6 +42,28 @@ angular
 			});
 		});
 
+		function makeIngredShoppingList(){
+			$scope.ingredShoppingList = [];
+			var addToList = true;
+			var temp;
+			for(var i=0; i<$scope.recipeShoppingList.length; i++){
+				for(var j=0; j<$scope.recipeShoppingList[i].ingredListOffHand.length; j++){
+					addToList = true;
+					for(var k=0; k<$scope.ingredShoppingList.length; k++){
+						if ($scope.ingredShoppingList[k].id == $scope.recipeShoppingList[i].ingredListOffHand[j].id){
+							addToList = false;
+							break;
+						}
+					}
+					if(addToList){
+						temp  = JSON.parse( JSON.stringify( $scope.recipeShoppingList[i].ingredListOffHand[j] ) );
+						$scope.ingredShoppingList.push(temp);
+					}
+				}
+			}
+			localStorage.ingredShoppingList = JSON.stringify($scope.ingredShoppingList);
+		}
+
 		/* Update recipe quantity */
 		$scope.incrementCount = function(index) {
 			$scope.recipes[index].count++;
@@ -73,6 +83,13 @@ angular
 
 		/* Change activeRecipe on UI click */
 		$scope.activateRecipe = function(index) {
+			$(".box h5").toggle(function(){
+				$(this).next(".text").animate({height: 'toggle', opacity: 'toggle'}, "slow");
+			},function(){
+				$(this).next(".text").animate({height: 'toggle', opacity: 'toggle'}, "slow");
+			});
+
+
 			$scope.noneActive = false;
 			$scope.selected = index;
 			$scope.activeRecipe =  $scope.recipes[index];
@@ -88,7 +105,7 @@ angular
 			$scope.recipes[index].addedToCart = true;
 			$scope.recipeShoppingList.push($scope.recipes[index]);
 			makeIngredShoppingList();
-			supersonic.logger.log($scope.recipeShoppingList.length);
+			//supersonic.logger.log($scope.recipeShoppingList.length);
 			$scope.apply();
 		};
 
@@ -102,9 +119,21 @@ angular
 				}
 			}
 			makeIngredShoppingList();
-			supersonic.logger.log($scope.recipeShoppingList.length);
+			//supersonic.logger.log($scope.recipeShoppingList.length);
 			$scope.apply();
 
 		};
+
+
+		// Update recipes' cart icons when shopping list is cleared
+		supersonic.data.channel('clearShoppingList').subscribe(function() {
+			$scope.ingredShoppingList = [];
+			$scope.recipeShoppingList = [];
+			for(var i=0; i<$scope.recipes.length; i++){
+				$scope.recipes[i].addedToCart = false;
+			}
+			$scope.$apply();
+		});
+
 
 	});
