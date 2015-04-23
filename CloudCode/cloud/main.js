@@ -13,7 +13,6 @@ function createRecipeJS(id,name,description,directions){
     obj.ingredListInHand = new Array();
     obj.description = description;
     obj.addedToCart = false;
-    obj.description = description;
     obj.directions = directions;
     return obj;
 }
