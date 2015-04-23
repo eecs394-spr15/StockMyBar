@@ -21,6 +21,14 @@ function createIngredPartJS(id,name){
     obj.name = name; 
     return obj; 
 } 
+
+function createIngredJS(id,name,description){
+    var obj = new Object(); 
+    obj.id = id; 
+    obj.name = name; 
+    obj.description = description;
+    return obj; 
+} 
  
 Parse.Cloud.define("search4Recipes", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
@@ -114,3 +122,54 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
     }
     });
 });
+
+
+Parse.Cloud.define("search4Ingreds", function(request, response) {
+    var queryIngred = new Parse.Query("Ingredients");
+    queryIngred.containedIn("objectId", request.params.ingredientIds);
+    queryIngred.find({
+    success: function(results1) {
+        var ingredList =[];
+        var addIngred;
+        for(var i=0; i<results1.length;i++){
+            addIngred = createIngredJS(results1[i].id, results1[i].get("name"), results1[i].get("description"));
+            ingredList.push(addIngred);
+        }
+        response.success(ingredList);
+    },
+    error: function(){
+        response.error("ingred query failed!");
+    }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
