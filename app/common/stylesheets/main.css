@@ -138,6 +138,9 @@ main.results {
     main.results section.active-recipe h2.title.none-active {
       font-size: 19px;
       color: #aaa; }
+    main.results section.active-recipe h3.description {
+      font-size: 12px;
+      color: #999999; }
     main.results section.active-recipe div.ingredient-list ul h3 {
       display: inline-block;
       margin-right: 3px;
