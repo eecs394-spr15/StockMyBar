@@ -9,6 +9,7 @@ angular
 		$scope.clearAllItems = function(){
 			$scope.ingredShoppingList = [];
             localStorage.ingredShoppingList = JSON.stringify($scope.ingredShoppingList);
+			supersonic.data.channel('clearShoppingList').publish();
 		};
 
 		$scope.selectIngred = function(index){

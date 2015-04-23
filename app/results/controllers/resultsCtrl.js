@@ -107,4 +107,14 @@ angular
 
 		};
 
+		// Update recipes' cart icons when shopping list is cleared
+		supersonic.data.channel('clearShoppingList').subscribe(function() {
+			$scope.ingredShoppingList = [];
+			$scope.recipeShoppingList = [];
+			for(var i=0; i<$scope.recipes.length; i++){
+				$scope.recipes[i].addedToCart = false;
+			}
+			$scope.$apply();
+		});
+
 	});
