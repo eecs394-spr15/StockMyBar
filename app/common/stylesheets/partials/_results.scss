@@ -41,6 +41,10 @@ main.results {
 					i.fa-beer{
 						display: inline-block;
 					}
+
+					div.box div.text{
+            display:none
+          }
 					h2 {
 						display: inline-block;
 						width: 200px;
@@ -72,7 +76,7 @@ main.results {
 							width: 28px;
 							text-align: center;
 							color: #fff;
-							background-color: #aaa; 
+							background-color: #aaa;
 							border: none;
 						}
 					}
@@ -81,7 +85,7 @@ main.results {
 			li.active {
 
 				div.recipe-left {
-					
+
 					i.fa-glass {
 						display: none;
 					}

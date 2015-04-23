@@ -46,8 +46,7 @@ main.items button.confirm {
   overflow: auto; }
 
 main.results {
-  background-color: #eeeced;
-  }
+  background-color: #eeeced; }
   main.results section.recipes {
     margin: 0 auto;
     width: 95%; }
@@ -80,6 +79,8 @@ main.results {
             background-color: #60C497; }
           main.results section.recipes ul li div.recipe-left i.fa-beer {
             display: inline-block; }
+          main.results section.recipes ul li div.recipe-left div.box div.text {
+            display: none; }
           main.results section.recipes ul li div.recipe-left h2 {
             display: inline-block;
             width: 200px;
@@ -90,9 +91,6 @@ main.results {
             padding: 6px 0;
             font-size: 18px;
             color: #555; }
-          main.results section.recipes ul li div.recipe-left div.box div.text{
-            display:none
-          }
         main.results section.recipes ul li div.quantity {
           float: right; }
           main.results section.recipes ul li div.quantity span {
@@ -135,10 +133,6 @@ main.results {
     box-shadow: 0 -1px 0 #e7e8e9;
     z-index: 10;
     overflow: auto; }
-
-
-
-
     main.results section.active-recipe h2.title {
       margin-bottom: 5px;
       font-size: 20px;
