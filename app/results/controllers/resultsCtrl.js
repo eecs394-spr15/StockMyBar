@@ -10,14 +10,35 @@ angular
 		$scope.ingredShoppingList = angular.isDefined(localStorage.ingredShoppingList) ? JSON.parse(localStorage.ingredShoppingList) : [];
 		$scope.recipeShoppingList = [];
 		
+		function makeIngredShoppingList(){
+			$scope.ingredShoppingList = [];
+			var addToList = true;
+			var temp;
+			for(var i=0; i<$scope.recipeShoppingList.length; i++){
+				for(var j=0; j<$scope.recipeShoppingList[i].ingredListOffHand.length; j++){
+					addToList = true;
+					for(var k=0; k<$scope.ingredShoppingList.length; k++){
+						if ($scope.ingredShoppingList[k].id == $scope.recipeShoppingList[i].ingredListOffHand[j].id){
+							addToList = false;
+							break;
+						}
+					}
+					if(addToList){
+						temp  = JSON.parse( JSON.stringify( $scope.recipeShoppingList[i].ingredListOffHand[j] ) );
+						$scope.ingredShoppingList.push(temp);
+					}
+				}
+			}
+			localStorage.ingredShoppingList = JSON.stringify($scope.ingredShoppingList);
+		}
 
-		supersonic.data.channel('barContents').subscribe( function(newVal) {
+		supersonic.data.channel('ingredIdList').subscribe( function(newVal) {
 			// Updates possible recipes anytime the user's bar contents change
 			ingList = newVal;
 			$scope.recipeShoppingList = [];
-			$scope.makeIngredShoppingList();
+			makeIngredShoppingList();
 			Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
-			Parse.Cloud.run("search4Recipes", {ingredientNames: ingList}, {
+			Parse.Cloud.run("search4Recipes", {ingredientIds: ingList}, {
 				success: function(results) {
 					$scope.recipes = results;
 					$scope.noneActive = true;
@@ -65,7 +86,7 @@ angular
 			$scope.ingredShoppingList = angular.isDefined(localStorage.ingredShoppingList) ? JSON.parse(localStorage.ingredShoppingList) : [];
 			$scope.recipes[index].addedToCart = true;
 			$scope.recipeShoppingList.push($scope.recipes[index]);
-			$scope.makeIngredShoppingList();
+			makeIngredShoppingList();
 			supersonic.logger.log($scope.recipeShoppingList.length);
 			$scope.apply();
 		};
@@ -79,33 +100,10 @@ angular
 					break;
 				}
 			}
-			$scope.makeIngredShoppingList();
+			makeIngredShoppingList();
 			supersonic.logger.log($scope.recipeShoppingList.length);
 			$scope.apply();
 
-		};
-
-
-		$scope.makeIngredShoppingList = function(){
-			$scope.ingredShoppingList = [];
-			var addToList = true;
-			var temp;
-			for(var i=0; i<$scope.recipeShoppingList.length; i++){
-				for(var j=0; j<$scope.recipeShoppingList[i].ingredListOffHand.length; j++){
-					addToList = true;
-					for(var k=0; k<$scope.ingredShoppingList.length; k++){
-						if ($scope.ingredShoppingList[k].id == $scope.recipeShoppingList[i].ingredListOffHand[j].id){
-							addToList = false;
-							break;
-						}
-					}
-					if(addToList){
-						temp  = JSON.parse( JSON.stringify( $scope.recipeShoppingList[i].ingredListOffHand[j] ) );
-						$scope.ingredShoppingList.push(temp);
-					}
-				}
-			}
-			localStorage.ingredShoppingList = JSON.stringify($scope.ingredShoppingList);
 		};
 		
 	});
