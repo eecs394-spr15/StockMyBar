@@ -12,34 +12,23 @@
 
 
 
+
 	<section class="recipes">
 		<ul>
 			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
-
 
 				<div class="recipe-left">
 					<i class="fa fa-glass" ng-hide="recipe.addedToCart"></i>
 					<i class="fa fa-cart-plus" ng-click="addToCart($index)" ng-hide="recipe.addedToCart"></i>
 					<i class="fa fa-cart-arrow-down" ng-click="removeFromCart($index)" ng-show="recipe.addedToCart"></i>
-					<h2 style= "width: 180px; line-height:15px;"  >{{recipe.name}}</br><font size="1" style="line-height:1px" color="#00CCCC">{{recipe.ingredListOffHand.length}} more ingredients needed</font></h2>
-					<div class="box">
-						<h5>More detail</h5>
-						<div class="text">
-							<h4 style="color:#00BB99">Description</h4>
-							<span style="color:grey" >{{recipe.description}}</span>
-							<h4 style="color:#00BB99">Directions</h4>
-							<p style="color:grey">{{recipe.directions}}</p>
+					<h2 ng-click="show($index)">{{recipe.name}}</br><font size="1" style="line-height:1px" color="#00CCCC">{{recipe.ingredListOffHand.length}} more ingredients needed</font></h2>
+						<div id="item-{{$index}}" class="text">
+							<h4>Description</h4>
+							<p>{{recipe.description}}</p>
+							<h4>Directions</h4>
+							<p>{{recipe.directions}}</p>
 						</div>
-					</div>
 				</div>
-
-
-
-
-
-
-
-
 
 				<!--<div class="quantity">-->
 					<!--<span>{{recipe.count}}</span>-->

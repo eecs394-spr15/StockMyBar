@@ -42,10 +42,8 @@ main.results {
 						display: inline-block;
 					}
 
-					div.box div.text{
-            display:none
-          }
 					h2 {
+						line-height:15px;
 						display: inline-block;
 						width: 200px;
 						vertical-align: top;
@@ -55,7 +53,26 @@ main.results {
 						padding: 6px 0;
 						font-size: 18px;
 						color: #555;
+
 					}
+
+
+							div.text {
+								display:none;
+								h4 {
+									color: #00BB99;
+								}
+								p {
+									color: grey;
+								}
+								h4 {
+									color: #00BB99;
+								}
+								p {
+									color: grey;
+								}
+							}
+
 				}
 				div.quantity {
 					float: right;
