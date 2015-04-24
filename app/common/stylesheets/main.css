@@ -162,6 +162,7 @@ section.drawer {
         color: #ddd; }
 
 main.itemSelect section.categories table.item-categories {
+  width: 100%;
   border-style: ridge;
   background-color: white; }
   main.itemSelect section.categories table.item-categories button {
