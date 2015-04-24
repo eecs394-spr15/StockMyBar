@@ -12,6 +12,13 @@ main.itemSelect {
         border-width: 1px;
         border-style: ridge;
       }
+      td.active {
+        padding: 0.8em 0.7em;
+        text-align: center;
+        border-width: 1px;
+        border-style: ridge;
+        background-color: $color-accent-1;
+      }
     }
   }
   button.confirm {

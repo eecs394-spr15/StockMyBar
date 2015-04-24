@@ -17,11 +17,11 @@
     <section class="categories">
         <table class="item-categories list">
             <tr>
-            <td ng-click="setCategory('liquor')">Liquors</td>
-            <td ng-click="setCategory('mixer')">Mixers</td>
-            <td ng-click="setCategory('fruit')">Fruits</td>
-            <td ng-click="setCategory('spice')">Spices</td>
-            <td ng-click="setCategory('other')">Other</td>
+            <td ng-click="setCategory('liquor')" ng-class="{active: 'liquor'==category}">Liquors</td>
+            <td ng-click="setCategory('mixer')" ng-class="{active: 'mixer'==category}">Mixers</td>
+            <td ng-click="setCategory('fruit')" ng-class="{active: 'fruit'==category}">Fruits</td>
+            <td ng-click="setCategory('spice')" ng-class="{active: 'spice'==category}">Spices</td>
+            <td ng-click="setCategory('other')" ng-class="{active: 'other'==category}">Other</td>
             </tr>
         </table>
     </section>
@@ -33,6 +33,7 @@
                 <label class="checkbox">
                     <input type="checkbox" ng-model="checkedIngredients[item.id]" ng-click="supersonic.device.vibrate()">
                 </label>
+                <i class="fa fa-beer"></i>
                 {{item.name}}
             </li>
         </ul>

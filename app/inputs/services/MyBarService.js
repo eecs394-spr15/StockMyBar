@@ -7,7 +7,7 @@ angular
         factory.allIngredients = [];
         factory.allPreferences = [];
 
-        function createIngredPartJS(id,name,category){
+        function createIngredJS(id,name,category){
             var obj = new Object();
             obj.category = category;
             obj.id = id;
@@ -29,7 +29,7 @@ angular
             success: function (results) {
                 factory.allIngredients = [];
                 for (var i = 0; i < results.length; i++) {
-                    factory.allIngredients.push(createIngredPartJS(results[i].id,results[i].get("name"), results[i].get("category")));
+                    factory.allIngredients.push(createIngredJS(results[i].id,results[i].get("name"), results[i].get("category")));
                 }
                 supersonic.data.channel('allIngredients').publish(factory.allIngredients);
             }, error: function(error) {

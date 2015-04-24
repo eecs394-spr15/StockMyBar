@@ -1,7 +1,48 @@
 main.items {
-
-  ul.item-list {
-
-  }
-
+	background-color: $color-background;
+	section.ingreds {
+		margin: 0 auto;
+		width: 95%;
+		ul{
+			padding: 5px 0 150px 0;
+			list-style: none;
+		  	li{
+		  		margin-bottom: 5px;
+				background-color: #fff;
+				box-shadow: 1px  0    0 #d6d7d8,
+							0    1px  1px #cccdce,
+							-1px 0    0 #d6d7d8,
+							0    -1px 0 #e7e8e9;
+				overflow: auto;
+				div.ingred-left {
+					float: left;
+					padding: 5px 10px;
+					i {
+						margin-right: 7px;
+						padding: 8px;
+						width: 35px;
+						text-align: center;
+						font-size: 20px;
+						color: #fff;
+						background-color: #ddd;
+						border-radius: 50%;
+					}
+					i.fa-beer{
+						display: inline-block;
+					}
+					h2 {
+						display: inline-block;
+						width: 200px;
+						vertical-align: center;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						padding: 6px 0;
+						font-size: 17px;
+						color: #555;
+					}
+				}
+		  	}
+		}
+	}
 }
