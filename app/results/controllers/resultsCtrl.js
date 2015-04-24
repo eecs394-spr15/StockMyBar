@@ -55,6 +55,7 @@ angular
 					addToList = true;
 					for(var k=0; k<$scope.ingredShoppingList.length; k++){
 						if ($scope.ingredShoppingList[k].id == $scope.recipeShoppingList[i].ingredListOffHand[j].id){
+							$scope.ingredShoppingList[k].optional = $scope.ingredShoppingList[k].optional && $scope.recipeShoppingList[i].ingredListOffHand[j].optional;
 							addToList = false;
 							break;
 						}
@@ -65,6 +66,14 @@ angular
 					}
 				}
 			}
+			$scope.ingredShoppingList.sort(function(a,b){
+				if(a.optional == b.optional){
+					return (a.name-b.name);
+				}
+				else{
+					return ((!a.optional) && (b.optional))?-1:1;
+				}
+			});
 			localStorage.ingredShoppingList = JSON.stringify($scope.ingredShoppingList);
 		}
 
