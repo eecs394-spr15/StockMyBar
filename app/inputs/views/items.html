@@ -12,7 +12,7 @@
 			<div  ng-swipe-right="showActions = false">
 				<li class="item" ng-swipe-left="showDeleteButton($index)" ng-repeat="ingred in ingredList | orderBy: 'name' ">
 					{{ingred.name}}
-					<button  ng-show="showButton($index)" ng-click="cancel($index)" style="height:100%; width:25%; background-color: #CC0022; color: white;float:right">Delete</button>
+					<button  ng-show="showButton($index)" ng-click="cancel($index)" style="  width:25%; background-color: #CC0022; color: white;float:right;">Delete</input>
 				</li>
 			</div>
 		</ul>

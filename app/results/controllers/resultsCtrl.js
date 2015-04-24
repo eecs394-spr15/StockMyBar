@@ -83,11 +83,8 @@ angular
 
 		/* Change activeRecipe on UI click */
 		$scope.activateRecipe = function(index) {
-			$(".box h5").toggle(function(){
-				$(this).next(".text").animate({height: 'toggle', opacity: 'toggle'}, "slow");
-			},function(){
-				$(this).next(".text").animate({height: 'toggle', opacity: 'toggle'}, "slow");
-			});
+			$("#index").slideToggle("slow");
+
 
 
 			$scope.noneActive = false;
