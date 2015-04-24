@@ -1,0 +1,19 @@
+main.itemSelect {
+  section.categories {
+    ul.item-categories{
+      list-style:none;
+      border-style: ridge;
+      background-color: white;
+      button{
+        float: left;
+        border-right: ridge;
+        padding: 0.8em 0.7em;
+        background-color: white;
+        border-color: white;
+      }
+      #no-border{
+        border-color: white;
+      }
+    }
+  }
+}
