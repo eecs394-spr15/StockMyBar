@@ -7,19 +7,20 @@ angular
         factory.allIngredients = [];
         factory.allPreferences = [];
 
-        function createIngredPartJS(id,name){
-            var obj = new Object(); 
-            obj.id = id; 
-            obj.name = name; 
-            return obj; 
-        } 
+        function createIngredPartJS(id,name,category){
+            var obj = new Object();
+            obj.category = category;
+            obj.id = id;
+            obj.name = name;
+            return obj;
+        }
 
         function createPrefTagJS(id,name){
-            var obj = new Object(); 
-            obj.id = id; 
-            obj.name = name; 
-            return obj; 
-        } 
+            var obj = new Object();
+            obj.id = id;
+            obj.name = name;
+            return obj;
+        }
 
         Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
 
@@ -28,7 +29,7 @@ angular
             success: function (results) {
                 factory.allIngredients = [];
                 for (var i = 0; i < results.length; i++) {
-                    factory.allIngredients.push(createIngredPartJS(results[i].id,results[i].get("name")));
+                    factory.allIngredients.push(createIngredPartJS(results[i].id,results[i].get("name"), results[i].get("category")));
                 }
                 supersonic.data.channel('allIngredients').publish(factory.allIngredients);
             }, error: function(error) {

@@ -30,21 +30,6 @@ main.home {
       border: none;
       border-radius: 3px; }
 
-main.items button.confirm {
-  padding: 8px;
-  font-size: 20px;
-  color: #fff;
-  background-color: #34cbc6;
-  border: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3em;
-  box-shadow: 0 -1px 0 #e7e8e9;
-  z-index: 10;
-  overflow: auto; }
-
 main.results {
   background-color: #eeeced; }
   main.results section.recipes {
@@ -100,6 +85,7 @@ main.results {
               color: #00BB99; }
             main.results section.recipes ul li div.recipe-left div.text p {
               color: grey; }
+
         main.results section.recipes ul li div.quantity {
           float: right; }
           main.results section.recipes ul li div.quantity span {
@@ -186,6 +172,31 @@ section.drawer {
       section.drawer nav.drawer-nav ul li {
         width: 100%;
         color: #ddd; }
+
+main.itemSelect section.categories table.item-categories {
+  width: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color: white; }
+  main.itemSelect section.categories table.item-categories td {
+    padding: 0.8em 0.7em;
+    text-align: center;
+    border-width: 1px;
+    border-style: ridge; }
+main.itemSelect button.confirm {
+  padding: 8px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #34cbc6;
+  border: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3em;
+  box-shadow: 0 -1px 0 #e7e8e9;
+  z-index: 10;
+  overflow: auto; }
 
 /* Globals */
 html, body, div, span, h1, h2, h3, h4,
