@@ -17,15 +17,16 @@ function createRecipeJS(id,name,description,directions){
     return obj;
 }
 
-function createIngredPartJS(id,name){
+function createIngredPartJS(id,name,optional){
     var obj = new Object();
     obj.id = id;
     obj.name = name;
+    obj.optional = optional;
     return obj;
 }
 
 
-function createIngredJS(id,name,description){
+function createIngredJS(id,name,description,optional){
     var obj = new Object();
     obj.id = id;
     obj.name = name;
@@ -64,7 +65,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
 
                 addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"), addRecipe.get("description"), addRecipe.get("directions"));
 
-                addIngredPartJS = createIngredPartJS(results2[i].get("ingredient").id, results2[i].get("ingredient").get("name"));
+                addIngredPartJS = createIngredPartJS(results2[i].get("ingredient").id, results2[i].get("ingredient").get("name"), results2[i].get("optional"));
                 for(var j = 0; j < recipeJSList.length; j++){
                     if(addRecipeJS.id == recipeJSList[j].id){
                         repeat = true;
@@ -87,7 +88,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             success: function(results3) {
                 var addToOffHand = true;
                 for(var n=0; n < results3.length; n++){
-                    addIngredPartJS = createIngredPartJS(results3[n].get("ingredient").id, results3[n].get("ingredient").get("name"));
+                    addIngredPartJS = createIngredPartJS(results3[n].get("ingredient").id, results3[n].get("ingredient").get("name"), results3[n].get("optional"));
                     for(var m=0; m < recipeJSList.length; m++){
                         if (results3[n].get("recipe").id == recipeJSList[m].id){
                             addToOffHand = true;
