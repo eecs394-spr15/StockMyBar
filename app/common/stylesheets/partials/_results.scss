@@ -41,7 +41,9 @@ main.results {
 					i.fa-beer{
 						display: inline-block;
 					}
+
 					h2 {
+						line-height:15px;
 						display: inline-block;
 						width: 200px;
 						vertical-align: top;
@@ -51,7 +53,26 @@ main.results {
 						padding: 6px 0;
 						font-size: 18px;
 						color: #555;
+
 					}
+
+
+							div.text {
+								display:none;
+								h4 {
+									color: #00BB99;
+								}
+								p {
+									color: grey;
+								}
+								h4 {
+									color: #00BB99;
+								}
+								p {
+									color: grey;
+								}
+							}
+
 				}
 				div.quantity {
 					float: right;
@@ -72,7 +93,7 @@ main.results {
 							width: 28px;
 							text-align: center;
 							color: #fff;
-							background-color: #aaa; 
+							background-color: #aaa;
 							border: none;
 						}
 					}
@@ -81,7 +102,7 @@ main.results {
 			li.active {
 
 				div.recipe-left {
-					
+
 					i.fa-glass {
 						display: none;
 					}

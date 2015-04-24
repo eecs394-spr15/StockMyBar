@@ -65,6 +65,7 @@ main.results {
           main.results section.recipes ul li div.recipe-left i.fa-beer {
             display: inline-block; }
           main.results section.recipes ul li div.recipe-left h2 {
+            line-height: 15px;
             display: inline-block;
             width: 200px;
             vertical-align: top;
@@ -74,6 +75,17 @@ main.results {
             padding: 6px 0;
             font-size: 18px;
             color: #555; }
+          main.results section.recipes ul li div.recipe-left div.text {
+            display: none; }
+            main.results section.recipes ul li div.recipe-left div.text h4 {
+              color: #00BB99; }
+            main.results section.recipes ul li div.recipe-left div.text p {
+              color: grey; }
+            main.results section.recipes ul li div.recipe-left div.text h4 {
+              color: #00BB99; }
+            main.results section.recipes ul li div.recipe-left div.text p {
+              color: grey; }
+
         main.results section.recipes ul li div.quantity {
           float: right; }
           main.results section.recipes ul li div.quantity span {

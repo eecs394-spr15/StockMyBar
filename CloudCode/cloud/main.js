@@ -5,13 +5,13 @@ Parse.Cloud.define("hello", function(request, response) {
 });
 
 
+
 function createRecipeJS(id,name,description,directions){
     var obj = new Object();
     obj.id = id;
     obj.name = name;
     obj.ingredListOffHand = new Array();
     obj.ingredListInHand = new Array();
-    obj.description = description;
     obj.addedToCart = false;
     obj.directions = directions;
     return obj;
@@ -24,6 +24,7 @@ function createIngredPartJS(id,name){
     return obj;
 }
 
+
 function createIngredJS(id,name,description){
     var obj = new Object();
     obj.id = id;
@@ -31,8 +32,6 @@ function createIngredJS(id,name,description){
     obj.description = description;
     return obj;
 }
-
-
 
 
 function createPrefJS(){

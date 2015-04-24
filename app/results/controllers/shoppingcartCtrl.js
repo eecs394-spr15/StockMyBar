@@ -5,7 +5,7 @@ angular
     	$scope.noneActive = true;
 		$scope.ingredShoppingList = angular.isDefined(localStorage.ingredShoppingList) ? JSON.parse(localStorage.ingredShoppingList) : [];
 		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
-			
+
 		$scope.clearAllItems = function(){
 			$scope.ingredShoppingList = [];
             localStorage.ingredShoppingList = JSON.stringify($scope.ingredShoppingList);

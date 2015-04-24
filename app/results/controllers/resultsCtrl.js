@@ -4,6 +4,10 @@ angular
 	.module('results')
 	.controller('ResultsCtrl', function ($scope, supersonic) {
 
+
+
+
+
 		var ingList = [];
 		$scope.recipes = [];
 		$scope.noneActive = true;
@@ -81,12 +85,17 @@ angular
 			});
 		};
 
+		$scope.show = function(index) {
+				$('#item-' + index).next(".text").slideToggle("fast");
+		};
+
+
+		$scope.show = function(index) {
+			$('#item-' + index).slideToggle("fast");
+		};
+
 		/* Change activeRecipe on UI click */
 		$scope.activateRecipe = function(index) {
-			$("#index").slideToggle("slow");
-
-
-
 			$scope.noneActive = false;
 			$scope.selected = index;
 			$scope.activeRecipe =  $scope.recipes[index];
