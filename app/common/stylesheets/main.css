@@ -161,17 +161,16 @@ section.drawer {
         width: 100%;
         color: #ddd; }
 
-main.itemSelect section.categories ul.item-categories {
-  list-style: none;
+main.itemSelect section.categories table.item-categories {
   border-style: ridge;
   background-color: white; }
-  main.itemSelect section.categories ul.item-categories button {
+  main.itemSelect section.categories table.item-categories button {
     float: left;
     border-right: ridge;
     padding: 0.8em 0.7em;
     background-color: white;
     border-color: white; }
-  main.itemSelect section.categories ul.item-categories #no-border {
+  main.itemSelect section.categories table.item-categories #no-border {
     border-color: white; }
 main.itemSelect button.confirm {
   padding: 8px;

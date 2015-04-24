@@ -52,4 +52,10 @@ angular
             supersonic.data.channel('ingredList').publish($scope.ingredList);
             supersonic.ui.modal.hide();
         };
+
+        $scope.setCategory = function(category){
+            supersonic.logger.log(category)
+            $scope.category = category;
+            $scope.$apply();
+        }
     });

@@ -4,7 +4,7 @@ angular.module('inputs').filter('addItemsList', function(supersonic) {
         angular.forEach(items, function(item) {
             if (ingredIdList.indexOf(item.id) == -1) {
                 if (!searchText || item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
-                    if (item.category == category) {
+                    if (item.category == category || category == '') {
                     filtered.push(item);
                     }
                 }
