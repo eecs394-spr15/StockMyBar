@@ -16,11 +16,13 @@
 
     <section class="categories">
         <table class="item-categories list">
-            <td> <button ng-click="setCategory('liquor')">Liquors</button></td>
-            <td> <button ng-click="setCategory('mixer')">Mixers</button></td>
-            <td> <button ng-click="setCategory('fruit')">Fruits</button></td>
-            <td> <button ng-click="setCategory('spice')">Spices</button></td>
-            <td> <button id="no-border" ng-click="setCategory('other')">Other</button></td>
+            <tr>
+            <td ng-click="setCategory('liquor')">Liquors</td>
+            <td ng-click="setCategory('mixer')">Mixers</td>
+            <td ng-click="setCategory('fruit')">Fruits</td>
+            <td ng-click="setCategory('spice')">Spices</td>
+            <td ng-click="setCategory('other')">Other</td>
+            </tr>
         </table>
     </section>
 

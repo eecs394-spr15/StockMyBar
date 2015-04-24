@@ -1,17 +1,16 @@
 main.itemSelect {
   section.categories {
     table.item-categories{
-      border-style: ridge;
+      width: 100%;
+      padding-left: 1em;
+      padding-right: 1em;
       background-color: white;
-      button{
-        float: left;
-        border-right: ridge;
+
+      td {
         padding: 0.8em 0.7em;
-        background-color: white;
-        border-color: white;
-      }
-      #no-border{
-        border-color: white;
+        text-align: center;
+        border-width: 1px;
+        border-style: ridge;
       }
     }
   }
