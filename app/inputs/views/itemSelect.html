@@ -1,4 +1,4 @@
-<main class="items" ng-controller="InputCtrl">
+<main class="itemSelect" ng-controller="InputCtrl">
 
 
     <super-navbar class="navbar">
@@ -14,10 +14,20 @@
         </label>
     </section>
 
+    <section class="categories">
+        <ul class="item-categories list">
+            <li> <button ng-click="category = 'Liquor'">Liquors</button></li>
+            <li> <button ng-click="category = 'Mixer'">Mixers</button></li>
+            <li> <button ng-click="category = 'Fruits'">Fruits</button></li>
+            <li> <button ng-click="category = 'Spices'">Spices</button></li>
+            <li> <button id="no-border" ng-click="category = 'Other'">Other</button></li>
+        </ul>
+    </section>
+
 
     <section>
         <ul class="item-list list">
-            <li class="item item-checkbox" ng-repeat="item in allIngredients | addItemsList:barContents:searchBarText | orderBy: 'name'">
+            <li class="item item-checkbox" ng-repeat="item in allIngredients | addItemsList:barContents:searchBarText:category | orderBy: 'name'">
                 <label class="checkbox">
                     <input type="checkbox" ng-model="checkedIngredients[item.name]" ng-click="supersonic.device.vibrate()">
                 </label>

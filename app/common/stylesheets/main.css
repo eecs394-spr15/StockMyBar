@@ -162,6 +162,19 @@ section.drawer {
         width: 100%;
         color: #ddd; }
 
+main.itemSelect section.categories ul.item-categories {
+  list-style: none;
+  border-style: ridge;
+  background-color: white; }
+  main.itemSelect section.categories ul.item-categories button {
+    float: left;
+    border-right: ridge;
+    padding: 0.8em 0.7em;
+    background-color: white;
+    border-color: white; }
+  main.itemSelect section.categories ul.item-categories #no-border {
+    border-color: white; }
+
 /* Globals */
 html, body, div, span, h1, h2, h3, h4,
 h5, h6, p, a, img, i, ol, ul, li, form,

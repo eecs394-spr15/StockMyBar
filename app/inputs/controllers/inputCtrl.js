@@ -7,6 +7,7 @@ angular
 
         $scope.checkedIngredients = {};
         $scope.allIngredients = [];
+        $scope.category = '';
         $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
         supersonic.device.ready.then( function() {
             supersonic.logger.log(localStorage.barContents);
