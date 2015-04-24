@@ -34,6 +34,13 @@ main.results {
 					}
 					i.fa-glass { display: inline-block; }
 					i.fa-cart-plus { display: none; }
+					i.fa-cart-arrow-down{
+						display: inline-block;
+						background-color: #60C497;
+					}
+					i.fa-beer{
+						display: inline-block;
+					}
 					h2 {
 						display: inline-block;
 						width: 200px;
@@ -82,6 +89,14 @@ main.results {
 						display: inline-block;
 						background-color: #777;
 					}
+					i.fa-cart-arrow-down{
+						display: inline-block;
+						background-color: #60C497;
+					}
+					i.fa-beer{
+						display: inline-block;
+						background-color: #777;
+					}
 					h2 {
 						color: $color-accent-2;
 					}
@@ -109,6 +124,10 @@ main.results {
 		h2.title.none-active {
 			font-size: 19px;
 			color: #aaa;
+		}
+		h3.description {
+			font-size: 12px;
+			color: #999999;
 		}
 		div.ingredient-list {
 

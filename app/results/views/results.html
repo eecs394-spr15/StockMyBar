@@ -3,27 +3,51 @@
 
 	<super-navbar class="navbar">
 	  	<super-navbar-title>Results</super-navbar-title>
-	  	<super-navbar-button side="right" location = "results#shoppingcart">Shopping Cart</super-navbar-button>
-			<super-navbar-button side="left" ng-click="reset()">Reset</super-navbar-button>
+	  	<super-navbar-button side="right" location = "results#shoppingcart">Shopping List</super-navbar-button>
+			<!--<super-navbar-button side="left" ng-click="reset()">Reset</super-navbar-button>-->
 	</super-navbar>
+
+
+
+
 
 
 	<section class="recipes">
 		<ul>
 			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
+
+
 				<div class="recipe-left">
-					<i class="fa fa-glass"></i>
-					<!-- <i class="icon super-pricetag"></i> -->
-					<i class="fa fa-cart-plus"></i>
-					<h2 class="title">{{recipe.name}}</h2>
-				</div>
-				<div class="quantity">
-					<span style="background:#0000FF">{{recipe.count}}</span>
-					<div class="quantity-buttons">
-						<button ng-click="incrementCount($index)" style="background:#00FF00">+</button>
-						<button ng-click="decrementCount($index)" style="background:#FF0000">-</button>
+					<i class="fa fa-glass" ng-hide="recipe.addedToCart"></i>
+					<i class="fa fa-cart-plus" ng-click="addToCart($index)" ng-hide="recipe.addedToCart"></i>
+					<i class="fa fa-cart-arrow-down" ng-click="removeFromCart($index)" ng-show="recipe.addedToCart"></i>
+					<h2 style= "width: 180px; line-height:15px;"  >{{recipe.name}}</br><font size="1" style="line-height:1px" color="#00CCCC">{{recipe.ingredListOffHand.length}} more ingredients needed</font></h2>
+					<div class="box">
+					<h5>More detail</h5>
+					<div class="text">
+						<h4 style="color:#00BB99">Description</h4>
+						<span style="color:grey" >{{recipe.description}}</span>
+						<h4 style="color:#00BB99">Directions</h4>
+						<p style="color:grey">{{recipe.directions}}</p>
+					</div>
 					</div>
 				</div>
+
+
+
+
+
+
+
+
+
+				<!--<div class="quantity">-->
+					<!--<span>{{recipe.count}}</span>-->
+					<!--<div class="quantity-buttons">-->
+						<!--<button ng-click="incrementCount($index)" style="background:#00EE99; border-radius: 2px">+</button>-->
+						<!--<button ng-click="decrementCount($index)" style="background:#EE2200; border-radius: 2px">-</button>-->
+					<!--</div>-->
+				<!--</div>-->
 			</li>
 		</ul>
 	</section>
@@ -45,8 +69,15 @@
 					<li ng-repeat="ingredient in neededIngredients">{{ingredient.name}}</li>
 				</ul>
 			</div>
+
+
+
+			<!--<div class="need ingredient-list">-->
+				<!--<ul>-->
+					<!--<h3>Preferences</h3>-->
+					<!--<li ng-repeat="ingredient in neededIngredients">{{ingredient.name}}</li>-->
+				<!--</ul>-->
+			<!--</div>-->
 		</div>
 	</section>
-
-
 </main>
