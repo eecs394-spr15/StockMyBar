@@ -1,0 +1,45 @@
+main.item-menu{
+    width: 100%;
+
+    section.menu {
+        margin: 0 auto;
+        width: 100%;
+
+        ul.container {
+            width: 100%;
+            list-style: none;
+
+            li.row {
+                width: 100%;
+                display: block;
+
+                ul {
+                    list-style: none;
+
+                    li {
+                        float: left;
+                        height: 150px;
+                        width: calc(100% / 2);
+                        background-color:#33FFFF;
+                    }
+                    li#liquor{
+                        background-color:#FF0000;
+                    }
+                    li#mixer{
+                        background-color:#FF8000;
+                    }
+                    li#fruit{
+                        background-color:#FFFF00;
+                    }
+                    li#spice{
+                        background-color:#00CC00;
+                    }
+                    li#other{
+                        background-color:#0000FF;
+                    }
+
+                }
+            }
+        }
+    }
+}

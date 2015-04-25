@@ -5,10 +5,10 @@ angular
     .controller('InputCtrl', function ($scope, MyBarService, supersonic) {
         $scope.checkedIngredients = {};
         $scope.allIngredients = [];
-        $scope.category = '';
-        $scope.barContents = angular.isDefined(localStorage.barContents) ? JSON.parse(localStorage.barContents) : [];
+        $scope.category = localStorage.category;
         $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
         $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
+        
         supersonic.device.ready.then( function() {
             supersonic.logger.log(localStorage.ingredIdList);
             supersonic.data.channel('ingredIdList').publish(JSON.parse(localStorage.ingredIdList));
@@ -54,8 +54,7 @@ angular
         };
 
         $scope.setCategory = function(category){
-            supersonic.logger.log(category)
             $scope.category = category;
-            $scope.$apply();
+            $scope.apply();
         }
     });
