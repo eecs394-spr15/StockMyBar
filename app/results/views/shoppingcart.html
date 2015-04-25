@@ -9,7 +9,7 @@
 			<li ng-repeat="ingred in ingredShoppingList" ng-click="selectIngred($index)" ng-class="{active: $index == selected}">
 				<div class="recipe-left">
 					<i class="fa fa-beer"></i>
-					<h2 class="title">{{ingred.name}}({{ingred.optional}})</h2>
+					<h2 class="title">{{ingred.name}}<span ng-if = "ingred.optional"> (optional)</span></h2>
 				</div>
 			</li>
 		</ul>
