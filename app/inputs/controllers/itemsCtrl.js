@@ -17,7 +17,6 @@ angular
             updateIngredList();
         });
 
-
         function createIngredPartJS(id,name){
             var obj = new Object();
             obj.id = id;
@@ -69,7 +68,9 @@ angular
         }
 
         /* Open Add Items menu */
+        /*
         $scope.addItems = function() {
             supersonic.ui.modal.show("inputs#itemMenu");
         }
+        */
     });

@@ -2,7 +2,8 @@
 
 
     <super-navbar class="navbar">
-        <super-navbar-title>Add Items</super-navbar-title>
+        <super-navbar-title>{{category}}</super-navbar-title>
+        <super-navbar-button side="left" ng-click = "goBack()">Back</super-navbar-button>
     </super-navbar>
 
 
@@ -14,7 +15,7 @@
         </label>
     </section>
 
-    <section class="categories">
+    <!-- <section class="categories">
         <table class="item-categories list">
             <tr>
             <td ng-click="setCategory('liquor')" ng-class="{active: 'liquor'==category}">Liquors</td>
@@ -24,7 +25,7 @@
             <td ng-click="setCategory('other')" ng-class="{active: 'other'==category}">Other</td>
             </tr>
         </table>
-    </section>
+    </section> -->
 
 
     <section>

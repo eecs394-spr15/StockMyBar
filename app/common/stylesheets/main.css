@@ -245,32 +245,40 @@ main.itemSelect button.confirm {
 
 main.item-menu {
   width: 100%; }
-  main.item-menu section.menu {
-    margin: 0 auto;
-    width: 100%; }
-    main.item-menu section.menu ul.container {
+  main.item-menu ul.container {
+    margin-left: 1em;
+    margin-right: 1em;
+    width: auto;
+    margin-top: 1em;
+    list-style: none; }
+    main.item-menu ul.container li.row {
       width: 100%;
-      list-style: none; }
-      main.item-menu section.menu ul.container li.row {
-        width: 100%;
-        display: block; }
-        main.item-menu section.menu ul.container li.row ul {
-          list-style: none; }
-          main.item-menu section.menu ul.container li.row ul li {
-            float: left;
-            height: 150px;
-            width: calc(100% / 2);
-            background-color: #33FFFF; }
-          main.item-menu section.menu ul.container li.row ul li#liquor {
-            background-color: #FF0000; }
-          main.item-menu section.menu ul.container li.row ul li#mixer {
-            background-color: #FF8000; }
-          main.item-menu section.menu ul.container li.row ul li#fruit {
-            background-color: #FFFF00; }
-          main.item-menu section.menu ul.container li.row ul li#spice {
-            background-color: #00CC00; }
-          main.item-menu section.menu ul.container li.row ul li#other {
-            background-color: #0000FF; }
+      display: block; }
+      main.item-menu ul.container li.row ul {
+        list-style: none; }
+        main.item-menu ul.container li.row ul li {
+          float: left;
+          margin-bottom: 1em;
+          padding: 50px 0;
+          height: 10em;
+          width: calc((100% - 1em) / 2);
+          background-color: #33FFFF;
+          text-align: center; }
+          main.item-menu ul.container li.row ul li span {
+            font-family: Arial;
+            font-size: 2em; }
+        main.item-menu ul.container li.row ul li:first-child {
+          margin-right: 1em; }
+        main.item-menu ul.container li.row ul li#liquor {
+          background-color: #FF0000; }
+        main.item-menu ul.container li.row ul li#mixer {
+          background-color: #FF8000; }
+        main.item-menu ul.container li.row ul li#fruit {
+          background-color: #FFFF00; }
+        main.item-menu ul.container li.row ul li#spice {
+          background-color: #00CC00; }
+        main.item-menu ul.container li.row ul li#other {
+          background-color: #0000FF; }
 
 /* Globals */
 html, body, div, span, h1, h2, h3, h4,

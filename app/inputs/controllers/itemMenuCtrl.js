@@ -8,9 +8,8 @@ angular
         $scope.allIngredients = [];
         $scope.showIngredients = [];
         $scope.selectedIngredients =[];
-        $scope.$apply();
 
-        /*
+        
         supersonic.device.ready.then( function() {
             //supersonic.logger.log(localStorage.ingredIdList);
             supersonic.data.channel('ingredIdList').publish(JSON.parse(localStorage.ingredIdList));
@@ -24,7 +23,7 @@ angular
             });
             $scope.$apply();
         });
-        */
+        
 
         $scope.chooseCategory = function(cate_name){
             localStorage.category = cate_name;           

@@ -53,8 +53,14 @@ angular
             supersonic.ui.modal.hide();
         };
 
+        $scope.goBack = function(){
+            supersonic.ui.modal.show("inputs#itemMenu");
+        }
+
+        /*
         $scope.setCategory = function(category){
             $scope.category = category;
             $scope.apply();
         }
+        */
     });
