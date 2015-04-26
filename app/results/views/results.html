@@ -31,13 +31,13 @@
 							<div class="have ingredient-list">
 								<ul>
 									<h3>Have</h3>
-									<li ng-repeat="ingredient in haveIngredients">{{ingredient.name}}</li>
+									<li ng-repeat="ingredient in recipe.ingredListInHand">{{ingredient.name}}</li>
 								</ul>
 							</div>
 							<div class="need ingredient-list">
 								<ul>
 									<h3>Need</h3>
-									<li ng-repeat="ingredient in neededIngredients">{{ingredient.name}}</li>
+									<li ng-repeat="ingredient in recipe.ingredListOffHand">{{ingredient.name}}</li>
 								</ul>
 							</div>			
 						</div>
