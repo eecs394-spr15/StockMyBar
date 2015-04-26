@@ -23,6 +23,7 @@ function createIngredPartJS(id,name,optional){
     obj.id = id;
     obj.name = name;
     obj.optional = optional;
+    obj.recipes = new Array();
     return obj;
 }
 
