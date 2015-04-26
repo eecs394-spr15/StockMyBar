@@ -47,14 +47,13 @@ angular
             // Save and share changes to user's bar
             localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
             localStorage.ingredList = JSON.stringify($scope.ingredList);
-            //supersonic.logger.log("ingredList:"+localStorage.ingredList);
             supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
             supersonic.data.channel('ingredList').publish($scope.ingredList);
             supersonic.ui.modal.hide();
         };
 
         $scope.goBack = function(){
-            supersonic.ui.modal.show("inputs#itemMenu");
+            supersonic.ui.modal.hide();
         }
 
         /*

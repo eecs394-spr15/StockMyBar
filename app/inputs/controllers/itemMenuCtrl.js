@@ -4,6 +4,7 @@ angular
 	.module('inputs')
     .controller('ItemMenu', function ($scope, MyBarService, supersonic) {
         
+        /*
         $scope.checkedIngredients = {};
         $scope.allIngredients = [];
         $scope.showIngredients = [];
@@ -23,6 +24,7 @@ angular
             });
             $scope.$apply();
         });
+        */
         
 
         $scope.chooseCategory = function(cate_name){

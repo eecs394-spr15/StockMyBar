@@ -5,13 +5,15 @@ angular
     .controller('ItemsCtrl', function ($scope, supersonic) {
 
         $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
-        $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
+        $scope.ingredList = [];
         $scope.showActions = false;
+
 
         setTimeout(function() {
             supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
         }, 1000);
         
+        updateIngredList();
 
         supersonic.data.channel('ingredList').subscribe(function(message) {
             updateIngredList();
