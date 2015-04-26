@@ -28,7 +28,20 @@
 							<p>{{recipe.description}}</p>
 							<h4>Directions</h4>
 							<p>{{recipe.directions}}</p>
+							<div class="have ingredient-list">
+								<ul>
+									<h3>Have</h3>
+									<li ng-repeat="ingredient in haveIngredients">{{ingredient.name}}</li>
+								</ul>
+							</div>
+							<div class="need ingredient-list">
+								<ul>
+									<h3>Need</h3>
+									<li ng-repeat="ingredient in neededIngredients">{{ingredient.name}}</li>
+								</ul>
+							</div>			
 						</div>
+
 				</div>
 
 				<!--<div class="quantity">-->
