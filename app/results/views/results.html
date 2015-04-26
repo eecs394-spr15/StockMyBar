@@ -16,7 +16,7 @@
 					<i class="fa fa-cart-plus" ng-click="addToCart($index)" ng-hide="recipe.addedToCart"></i>
 					<i class="fa fa-cart-arrow-down" ng-click="removeFromCart($index)" ng-show="recipe.addedToCart"></i>
 					<h2 ng-show="noRecipesDisplayed">Pick some ingredients in order to get some recipes!</h2>
-					<h2 ng-click="show($index)">{{recipe.name}}</br><font size="1" style="line-height:1px" color="#00CCCC">{{recipe.ingredListOffHand.length}} more ingredients needed</font></h2>
+					<h2 ng-click="show($index)">{{recipe.name}}</br><font ng-if= "!recipe.completed" size="1" style="line-height:1px" color="#CC2200">{{recipe.ingredListOffHand.length}} more ingredients needed</font><font ng-if= "recipe.completed" size="1" style="line-height:1px" color="#00CCCC">You have everything!</font></h2>
 						<div id="item-{{$index}}" class="text">
 							<h4>Description</h4>
 							<p>{{recipe.description}}</p>
@@ -28,12 +28,12 @@
 									<li ng-repeat="ingredient in recipe.ingredListInHand">{{ingredient.name}}</li>
 								</ul>
 							</div>
-							<div class="need ingredient-list">
+							<div ng-if= "!recipe.completed" class="need ingredient-list">
 								<ul>
 									<h3>Need</h3>
 									<li ng-repeat="ingredient in recipe.ingredListOffHand">{{ingredient.name}}</li>
 								</ul>
-							</div>			
+							</div>
 						</div>
 
 				</div>

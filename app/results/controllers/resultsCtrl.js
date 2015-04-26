@@ -45,6 +45,12 @@ angular
 					}
 					for (var i=0; i<$scope.recipes.length; i++) {
 						$scope.recipes[i].count = 0;
+						$scope.recipes[i].completed = false
+					}
+					for (var i=0; i<$scope.recipes.length; i++) {
+						if ($scope.recipes[i].ingredListOffHand.length==0) {
+							$scope.recipes[i].completed = true
+						}
 					}
 					$scope.$apply();
 				}, error: function(error) {
