@@ -68,15 +68,52 @@ main.results {
 						p {
 							color: grey;
 						}
-						h4 {
-							color: #00BB99;
+						div.ingredient-list {
+							ul {
+								padding: 0px 0px;
+								h3 {
+									display: inline-block;
+									margin-right: 3px;
+									font-size: 16px;
+									color: #505050;
+								}
+								li {
+									display: inline-block;
+									margin-right: 6px;
+									margin-bottom: 4px;
+									padding: 0px 6px;
+									font-size: 14px;
+									color: #eee;
+									border-radius: 3px;
+								}
+								li:last-child {
+									margin-right: 0;
+								}
+							}
 						}
-						p {
-							color: grey;
+						div.ingredient-list.have {
+							margin-bottom: 5px;
+							margin-top: 5px;
+
+							ul {
+
+								li {
+									background-color: #60C497;
+								}
+							}
+						}
+						div.ingredient-list.need {
+
+							ul {
+
+								li {
+									background-color: #FF7566;
+								}
+							}
 						}
 					}
-
 				}
+
 				div.quantity {
 					float: right;
 
@@ -125,10 +162,12 @@ main.results {
 						color: $color-accent-2;
 					}
 				}
+				
 			}
 		}
 	}
 	section.active-recipe {
+		display: none;
 		position: fixed;
 		bottom: 0;
 		left: 0;

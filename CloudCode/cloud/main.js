@@ -14,6 +14,7 @@ function createRecipeJS(id,name,description,directions){
     obj.ingredListInHand = new Array();
     obj.addedToCart = false;
     obj.directions = directions;
+    obj.description = description
     return obj;
 }
 
@@ -26,7 +27,7 @@ function createIngredPartJS(id,name,optional){
 }
 
 
-function createIngredJS(id,name,description,optional){
+function createIngredJS(id,name,description){
     var obj = new Object();
     obj.id = id;
     obj.name = name;
