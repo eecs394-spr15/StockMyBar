@@ -1,0 +1,55 @@
+main.item-menu{
+    width: 100%;
+    ul.container {
+        margin-left: 1em;
+        margin-right: 1em;
+        width: auto;
+        margin-top: 1em; 
+        list-style: none;
+
+        li.row {
+            width: 100%;
+            display: block;
+
+            ul {
+                list-style: none;
+
+                li {
+                    float: left;
+                    margin-bottom: 1em;
+                    padding: 50px 0;
+                    height: 10em;
+                    width: calc((100% - 1em) / 2);
+                    background-color:#33FFFF;
+                    text-align: center;
+                    
+                    span{
+                        font-family:Arial;
+                        font-size:2em;
+                    }
+
+                }
+                li:first-child {
+                    margin-right: 1em;
+                }
+                li#liquor{
+                    background-color:#FF0000;
+                }
+                li#mixer{
+                    background-color:#FF8000;
+                }
+                li#fruit{
+                    background-color:#FFFF00;
+                }
+                li#spice{
+                    background-color:#00CC00;
+                }
+                li#other{
+                    background-color:#0000FF;
+                }
+
+            }
+        }
+    }
+    
+}
