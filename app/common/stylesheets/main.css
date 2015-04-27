@@ -87,7 +87,10 @@ main.items {
   height: 100%;
   background-color: #fff; }
   main.items section.options {
-    width: 100%; }
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: #888; }
     main.items section.options ul {
       margin: 0 auto;
       padding: 10px 0;
@@ -108,6 +111,7 @@ main.items {
       main.items section.options ul li:last-child {
         float: right; }
   main.items section.ingreds {
+    padding-top: 60px;
     width: 100%;
     min-height: 100%;
     background-color: #F8F6F7; }
@@ -119,13 +123,13 @@ main.items {
       overflow: auto; }
       main.items section.ingreds ul li {
         float: left;
-        margin: 0 5px 30px 0;
-        padding: 20px 7px;
+        margin: 0 5px 5px 0;
+        padding: 5px;
         width: calc((100% - 15px) / 4);
         background-color: #fff;
-        box-shadow: 0    -1px 0 #f6f6f6, 1px  0    0 #ebebeb, 0    1px  1px #dadada, -1px 0    0 #ebebeb; }
+        border: 1px solid #e5e5e5;
+        border-radius: 3px; }
         main.items section.ingreds ul li div.ingred-content {
-          padding: 5px 10px;
           width: 100%; }
           main.items section.ingreds ul li div.ingred-content span {
             display: block;
@@ -135,8 +139,17 @@ main.items {
             text-overflow: ellipsis;
             font-size: 10px;
             color: #666; }
+          main.items section.ingreds ul li div.ingred-content img {
+            display: block;
+            width: 100%; }
       main.items section.ingreds ul li:nth-child(4n) {
         margin-right: 0; }
+      main.items section.ingreds ul div.shelf {
+        float: left;
+        margin-bottom: 15px;
+        width: 100%;
+        height: 5px;
+        background-color: #ccc; }
 
 main.categories {
   position: absolute;
@@ -172,7 +185,31 @@ main.categories {
         margin-right: 0; }
 
 main.results {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background-color: #fff; }
+  main.results section.options {
+    width: 100%; }
+    main.results section.options ul {
+      margin: 0 auto;
+      padding: 10px 0;
+      width: 60%;
+      list-style: none;
+      overflow: auto; }
+      main.results section.options ul li {
+        text-align: center; }
+        main.results section.options ul li i {
+          display: block;
+          font-size: 35px;
+          color: #aaa; }
+        main.results section.options ul li span {
+          font-size: 13px;
+          color: #aaa; }
+      main.results section.options ul li:first-child {
+        float: left; }
+      main.results section.options ul li:last-child {
+        float: right; }
   main.results section.recipes {
     margin: 0 auto;
     width: 95%; }
@@ -255,47 +292,6 @@ main.results {
       main.results section.recipes ul li.active div.recipe-left i.fa-beer {
         display: inline-block;
         background-color: #777; }
-  main.results section.active-recipe {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    padding: 10px;
-    width: 100%;
-    height: 140px;
-    background-color: #666;
-    box-shadow: 0 -1px 0 #e7e8e9;
-    z-index: 10;
-    overflow: auto; }
-    main.results section.active-recipe h2.title {
-      margin-bottom: 5px;
-      font-size: 20px; }
-    main.results section.active-recipe h2.title.none-active {
-      font-size: 19px;
-      color: #aaa; }
-    main.results section.active-recipe h3.description {
-      font-size: 12px;
-      color: #999999; }
-    main.results section.active-recipe div.ingredient-list ul h3 {
-      display: inline-block;
-      margin-right: 3px;
-      font-size: 16px;
-      color: #505050; }
-    main.results section.active-recipe div.ingredient-list ul li {
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      padding: 0px 6px;
-      font-size: 14px;
-      color: #eee;
-      border-radius: 3px; }
-    main.results section.active-recipe div.ingredient-list ul li:last-child {
-      margin-right: 0; }
-    main.results section.active-recipe div.ingredient-list.have {
-      margin-bottom: 5px; }
-      main.results section.active-recipe div.ingredient-list.have ul li {
-        background-color: #60C497; }
-    main.results section.active-recipe div.ingredient-list.need ul li {
-      background-color: #FF7566; }
 
 section.drawer {
   position: absolute;

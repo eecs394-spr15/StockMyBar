@@ -7,46 +7,52 @@
 	</super-navbar>
 
 
-	<section class="recipes">
+	<section class="options">
 		<ul>
-			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
-
-				<div class="recipe-left">
-					<i class="fa fa-glass" ng-hide="recipe.addedToCart"></i>
-					<i class="fa fa-cart-plus" ng-click="addToCart($index)" ng-hide="recipe.addedToCart"></i>
-					<i class="fa fa-cart-arrow-down" ng-click="removeFromCart($index)" ng-show="recipe.addedToCart"></i>
-
-					<h2 ng-click="show($index)">{{recipe.name}}</br><font size="1" style="line-height:1px" color="#00CCCC">{{recipe.ingredListOffHand.length}} more ingredients needed</font></h2>
-						<div id="item-{{$index}}" class="text">
-							<h4>Description</h4>
-							<p>{{recipe.description}}</p>
-							<h4>Directions</h4>
-							<p>{{recipe.directions}}</p>
-						</div>
-				</div>
-
-			</li>
+			<super-navigate location="results#shoppingcart">
+				<li>
+					<i class="fa fa-shopping-cart"></i>
+					<span>SHOPPING LIST</span>
+				</li>
+			</super-navigate>
 		</ul>
 	</section>
 
 
-	<section class="active-recipe">
-		<h2 class="title none-active" ng-if="noneActive">Choose a recipe...</h2>
-		<div ng-if="!noneActive">
-			<h2 class="title">{{activeRecipe.name}}</h2>
-			<div class="have ingredient-list">
-				<ul>
-					<h3>Have</h3>
-					<li ng-repeat="ingredient in haveIngredients">{{ingredient.name}}</li>
-				</ul>
-			</div>
-			<div class="need ingredient-list">
-				<ul>
-					<h3>Need</h3>
-					<li ng-repeat="ingredient in neededIngredients">{{ingredient.name}}</li>
-				</ul>
-			</div>
-		</div>
+	<section class="recipes">
+		<ul>
+			<li ng-class="{active: $index == selected}">
+				<img src="http://img1.sunset.timeinc.net/sites/default/files/image/2005/07/mojito-mint-m-m.jpg" />
+				<div class="recipe-description">
+					<h3>Mojito</h3>
+					<span>You have everything!</span>
+				</div>
+				<div class="recipe-metas">
+					<i class="fa fa-plus-square"></i>
+					<i class="fa fa-info-circle"></i>
+				</div>
+				<div class="recipe-more">
+					<h4>Description</h4>
+					<p>
+						A traditional Cuban drink, its combination of sweetness,
+						refreshing citrus, and mint flavors is intended to complement
+						the potent kick of the rum, and has made this clear highball
+						a popular summer drink.
+					</p>
+					<h4>Needed</h4>
+					<ul class="needed">
+						<li>White rum</li>
+						<li>Lime juice</li>
+					</ul>
+					<h4>Preparation</h4>
+					<ul class="preparation">
+						<li>Add lime juice to sugar and mint leaves</li>
+						<li>Add rum and stir</li>
+						<li>Top it off with ice cubes and sparkling soda water</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
 	</section>
 
 
