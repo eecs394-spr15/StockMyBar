@@ -7,8 +7,11 @@ angular
 
 
        
+        /*
+         * UI Interaction Functionality
+         */
 
-
+        // Clear all ingredients from user's bar
         $scope.clearAllItems = function() {
             $scope.ingredIdList = [];
             $scope.ingredList = [];
@@ -24,6 +27,7 @@ angular
         /*
          * Styling
          */
+
         // Inject shelves
         setTimeout(function() {
             $('section.ingreds ul li:nth-child(4n)').each(function() {

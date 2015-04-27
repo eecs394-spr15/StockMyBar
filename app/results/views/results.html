@@ -28,10 +28,10 @@
 					<span>You have everything!</span>
 				</div>
 				<div class="recipe-metas">
-					<i class="fa fa-plus-square"></i>
-					<i class="fa fa-info-circle"></i>
+					<i class="add-recipe fa fa-plus-square"></i>
+					<i class="recipe-info fa fa-info-circle"></i>
 				</div>
-				<div class="recipe-more">
+				<div ng-if="selected" class="recipe-more">
 					<h4>Description</h4>
 					<p>
 						A traditional Cuban drink, its combination of sweetness,
@@ -41,8 +41,6 @@
 					</p>
 					<h4>Needed</h4>
 					<ul class="needed">
-						<li>White rum</li>
-						<li>Lime juice</li>
 					</ul>
 					<h4>Preparation</h4>
 					<ul class="preparation">
@@ -51,6 +49,68 @@
 						<li>Top it off with ice cubes and sparkling soda water</li>
 					</ul>
 				</div>
+				<hr>
+			</li>
+			<li ng-class="{active: $index == selected}">
+				<img src="http://liquor.s3.amazonaws.com/wp-content/uploads/2013/07/Long-Island-Iced-Tea.jpg" />
+				<div class="recipe-description">
+					<h3>Long Island Iced Tea</h3>
+					<span>1 more ingredient needed</span>
+				</div>
+				<div class="recipe-metas">
+					<i class="add-recipe fa fa-plus-square"></i>
+					<i class="recipe-info fa fa-info-circle"></i>
+				</div>
+				<div ng-if="selected" class="recipe-more">
+					<h4>Description</h4>
+					<p>
+						Named because of the resemblance to the color and taste of iced
+						tea, this drink uses equal portions of the main liquors but can
+						replace some with different types of soda.
+					</p>
+					<h4>Needed</h4>
+					<ul class="needed">
+						<li>Light rum</li>
+					</ul>
+					<h4>Preparation</h4>
+					<ul class="preparation">
+						<li>Add lime juice to sugar and mint leaves</li>
+						<li>Add rum and stir</li>
+						<li>Top it off with ice cubes and sparkling soda water</li>
+					</ul>
+				</div>
+				<hr>
+			</li>
+			<li ng-class="{active: $index == selected}">
+				<img src="http://ateliervie.com/wp-content/uploads/2013/11/660-gin-tonic-sq-JNH_5920.jpg" />
+				<div class="recipe-description">
+					<h3>Gin and Tonic</h3>
+					<span>2 more ingredient needed</span>
+				</div>
+				<div class="recipe-metas">
+					<i class="add-recipe fa fa-plus-square"></i>
+					<i class="recipe-info fa fa-info-circle"></i>
+				</div>
+				<div ng-if="selected" class="recipe-more">
+					<h4>Description</h4>
+					<p>
+						A highball cocktail that is usually garnished with a slice
+						or wedge of lime. In some countries, it's even pre-mixed
+						in single-serving cans!
+					</p>
+					<h4>Needed</h4>
+					<ul class="needed">
+						<li>Gin</li>
+						<li>Tonic</li>
+					</ul>
+					<h4>Preparation</h4>
+					<ul class="preparation">
+						<li>Add lime juice to sugar and mint leaves</li>
+						<li>Add rum and stir</li>
+						<li>Top it off with ice cubes and sparkling soda water</li>
+					</ul>
+				</div>
+				<hr>
 			</li>
 		</ul>
 	</section>
