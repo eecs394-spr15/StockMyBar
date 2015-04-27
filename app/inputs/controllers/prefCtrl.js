@@ -55,6 +55,7 @@ angular
             localStorage.prefIdList = JSON.stringify($scope.prefIdList);
             localStorage.prefList = JSON.stringify($scope.prefList);
             supersonic.data.channel('prefIdList').publish($scope.prefIdList);
+            supersonic.data.channel('prefList').publish($scope.prefList);
             $scope.apply();
         };
 
