@@ -2,33 +2,33 @@
 
 
 	<super-navbar class="navbar">
-		<super-navbar-title>Categories</super-navbar-title>
+		<super-navbar-title>Pick A Category</super-navbar-title>
 	</super-navbar>
 
 
 	<section class="category-grid">
 		<ul>
-			<li>
+			<li ng-click="chooseCategory('liquor')">
 				<span>5 selected</span>
 				<h4>Liquors</h4>
 			</li>
-			<li>
+			<li ng-click="chooseCategory('mixer')">
 				<span>5 selected</span>
 				<h4>Mixers</h4>
 			</li>
-			<li>
+			<li ng-click="chooseCategory('fruit')">
 				<span>5 selected</span>
 				<h4>Fruits</h4>
 			</li>
-			<li>
+			<li ng-click="chooseCategory('spice')">
 				<span>5 selected</span>
 				<h4>Spices</h4>
 			</li>
-			<li>
+			<li ng-click="chooseCategory('other')">
 				<span>5 selected</span>
 				<h4>Other</h4>
 			</li>
-			<li>
+			<li ng-click="chooseCategory('all')">
 				<span>5 selected</span>
 				<h4>View All</h4>
 			</li>

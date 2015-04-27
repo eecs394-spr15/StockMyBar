@@ -1,12 +1,12 @@
-<main class="itemSelect" ng-controller="InputCtrl">
+<main class="item-select" ng-controller="InputCtrl">
 
 
     <super-navbar class="navbar">
-        <super-navbar-title>Add Items</super-navbar-title>
+        <super-navbar-title>Choose An Item</super-navbar-title>
     </super-navbar>
 
 
-    <section class="bar bar-header item-input-inset">
+    <section class="search bar bar-header item-input-inset">
         <label class="item-input-wrapper">
             <i class="icon super-ios7-search placeholder-icon"></i>
             <input type="search" placeholder="Search" ng-model="searchBarText">
@@ -14,33 +14,22 @@
         </label>
     </section>
 
-    <section class="categories">
-        <table class="item-categories list">
-            <tr>
-            <td ng-click="setCategory('liquor')" ng-class="{active: 'liquor'==category}">Liquors</td>
-            <td ng-click="setCategory('mixer')" ng-class="{active: 'mixer'==category}">Mixers</td>
-            <td ng-click="setCategory('fruit')" ng-class="{active: 'fruit'==category}">Fruits</td>
-            <td ng-click="setCategory('spice')" ng-class="{active: 'spice'==category}">Spices</td>
-            <td ng-click="setCategory('other')" ng-class="{active: 'other'==category}">Other</td>
-            </tr>
-        </table>
-    </section>
 
-
-    <section>
-        <ul class="item-list list">
-            <li class="item item-checkbox" ng-repeat="item in allIngredients | addItemsList:ingredIdList:searchBarText:category | orderBy: 'name'">
-                <label class="checkbox">
-                    <input type="checkbox" ng-model="checkedIngredients[item.id]" ng-click="supersonic.device.vibrate()">
-                </label>
-                <i class="fa fa-beer"></i>
-                {{item.name}}
+    <section class="ingredients">
+        <ul>
+            <li class="ingredient" ng-class="{selected: $index % 3 == 0}" ng-repeat="item in allIngredients | addItemsList:ingredIdList:searchBarText:category | orderBy: 'name'">
+                <img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />                
+                <div class="ingredient-info">
+                    <h3>Strawberries</h3>
+                    <span>Lorem ipsum dolor sit amet</span>
+                </div>
+                <div class="meta-info">
+                    <span>Liquor</span>
+                </div>
+                <hr>
             </li>
         </ul>
     </section>
 
-    <div class="item_select_buttons">
-        <button class="confirm" ng-click="confirm()">Confirm</button>
-    </div>
 
 </main>

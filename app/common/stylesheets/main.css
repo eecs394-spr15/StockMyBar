@@ -91,7 +91,7 @@ main.items {
     main.items section.options ul {
       margin: 0 auto;
       padding: 10px 0;
-      width: 90%;
+      width: 60%;
       list-style: none;
       overflow: auto; }
       main.items section.options ul li {
@@ -99,10 +99,10 @@ main.items {
         main.items section.options ul li i {
           display: block;
           font-size: 35px;
-          color: #5F6D8B; }
+          color: #aaa; }
         main.items section.options ul li span {
           font-size: 13px;
-          color: #5F6D8B; }
+          color: #aaa; }
       main.items section.options ul li:first-child {
         float: left; }
       main.items section.options ul li:last-child {
@@ -156,12 +156,18 @@ main.categories {
         margin: 0 10px 10px 0;
         width: calc((100% - 10px) / 2);
         background-color: #F8F6F7;
-        box-shadow: 0    -1px 0 #f6f6f6, 1px  0    0 #ebebeb, 0    1px  1px #dadada, -1px 0    0 #ebebeb; }
+        border: 1px solid #e5e5e5;
+        border-radius: 3px; }
         main.categories section.category-grid ul li span {
-          font-size: 10px; }
+          float: right;
+          padding: 5px 10px 0 0;
+          font-size: 13px;
+          color: #888; }
         main.categories section.category-grid ul li h4 {
-          padding: 25px 0;
-          font-size: 15px; }
+          padding: 55px 0;
+          font-size: 17px;
+          color: #888;
+          text-align: center; }
       main.categories section.category-grid ul li:nth-child(2n) {
         margin-right: 0; }
 
@@ -304,34 +310,50 @@ section.drawer {
         width: 100%;
         color: #ddd; }
 
-main.itemSelect section.categories table.item-categories {
-  width: 100%;
-  padding-left: 1em;
-  padding-right: 1em;
-  background-color: white; }
-  main.itemSelect section.categories table.item-categories td {
-    padding: 0.8em 0.7em;
-    text-align: center;
-    border-width: 1px;
-    border-style: ridge; }
-  main.itemSelect section.categories table.item-categories td.active {
-    padding: 0.8em 0.7em;
-    text-align: center;
-    border-width: 1px;
-    border-style: ridge; }
-main.itemSelect button.confirm {
-  padding: 8px;
-  font-size: 20px;
-  color: #fff;
-  border: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3em;
-  box-shadow: 0 -1px 0 #e7e8e9;
-  z-index: 10;
-  overflow: auto; }
+main.item-select section.ingredients ul {
+  list-style: none; }
+  main.item-select section.ingredients ul li {
+    padding: 6px 10px 0 10px;
+    width: 100%;
+    overflow: auto; }
+    main.item-select section.ingredients ul li img {
+      float: left;
+      margin-right: 10px;
+      width: 60px;
+      vertical-align: top; }
+    main.item-select section.ingredients ul li div.ingredient-info {
+      float: left;
+      margin-right: 10px;
+      width: calc(100% - 60px - 40px - 10px - 10px);
+      vertical-align: top; }
+      main.item-select section.ingredients ul li div.ingredient-info h3 {
+        font-family: 15px;
+        color: #888; }
+      main.item-select section.ingredients ul li div.ingredient-info span {
+        font-family: 13px;
+        color: #aaa; }
+    main.item-select section.ingredients ul li div.meta-info {
+      float: right;
+      width: 40px;
+      vertical-align: top; }
+      main.item-select section.ingredients ul li div.meta-info span {
+        color: #888; }
+    main.item-select section.ingredients ul li hr {
+      clear: both;
+      float: right;
+      margin-top: 8px;
+      margin-bottom: 0;
+      width: calc(100% - 70px);
+      border: 1px solid #eee;
+      border-style: solid none none none; }
+  main.item-select section.ingredients ul li.selected {
+    background-color: #50CEE4; }
+    main.item-select section.ingredients ul li.selected div.ingredient-info h3 {
+      color: #fff; }
+    main.item-select section.ingredients ul li.selected div.ingredient-info span {
+      color: #fff; }
+    main.item-select section.ingredients ul li.selected div.meta-info span {
+      color: #fff; }
 
 /* Globals */
 html, body, div, span, h1, h2, h3, h4,
