@@ -7,14 +7,9 @@
 			<!--<super-navbar-button side="left" ng-click="reset()">Reset</super-navbar-button>-->
 	</super-navbar>
 
-
-	<h2 ng-show="noRecipesDisplayed">Pick some ingredients in order to get some recipes!</h2>
-
-
-
-
 	<section class="recipes">
 		<ul>
+			<h3 style="background-color:#60C497; margin-left:auto; margin-right:auto;" onclick="supersonic.ui.tabs.select(2)" ng-show="noRecipesDisplayed">Tap here to add some ingredients to your bar</h3>
 			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
 				<div class="recipe-left">
 					<i class="fa fa-glass" ng-hide="recipe.addedToCart"></i>

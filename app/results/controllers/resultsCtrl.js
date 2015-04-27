@@ -10,7 +10,7 @@ angular
 
 		var ingList = [];
 		$scope.recipes = [];
-		$scope.noRecipesDisplayed = false;
+		$scope.noRecipesDisplayed = true;
 		$scope.noneActive = true;
 		$scope.ingredShoppingList = angular.isDefined(localStorage.ingredShoppingList) ? JSON.parse(localStorage.ingredShoppingList) : [];
 		$scope.recipeShoppingList = [];
@@ -111,6 +111,10 @@ angular
 		$scope.show = function(index) {
 			$('#item-' + index).slideToggle("fast");
 		};
+
+		$scope.goToItems = function(){
+			$location.path("inputs#items");
+		}
 
 		/* Change activeRecipe on UI click */
 		$scope.activateRecipe = function(index) {
