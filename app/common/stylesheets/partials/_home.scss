@@ -16,12 +16,11 @@ main.home {
 
 			li {
 				float: left;
+				padding: 20px;
 				text-align: center;
 				background-color: #fff;
-				box-shadow: 0    -1px 0 #f6f6f6,
-							1px  0    0 #ebebeb,
-							0    1px  1px #dadada,
-							-1px 0    0 #ebebeb;
+				border: 1px solid #e5e5e5;
+				border-radius: 3px;
 
 				i {
 					font-size: 55px;
@@ -35,7 +34,6 @@ main.home {
 			}
 			li#prefs, li#bar {
 				margin-top: 1px;
-				padding: 20px;
 				width: calc((100% - 12px) / 2);
 			}
 			li#prefs {
@@ -47,87 +45,10 @@ main.home {
 			}
 			li#recipes {
 				margin: 10px 0 1px 1px;
-				padding: 35px 20px;
 				width: calc(100% - 2px);
 			}
 		}
 	}
 
 
-	section.tabbed-info {
-		position: fixed;
-		bottom: 0;
-		width: 100%;
-		background-color: #fff;
-		border-top: 1px solid #f6f6f6 inset;
-
-		ul.tab-select {
-			margin-bottom: 40px;
-			list-style: none;
-			overflow: auto;
-
-			li {
-				float: left;
-				padding: 7px 12px;
-				width: calc(100% / 2);
-				font-weight: bold;
-				font-size: 15px;
-				color: #aaa;
-				background-color: #eee;
-			}
-			li.active {
-				color: #888;
-				background-color: #fff;
-			}
-		}
-		div.tab-content {
-			width: 100%;
-			text-align: center;
-
-			ul.steps {
-				margin-bottom: 30px;
-				list-style: none;
-
-				li {
-					display: inline-block;
-				}
-				li.step {
-					width: 70px;
-					vertical-align: top;
-
-					i {
-						margin-bottom: 8px;
-						padding: 15px;
-						font-size: 28px;
-						color: #bbb;
-						background-color: $color-4;
-						border-radius: 50%;
-					}
-					span {
-						display: block;
-						font-size: 11px;
-						font-weight: 400;
-						line-height: 14px;
-						color: #444;
-					}
-				}
-				li.arrow {
-					vertical-align: top;
-
-					i {
-						margin-top: 15px;
-						font-size: 30px;
-						color: #ccc;
-					}
-				}
-				li.step:last-child {
-
-					i {
-						color: darken($color-1, 30%);
-						background-color: $color-1;
-					}
-				}
-			}
-		}
-	}
 }

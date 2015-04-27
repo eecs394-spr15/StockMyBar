@@ -12,10 +12,12 @@
 				<i class="fa fa-times"></i>
 				<span>CLEAR</span>
 			</li>
-			<li ng-click="addItems()">
-				<i class="fa fa-plus-square-o"></i>
-				<span>ADD</span>
-			</li>
+			<super-navigate location="inputs#categories">
+				<li>
+					<i class="fa fa-plus-square-o"></i>
+					<span>ADD</span>
+				</li>
+			</super-navigate>
 		</ul>
 	</section>
 

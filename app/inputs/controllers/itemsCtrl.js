@@ -67,10 +67,4 @@ angular
         $scope.showButton = function(index){
             return $scope.showActions && (index==$scope.selected);
         }
-
-        /* Open Add Items menu */
-        $scope.addItems = function() {
-            supersonic.ui.modal.show("inputs#itemSelect");
-            supersonic.logger.log($scope.ingredIdList);
-        }
     });
