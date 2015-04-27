@@ -186,11 +186,6 @@ Parse.Cloud.define("search4RecipesByPreferences", function(request, response) {
             recipeJSList.push(addRecipeJS);
         }
         //response.success(recipeJSList);
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 85fa76fff8ca538ce7fa9bdd1928e529310979f4
         var queryJT = new Parse.Query("Join_Table");
         queryJT.include("recipe");
         queryJT.include("ingredient");
@@ -201,19 +196,10 @@ Parse.Cloud.define("search4RecipesByPreferences", function(request, response) {
             for(var j=0; j<results1.length;j++){
                 for(var k=0; k<recipeJSList.length;k++){
                     if (recipeJSList[k].id == results1[j].get("recipe").id){
-<<<<<<< HEAD
                         recipeJSList[k].ingredListOffHand.push(createIngredPartJS(results1[j].get("ingredient").id,results1[j].get("ingredient").get("name"),results1[j].get("ingredient").get("optional"), results1[j].get("ingredient").get("assumed")));
                         break;
                     }
                 }
-
-=======
-                        recipeJSList[k].ingredListOffHand.push(createIngredPartJS(results1[j].get("ingredient").id,results1[j].get("ingredient").get("name"),results1[j].get("ingredient").get("optional")));
-                        break;
-                    }
-                }
-
->>>>>>> 85fa76fff8ca538ce7fa9bdd1928e529310979f4
             }
             recipeJSList.sort(function(a,b){
                 if ((a.ingredListOffHand.length - b.ingredListOffHand.length) == 0){
@@ -235,11 +221,6 @@ Parse.Cloud.define("search4RecipesByPreferences", function(request, response) {
             response.error("ingred query failed!");
         }
         });
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 85fa76fff8ca538ce7fa9bdd1928e529310979f4
     },
     error: function() {
         response.error("result no!!!");
