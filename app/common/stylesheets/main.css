@@ -72,9 +72,11 @@ main.home {
         margin-left: 1px; }
       main.home section.dash ul li#bar {
         margin-right: 1px; }
-      main.home section.dash ul li#recipes {
+      main.home section.dash ul li#recipes, main.home section.dash ul li#shopping {
         margin: 10px 0 1px 1px;
         width: calc(100% - 2px); }
+      main.home section.dash ul li#shopping {
+        padding: 40px 20px; }
 
 main.items {
   position: absolute;
