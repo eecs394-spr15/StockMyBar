@@ -1,75 +1,199 @@
 /* Partials */
 /* Typography */
 @font-face {
-  font-family: "lovelo";
-  src: url("../../../fonts/lovelo/lovelo.otf"); }
+  font-family: "Brush Script MT";
+  src: url("../../../fonts/BrushScript/BrushScriptStd.otf"); }
 /* Colors */
 /* Modules */
 /* Partials */
+main.splash {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #50CEE4; }
+  main.splash section.banner {
+    position: absolute;
+    top: 50%;
+    margin-top: -210px;
+    width: 100%;
+    text-align: center; }
+    main.splash section.banner i {
+      padding: 20px;
+      font-size: 86px;
+      color: #fff;
+      opacity: 0.20;
+      border: 1px solid #fff;
+      border-radius: 50%; }
+    main.splash section.banner h1 {
+      margin-top: 30px;
+      font-family: "Brush Script MT";
+      font-size: 48px;
+      color: #fff; }
+    main.splash section.banner p {
+      margin: 3px auto 0 auto;
+      width: 270px;
+      font-size: 15px;
+      line-height: 23px;
+      color: #fff;
+      opacity: 0.70; }
+    main.splash section.banner button {
+      margin-top: 50px;
+      padding: 14px 54px;
+      font-size: 14px;
+      color: #fff;
+      border: 1px solid #fff; }
+
 main.home {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #eeeced; }
-  main.home div.banner {
-    position: absolute;
-    top: 50%;
-    margin-top: -35px;
+  background-color: #F8F6F7; }
+  main.home section.dash {
+    padding: 10px;
     width: 100%;
-    text-align: center; }
-    main.home div.banner h1 {
-      font-family: "lovelo";
-      font-size: 40px;
-      color: #71747b; }
-    main.home div.banner button {
-      margin-top: 12px;
-      padding: 8px 14px;
-      font-size: 20px;
-      color: #fff;
-      background-color: #34cbc6;
-      border: none;
-      border-radius: 3px; }
+    background-color: #F8F6F7; }
+    main.home section.dash ul {
+      list-style: none;
+      overflow: auto; }
+      main.home section.dash ul li {
+        float: left;
+        text-align: center;
+        background-color: #fff;
+        box-shadow: 0    -1px 0 #f6f6f6, 1px  0    0 #ebebeb, 0    1px  1px #dadada, -1px 0    0 #ebebeb; }
+        main.home section.dash ul li i {
+          font-size: 55px;
+          color: #bbb; }
+        main.home section.dash ul li h3 {
+          margin-top: 14px;
+          font-size: 16px;
+          color: #888; }
+      main.home section.dash ul li#prefs, main.home section.dash ul li#bar {
+        margin-top: 1px;
+        padding: 20px;
+        width: calc((100% - 12px) / 2); }
+      main.home section.dash ul li#prefs {
+        margin-right: 10px;
+        margin-left: 1px; }
+      main.home section.dash ul li#bar {
+        margin-right: 1px; }
+      main.home section.dash ul li#recipes {
+        margin: 10px 0 1px 1px;
+        padding: 35px 20px;
+        width: calc(100% - 2px); }
+  main.home section.tabbed-info {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #f6f6f6 inset; }
+    main.home section.tabbed-info ul.tab-select {
+      margin-bottom: 40px;
+      list-style: none;
+      overflow: auto; }
+      main.home section.tabbed-info ul.tab-select li {
+        float: left;
+        padding: 7px 12px;
+        width: calc(100% / 2);
+        font-weight: bold;
+        font-size: 15px;
+        color: #aaa;
+        background-color: #eee; }
+      main.home section.tabbed-info ul.tab-select li.active {
+        color: #888;
+        background-color: #fff; }
+    main.home section.tabbed-info div.tab-content {
+      width: 100%;
+      text-align: center; }
+      main.home section.tabbed-info div.tab-content ul.steps {
+        margin-bottom: 30px;
+        list-style: none; }
+        main.home section.tabbed-info div.tab-content ul.steps li {
+          display: inline-block; }
+        main.home section.tabbed-info div.tab-content ul.steps li.step {
+          width: 70px;
+          vertical-align: top; }
+          main.home section.tabbed-info div.tab-content ul.steps li.step i {
+            margin-bottom: 8px;
+            padding: 15px;
+            font-size: 28px;
+            color: #bbb;
+            background-color: #F8F6F7;
+            border-radius: 50%; }
+          main.home section.tabbed-info div.tab-content ul.steps li.step span {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 14px;
+            color: #444; }
+        main.home section.tabbed-info div.tab-content ul.steps li.arrow {
+          vertical-align: top; }
+          main.home section.tabbed-info div.tab-content ul.steps li.arrow i {
+            margin-top: 15px;
+            font-size: 30px;
+            color: #ccc; }
+        main.home section.tabbed-info div.tab-content ul.steps li.step:last-child i {
+          color: #157586;
+          background-color: #50CEE4; }
 
 main.items {
-  background-color: #eeeced; }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; }
+  main.items section.options {
+    width: 100%; }
+    main.items section.options ul {
+      margin: 0 auto;
+      padding: 10px 0;
+      width: 90%;
+      list-style: none;
+      overflow: auto; }
+      main.items section.options ul li {
+        text-align: center; }
+        main.items section.options ul li i {
+          display: block;
+          font-size: 35px;
+          color: #5F6D8B; }
+        main.items section.options ul li span {
+          font-size: 13px;
+          color: #5F6D8B; }
+      main.items section.options ul li:first-child {
+        float: left; }
+      main.items section.options ul li:last-child {
+        float: right; }
   main.items section.ingreds {
-    margin: 0 auto;
-    width: 95%; }
+    width: 100%;
+    min-height: 100%;
+    background-color: #F8F6F7; }
     main.items section.ingreds ul {
-      padding: 5px 0 150px 0;
-      list-style: none; }
+      margin: 0 auto;
+      padding: 25px 0 15px 0;
+      width: 90%;
+      list-style: none;
+      overflow: auto; }
       main.items section.ingreds ul li {
-        margin-bottom: 5px;
+        float: left;
+        margin: 0 5px 30px 0;
+        padding: 20px 7px;
+        width: calc((100% - 15px) / 4);
         background-color: #fff;
-        box-shadow: 1px  0    0 #d6d7d8, 0    1px  1px #cccdce, -1px 0    0 #d6d7d8, 0    -1px 0 #e7e8e9;
-        overflow: auto; }
-        main.items section.ingreds ul li div.ingred-left {
-          float: left;
-          padding: 5px 10px; }
-          main.items section.ingreds ul li div.ingred-left i {
-            margin-right: 7px;
-            padding: 8px;
-            width: 35px;
-            text-align: center;
-            font-size: 20px;
-            color: #fff;
-            background-color: #ddd;
-            border-radius: 50%; }
-          main.items section.ingreds ul li div.ingred-left i.fa-beer {
-            display: inline-block; }
-          main.items section.ingreds ul li div.ingred-left h2 {
-            display: inline-block;
-            width: 200px;
-            vertical-align: center;
+        box-shadow: 0    -1px 0 #f6f6f6, 1px  0    0 #ebebeb, 0    1px  1px #dadada, -1px 0    0 #ebebeb; }
+        main.items section.ingreds ul li div.ingred-content {
+          padding: 5px 10px;
+          width: 100%; }
+          main.items section.ingreds ul li div.ingred-content span {
+            display: block;
+            width: 100%;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            padding: 6px 0;
-            font-size: 17px;
-            color: #555; }
+            font-size: 10px;
+            color: #666; }
+      main.items section.ingreds ul li:nth-child(4n) {
+        margin-right: 0; }
 
 main.results {
-  background-color: #eeeced; }
+  background-color: #fff; }
   main.results section.recipes {
     margin: 0 auto;
     width: 95%; }
@@ -152,8 +276,6 @@ main.results {
       main.results section.recipes ul li.active div.recipe-left i.fa-beer {
         display: inline-block;
         background-color: #777; }
-      main.results section.recipes ul li.active div.recipe-left h2 {
-        color: #56bcd5; }
   main.results section.active-recipe {
     position: fixed;
     bottom: 0;
@@ -167,8 +289,7 @@ main.results {
     overflow: auto; }
     main.results section.active-recipe h2.title {
       margin-bottom: 5px;
-      font-size: 20px;
-      color: #56bcd5; }
+      font-size: 20px; }
     main.results section.active-recipe h2.title.none-active {
       font-size: 19px;
       color: #aaa; }
@@ -224,13 +345,11 @@ main.itemSelect section.categories table.item-categories {
     padding: 0.8em 0.7em;
     text-align: center;
     border-width: 1px;
-    border-style: ridge;
-    background-color: #34cbc6; }
+    border-style: ridge; }
 main.itemSelect button.confirm {
   padding: 8px;
   font-size: 20px;
   color: #fff;
-  background-color: #34cbc6;
   border: none;
   position: fixed;
   bottom: 0;
@@ -249,7 +368,6 @@ label, table, caption {
   padding: 0; }
 
 html, body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #eeeced; }
+  font-family: Arial, Arial, sans-serif; }
 
 /*# sourceMappingURL=main.css.map */

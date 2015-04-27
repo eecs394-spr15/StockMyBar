@@ -3,18 +3,30 @@
 
 	<super-navbar class="navbar">
 		<super-navbar-title>My Bar</super-navbar-title>
-		<super-navbar-button side="left" ng-click="clearAllItems()">Clear All</super-navbar-button>
-		<super-navbar-button side="right" class="add" ng-click="addItems()">Add Items</super-navbar-button>
 	</super-navbar>
 
-	<section class = "ingreds">
+
+	<section class="options">
 		<ul>
-			<div  ng-swipe-right="showActions = false">
+			<li ng-click="clearAllItems()">
+				<i class="fa fa-times"></i>
+				<span>CLEAR</span>
+			</li>
+			<li ng-click="addItems()">
+				<i class="fa fa-plus-square-o"></i>
+				<span>ADD</span>
+			</li>
+		</ul>
+	</section>
+
+
+	<section class="ingreds">
+		<ul>
+			<div ng-swipe-right="showActions=false">
 				<li ng-swipe-left="showDeleteButton($index)" ng-repeat="ingred in ingredList | orderBy: 'name' ">
-					<div class="ingred-left">
-						<i class="fa fa-beer"></i>
-						<h2 >{{ingred.name}}</h2>
-						<button ng-show="showButton($index)" ng-click="cancel($index)" style="  width:25%; background-color: #CC0022; color: white;float:right;">Delete</button>
+					<div class="ingred-content">
+						<span>{{ingred.name}}</span>
+						<!-- <button ng-show="showButton($index)" ng-click="cancel($index)" style="  width:25%; background-color: #CC0022; color: white;float:right;">Delete</button> -->
 					</div>
 				</li>
 			</div>

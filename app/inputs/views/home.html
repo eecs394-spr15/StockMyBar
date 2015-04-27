@@ -1,12 +1,61 @@
 <main class="home" ng-controller="HomeCtrl">
 
 
-	<div class="banner">
-		<h1>Stock My Bar</h1>
-		<button class="preferences" style="display:block; margin-left:auto; margin-right:auto;" onclick="supersonic.ui.tabs.select(1)">Set Your Preferences</button>
-		<button class="ingredients" style="display:block; margin-left:auto; margin-right:auto;" onclick="supersonic.ui.tabs.select(2)">Add Your Drinks</button>
-		<button class="recipes" style="display:block; margin-left:auto; margin-right:auto;" onclick="supersonic.ui.tabs.select(3)">See Recipes</button>
-	</div>
+	<super-navbar class="navbar">
+		<super-navbar-title>Home</super-navbar-title>
+	</super-navbar>
+
+
+	<section class="dash">
+		<ul>
+			<super-navigate location="inputs#prefs">
+				<li id="prefs">
+					<i class="fa fa-sliders"></i>
+					<h3>Preferences</h3>
+				</li>
+			</super-navigate>
+			<super-navigate location="inputs#items">
+				<li id="bar">
+					<i class="fa fa-list"></i>
+					<h3>My Bar</h3>
+				</li>
+			</super-navigate>
+			<li id="recipes">
+				<i class="fa fa-glass"></i>
+				<h3>Recipes</h3>
+			</li>
+		</ul>
+	</section>
+
+
+	<section class="tabbed-info">
+		<ul class="tab-select">
+			<li class="active">Getting Started</li>
+			<li>Status</li>
+		</ul>
+		<div class="tab-content">
+			<ul class="steps">
+				<li class="step">
+					<i class="fa fa-sliders"></i>
+					<span>Tell us what you like</span>
+				</li>
+				<li class="arrow">
+					<i class="fa fa-long-arrow-right"></i>
+				</li>
+				<li class="step">
+					<i class="fa fa-list"></i>
+					<span>Tell us what you already have</span>
+				</li>
+				<li class="arrow">
+					<i class="fa fa-long-arrow-right"></i>
+				</li>
+				<li class="step">
+					<i class="fa fa-glass"></i>
+					<span>We'll tell you what to make</span>
+				</li>
+			</ul>
+		</div>
+	</section>
 
 
 </main>
