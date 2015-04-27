@@ -7,11 +7,17 @@ angular
         factory.allIngredients = [];
         factory.allPreferences = [];
 
-        function createIngredJS(id,name,category){
+        function createIngredJS(result){
             var obj = new Object();
-            obj.category = category;
-            obj.id = id;
-            obj.name = name;
+            obj.category = result.get('category');
+            obj.id = result.id;
+            obj.name = result.get('name');
+            obj.common_name = result.get('common_name');
+            obj.description = result.get('description');
+            obj.common = result.get('common');
+            obj.price = result.get('price');
+            obj.assumed = result.get('assumed');
+            obj.tags = result.get('tags');
             return obj;
         }
 
@@ -29,7 +35,7 @@ angular
             success: function (results) {
                 factory.allIngredients = [];
                 for (var i = 0; i < results.length; i++) {
-                    factory.allIngredients.push(createIngredJS(results[i].id,results[i].get("name"), results[i].get("category")));
+                    factory.allIngredients.push(createIngredJS(results[i]));
                 }
                 supersonic.data.channel('allIngredients').publish(factory.allIngredients);
             }, error: function(error) {
