@@ -71,16 +71,6 @@ angular
 					error: function(error){
 						supersonic.logger.log(error);
 					}
-<<<<<<< HEAD
-					for (var i=0; i<$scope.recipes.length; i++) {
-						$scope.recipes[i].count = 0;
-						$scope.recipes[i].completed = false
-					}
-					for (var i=0; i<$scope.recipes.length; i++) {
-						if ($scope.recipes[i].ingredListOffHand.length==0) {
-							$scope.recipes[i].completed = true
-						}
-=======
 				});
 			}
 		});
@@ -102,7 +92,6 @@ angular
 					}
 					if(addToList){
 						$scope.recipes.push($scope.recipesBefore[i]);
->>>>>>> feature/preference-query
 					}
 				}
 			}
