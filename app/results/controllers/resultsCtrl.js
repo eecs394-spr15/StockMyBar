@@ -10,6 +10,7 @@ angular
 
 		var ingList = [];
 		$scope.recipes = [];
+		$scope.noRecipesDisplayed = false;
 		$scope.noneActive = true;
 		$scope.ingredShoppingList = angular.isDefined(localStorage.ingredShoppingList) ? JSON.parse(localStorage.ingredShoppingList) : [];
 		$scope.recipeShoppingList = [];
@@ -36,6 +37,12 @@ angular
 					$scope.recipes = results;
 					$scope.noneActive = true;
 					$scope.selected = null;
+					if($scope.recipes.length==0){
+						$scope.noRecipesDisplayed = true;
+					}
+					else{
+						$scope.noRecipesDisplayed = false;
+					}
 					for (var i=0; i<$scope.recipes.length; i++) {
 						$scope.recipes[i].count = 0;
 					}
