@@ -264,6 +264,7 @@ main.results {
           main.results section.recipes ul li div.recipe-metas i.recipe-info {
             color: #5F6D8B; }
         main.results section.recipes ul li div.recipe-more {
+          display: none;
           float: left;
           clear: both; }
           main.results section.recipes ul li div.recipe-more h4 {
@@ -290,6 +291,38 @@ main.results {
           width: calc(100% - 110px - 10px);
           border: 1px solid #eee;
           border-style: solid none none none; }
+
+main.shopping-cart {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #F8F6F7; }
+  main.shopping-cart section.options {
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd; }
+    main.shopping-cart section.options ul {
+      margin: 0 auto;
+      padding: 10px 0;
+      width: 60%;
+      list-style: none;
+      overflow: auto; }
+      main.shopping-cart section.options ul li {
+        float: right;
+        text-align: center; }
+        main.shopping-cart section.options ul li i {
+          display: block;
+          font-size: 35px;
+          color: #aaa; }
+        main.shopping-cart section.options ul li span {
+          font-size: 13px;
+          color: #aaa; }
+  main.shopping-cart section.ingredients {
+    padding-top: 70px;
+    width: 100%;
+    min-height: 100%;
+    background-color: #F8F6F7; }
 
 section.drawer {
   position: absolute;
