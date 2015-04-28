@@ -22,7 +22,7 @@
 
 	<section class="ingreds">
 		<ul>
-			<li>
+			<li ng-repeat="ingred in ingredList | orderBy: 'name'" ng-click="selectIngredient()">
 				<div class="ingred-content">
 					<span>Strawberries</span>
 					<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
