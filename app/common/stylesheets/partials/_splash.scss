@@ -7,7 +7,7 @@ main.splash {
 	section.banner {
 		position: absolute;
 		top: 50%;
-		margin-top: -200px;
+		margin-top: -220px;
 		width: 100%;
 		text-align: center;
 
@@ -34,6 +34,35 @@ main.splash {
 			font-size: 14px;
 			color: #fff;
 			border: 1px solid #fff;
+		}
+	}
+
+
+	section.bottom-icons {
+		position: absolute;
+		bottom: 20px;
+		width: 100%;
+
+		ul {
+			margin: 0 auto;
+			width: 85%;
+
+			super-navigate {
+
+				li {
+
+					i {
+						font-size: 24px;
+						color: #fff;
+					}
+				}
+			}
+			super-navigate:first-child {
+				float: left;
+			}
+			super-navigate:last-child {
+				float: right;
+			}
 		}
 	}
 }

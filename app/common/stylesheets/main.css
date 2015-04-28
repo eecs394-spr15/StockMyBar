@@ -14,7 +14,7 @@ main.splash {
   main.splash section.banner {
     position: absolute;
     top: 50%;
-    margin-top: -200px;
+    margin-top: -220px;
     width: 100%;
     text-align: center; }
     main.splash section.banner img {
@@ -37,6 +37,20 @@ main.splash {
       font-size: 14px;
       color: #fff;
       border: 1px solid #fff; }
+  main.splash section.bottom-icons {
+    position: absolute;
+    bottom: 20px;
+    width: 100%; }
+    main.splash section.bottom-icons ul {
+      margin: 0 auto;
+      width: 85%; }
+      main.splash section.bottom-icons ul super-navigate li i {
+        font-size: 24px;
+        color: #fff; }
+      main.splash section.bottom-icons ul super-navigate:first-child {
+        float: left; }
+      main.splash section.bottom-icons ul super-navigate:last-child {
+        float: right; }
 
 main.home {
   position: absolute;
