@@ -1,21 +1,24 @@
 
 /* Typography */
 @font-face {
-	font-family: "lovelo";
-	src: url('../../../fonts/lovelo/lovelo.otf');
+	font-family: "Brush Script MT";
+	src: url('../../../fonts/BrushScript/BrushScriptStd.otf');
 }
-$base-font-family: Arial, Helvetica, sans-serif;
-$fixed-font-family: "lovelo";
+$base-font-family: Arial, Arial, sans-serif;
+$fixed-font-family: "Brush Script MT";
 $base-font-size: 13px;
 $base-line-height: 1.4;
 
 
 
 /* Colors */
-$color-background: #eeeced;
-$color-text: #71747b;
-$color-accent-1: #34cbc6;
-$color-accent-2: #56bcd5;
+$color-1: #50CEE4;
+$color-2: #B3272C;
+$color-3: #33002E;
+$color-4: #F8F6F7;
+$color-5: #CBA3AC;
+$color-6: #562143;
+$color-7: #5F6D8B;
 
 
 
@@ -25,9 +28,12 @@ $color-accent-2: #56bcd5;
 
 
 /* Partials */
+@import "splash";
 @import "home";
 @import "items";
+@import "categories";
 @import "results";
+@import "shoppingcart";
 @import "drawer";
 @import "itemSelect";
 @import "itemMenu";

@@ -1,88 +1,275 @@
 /* Partials */
 /* Typography */
 @font-face {
-  font-family: "lovelo";
-  src: url("../../../fonts/lovelo/lovelo.otf"); }
+  font-family: "Brush Script MT";
+  src: url("../../../fonts/BrushScript/BrushScriptStd.otf"); }
 /* Colors */
 /* Modules */
 /* Partials */
+main.splash {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient(#50CEE4, #1c9cb2);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#50CEE4, #1c9cb2);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#50CEE4, #1c9cb2);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#50CEE4, #1c9cb2);
+  /* Standard syntax */ }
+  main.splash section.banner {
+    position: absolute;
+    top: 50%;
+    margin-top: -230px;
+    width: 100%;
+    text-align: center; }
+    main.splash section.banner img {
+      width: 80px; }
+    main.splash section.banner h1 {
+      margin-top: 25px;
+      font-family: "Brush Script MT";
+      font-size: 40px;
+      color: #fff; }
+    main.splash section.banner p {
+      margin: 2px auto 0 auto;
+      width: 217px;
+      font-size: 15px;
+      line-height: 23px;
+      color: #fff;
+      opacity: 0.70; }
+    main.splash section.banner button {
+      margin-top: 40px;
+      padding: 15px 40px;
+      font-weight: 500;
+      font-size: 13px;
+      color: #fff;
+      border: 1px solid #fff; }
+  main.splash section.bottom-icons {
+    position: absolute;
+    bottom: 25px;
+    width: 100%; }
+    main.splash section.bottom-icons ul {
+      margin: 0 auto;
+      width: 85%; }
+      main.splash section.bottom-icons ul super-navigate li i {
+        font-size: 24px;
+        color: #fff; }
+      main.splash section.bottom-icons ul super-navigate:first-child {
+        float: left; }
+      main.splash section.bottom-icons ul super-navigate:last-child {
+        float: right; }
+
 main.home {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #eeeced; }
-  main.home div.banner {
-    position: absolute;
-    top: 50%;
-    margin-top: -35px;
+  background-color: #F8F6F7; }
+  main.home section.dash {
+    padding: 10px;
     width: 100%;
-    text-align: center; }
-    main.home div.banner h1 {
-      font-family: "lovelo";
-      font-size: 40px;
-      color: #71747b; }
-    main.home div.banner button {
-      margin-top: 12px;
-      padding: 8px 14px;
-      font-size: 20px;
-      color: #fff;
-      background-color: #34cbc6;
-      border: none;
-      border-radius: 3px; }
+    background-color: #F8F6F7; }
+    main.home section.dash ul {
+      list-style: none;
+      overflow: auto; }
+      main.home section.dash ul li {
+        float: left;
+        padding: 20px;
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 3px; }
+        main.home section.dash ul li i {
+          font-size: 55px;
+          color: #bbb; }
+        main.home section.dash ul li h3 {
+          margin-top: 14px;
+          font-size: 16px;
+          color: #888; }
+      main.home section.dash ul li#prefs, main.home section.dash ul li#bar {
+        margin-top: 1px;
+        width: calc((100% - 12px) / 2); }
+      main.home section.dash ul li#prefs {
+        margin-right: 10px;
+        margin-left: 1px; }
+      main.home section.dash ul li#bar {
+        margin-right: 1px; }
+      main.home section.dash ul li#recipes, main.home section.dash ul li#shopping {
+        margin: 10px 0 1px 1px;
+        width: calc(100% - 2px); }
+      main.home section.dash ul li#shopping {
+        padding: 40px 20px; }
 
 main.items {
-  background-color: #eeeced; }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; }
+  main.items section.options {
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #c5c5c5; }
+    main.items section.options ul {
+      padding: 4px 0;
+      width: 100%;
+      list-style: none;
+      overflow: auto; }
+      main.items section.options ul li {
+        float: left;
+        width: calc((100% - 1px) / 2);
+        padding: 5px 0; }
+        main.items section.options ul li i {
+          margin-right: 3px;
+          font-size: 20px;
+          color: #5F6D8B; }
+        main.items section.options ul li span {
+          padding: 2px 0;
+          font-size: 16px;
+          color: #5F6D8B; }
+      main.items section.options ul li:first-child {
+        padding-right: 20px;
+        border-right: 1px solid #eee;
+        text-align: right; }
+      main.items section.options ul li:last-child {
+        padding-left: 20px;
+        text-align: left; }
   main.items section.ingreds {
-    margin: 0 auto;
-    width: 95%; }
+    padding-top: 30px;
+    width: 100%;
+    min-height: 100%;
+    background-color: #F8F6F7; }
     main.items section.ingreds ul {
-      padding: 5px 0 150px 0;
-      list-style: none; }
+      margin: 0 auto;
+      padding: 25px 0 15px 0;
+      width: 90%;
+      list-style: none;
+      overflow: auto; }
       main.items section.ingreds ul li {
-        margin-bottom: 5px;
+        float: left;
+        margin: 0 5px 5px 0;
+        padding: 8px 8px 1px 8px;
+        width: calc((100% - 15px) / 4);
         background-color: #fff;
-        box-shadow: 1px  0    0 #d6d7d8, 0    1px  1px #cccdce, -1px 0    0 #d6d7d8, 0    -1px 0 #e7e8e9;
-        overflow: auto; }
-        main.items section.ingreds ul li div.ingred-left {
-          float: left;
-          padding: 5px 10px; }
-          main.items section.ingreds ul li div.ingred-left i {
-            margin-right: 7px;
-            padding: 8px;
-            width: 35px;
-            text-align: center;
-            font-size: 20px;
-            color: #fff;
-            background-color: #ddd;
-            border-radius: 50%; }
-          main.items section.ingreds ul li div.ingred-left i.fa-beer {
-            display: inline-block; }
-          main.items section.ingreds ul li div.ingred-left h2 {
-            display: inline-block;
-            width: 200px;
-            vertical-align: center;
+        border: 1px solid #e8e8e8;
+        border-radius: 1px; }
+        main.items section.ingreds ul li div.ingred-content {
+          width: 100%; }
+          main.items section.ingreds ul li div.ingred-content img {
+            display: block;
+            width: 100%; }
+          main.items section.ingreds ul li div.ingred-content span {
+            display: block;
+            width: 100%;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            padding: 6px 0;
+            font-size: 10px;
+            color: #666; }
+      main.items section.ingreds ul li:nth-child(5n-1) {
+        margin-right: 0; }
+      main.items section.ingreds ul div.shelf {
+        float: left;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 9px;
+        background-color: #E09C55;
+        border: 1px solid #B07A42;
+        box-shadow: 0 1px 0 0 #ccc; }
+
+main.categories {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #F8F6F7; }
+  main.categories section.category-grid {
+    width: 100%; }
+    main.categories section.category-grid ul {
+      margin: 0 auto;
+      padding: 15px 0;
+      width: 90%;
+      list-style: none;
+      overflow: auto; }
+      main.categories section.category-grid ul li {
+        position: relative;
+        float: left;
+        margin: 0 10px 10px 0;
+        width: calc((100% - 10px) / 2);
+        background-color: #F8F6F7;
+        border: 1px solid #e8e8e8;
+        border-radius: 1px;
+        overflow: auto; }
+        main.categories section.category-grid ul li img {
+          padding: 10px 10px 0 10px;
+          width: 100%; }
+        main.categories section.category-grid ul li > i {
+          position: absolute;
+          top: 40px;
+          width: 100%;
+          text-align: center;
+          font-size: 50px;
+          color: #5F6D8B; }
+        main.categories section.category-grid ul li i + img {
+          visibility: hidden; }
+        main.categories section.category-grid ul li div.category-info {
+          padding: 2px 10px; }
+          main.categories section.category-grid ul li div.category-info h4 {
+            float: left;
             font-size: 17px;
-            color: #555; }
+            color: #666; }
+          main.categories section.category-grid ul li div.category-info div.info {
+            float: right; }
+            main.categories section.category-grid ul li div.category-info div.info i {
+              color: #CBA3AC; }
+            main.categories section.category-grid ul li div.category-info div.info span {
+              font-size: 13px;
+              color: #666; }
+      main.categories section.category-grid ul li:nth-child(2n) {
+        margin-right: 0; }
 
 main.results {
-  background-color: #eeeced; }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; }
+  main.results section.options {
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd; }
+    main.results section.options ul {
+      margin: 0 auto;
+      padding: 10px 0;
+      width: 60%;
+      list-style: none;
+      overflow: auto; }
+      main.results section.options ul li {
+        text-align: center; }
+        main.results section.options ul li i {
+          display: block;
+          font-size: 35px;
+          color: #aaa; }
+        main.results section.options ul li span {
+          font-size: 13px;
+          color: #aaa; }
+      main.results section.options ul li:first-child {
+        float: left; }
+      main.results section.options ul li:last-child {
+        float: right; }
   main.results section.recipes {
-    margin: 0 auto;
-    width: 95%; }
+    padding-top: 80px;
+    width: 100%;
+    background-color: #fff; }
     main.results section.recipes ul {
-      padding: 5px 0 150px 0;
+      width: 100%;
       list-style: none; }
       main.results section.recipes ul li {
-        margin-bottom: 5px;
-        background-color: #fff;
-        box-shadow: 1px  0    0 #d6d7d8, 0    1px  1px #cccdce, -1px 0    0 #d6d7d8, 0    -1px 0 #e7e8e9;
+        padding: 6px 10px 0 10px;
+        width: 100%;
         overflow: auto; }
-        main.results section.recipes ul li div.recipe-left {
+        main.results section.recipes ul li img {
           float: left;
+<<<<<<< HEAD
           padding: 5px 10px; }
           main.results section.recipes ul li div.recipe-left i {
             margin-right: 7px;
@@ -178,47 +365,116 @@ main.results {
         color: #56bcd5; }
   main.results section.active-recipe {
     display: none;
+=======
+          margin-right: 10px;
+          width: 110px;
+          vertical-align: top; }
+        main.results section.recipes ul li div.recipe-description {
+          float: left;
+          margin-right: 10px;
+          width: calc(100% - 110px - 30px - 10px - 10px);
+          vertical-align: top; }
+          main.results section.recipes ul li div.recipe-description h3 {
+            font-size: 17px;
+            color: #888; }
+          main.results section.recipes ul li div.recipe-description span {
+            font-size: 14px;
+            color: #aaa; }
+        main.results section.recipes ul li div.recipe-metas {
+          float: right;
+          width: 30px;
+          vertical-align: top; }
+          main.results section.recipes ul li div.recipe-metas i {
+            display: block;
+            font-size: 35px; }
+          main.results section.recipes ul li div.recipe-metas i.add-recipe {
+            margin-bottom: 15px;
+            color: #50CEE4; }
+          main.results section.recipes ul li div.recipe-metas i.recipe-info {
+            color: #5F6D8B; }
+        main.results section.recipes ul li div.recipe-more {
+          display: none;
+          float: left;
+          clear: both; }
+          main.results section.recipes ul li div.recipe-more h4 {
+            font-size: 16px;
+            color: #aaa; }
+          main.results section.recipes ul li div.recipe-more p {
+            font-size: 14px;
+            color: #aaa; }
+          main.results section.recipes ul li div.recipe-more ul.needed {
+            list-style: none; }
+            main.results section.recipes ul li div.recipe-more ul.needed li {
+              display: inline-block;
+              margin-right: 8px; }
+            main.results section.recipes ul li div.recipe-more ul.needed li:last-child {
+              margin-right: 0; }
+          main.results section.recipes ul li div.recipe-more ul.preparation {
+            padding-left: 20px;
+            list-style-type: square; }
+        main.results section.recipes ul li hr {
+          float: right;
+          clear: both;
+          margin-top: 8px;
+          margin-bottom: 0;
+          width: calc(100% - 110px - 10px);
+          border: 1px solid #eee;
+          border-style: solid none none none; }
+
+main.shopping-cart {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #F8F6F7; }
+  main.shopping-cart section.options {
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
     position: fixed;
-    bottom: 0;
-    left: 0;
-    padding: 10px;
     width: 100%;
-    height: 140px;
-    background-color: #666;
-    box-shadow: 0 -1px 0 #e7e8e9;
-    z-index: 10;
-    overflow: auto; }
-    main.results section.active-recipe h2.title {
-      margin-bottom: 5px;
-      font-size: 20px;
-      color: #56bcd5; }
-    main.results section.active-recipe h2.title.none-active {
-      font-size: 19px;
-      color: #aaa; }
-    main.results section.active-recipe h3.description {
-      font-size: 12px;
-      color: #999999; }
-    main.results section.active-recipe div.ingredient-list ul h3 {
-      display: inline-block;
-      margin-right: 3px;
-      font-size: 16px;
-      color: #505050; }
-    main.results section.active-recipe div.ingredient-list ul li {
-      display: inline-block;
-      margin-right: 6px;
-      margin-bottom: 4px;
-      padding: 0px 6px;
-      font-size: 14px;
-      color: #eee;
-      border-radius: 3px; }
-    main.results section.active-recipe div.ingredient-list ul li:last-child {
-      margin-right: 0; }
-    main.results section.active-recipe div.ingredient-list.have {
-      margin-bottom: 5px; }
-      main.results section.active-recipe div.ingredient-list.have ul li {
-        background-color: #60C497; }
-    main.results section.active-recipe div.ingredient-list.need ul li {
-      background-color: #FF7566; }
+    background-color: #fff;
+    border-bottom: 1px solid #ddd; }
+    main.shopping-cart section.options ul {
+      margin: 0 auto;
+      padding: 10px 0;
+      width: 60%;
+      list-style: none;
+      overflow: auto; }
+      main.shopping-cart section.options ul li {
+        float: right;
+        text-align: center; }
+        main.shopping-cart section.options ul li i {
+          display: block;
+          font-size: 35px;
+          color: #aaa; }
+        main.shopping-cart section.options ul li span {
+          font-size: 13px;
+          color: #aaa; }
+  main.shopping-cart section.ingredients {
+    padding-top: 80px;
+    width: 100%;
+    min-height: 100%;
+    background-color: #F8F6F7; }
+    main.shopping-cart section.ingredients ul {
+      list-style: none; }
+      main.shopping-cart section.ingredients ul li {
+        padding: 6px 10px 0 10px;
+        width: 100%;
+        overflow: auto; }
+        main.shopping-cart section.ingredients ul li img {
+          float: left;
+          margin-right: 10px;
+          width: 20px; }
+        main.shopping-cart section.ingredients ul li span {
+          float: left;
+          font-size: 13px;
+          color: #888; }
+        main.shopping-cart section.ingredients ul li hr {
+          clear: both;
+          float: right;
+          margin-top: 8px;
+          margin-bottom: 0;
+          width: calc(100% - 30px);
+          border: 1px solid #eee;
+          border-style: solid none none none; }
 
 section.drawer {
   position: absolute;
@@ -233,36 +489,82 @@ section.drawer {
         width: 100%;
         color: #ddd; }
 
-main.itemSelect section.categories table.item-categories {
-  width: 100%;
-  padding-left: 1em;
-  padding-right: 1em;
-  background-color: white; }
-  main.itemSelect section.categories table.item-categories td {
-    padding: 0.8em 0.7em;
-    text-align: center;
-    border-width: 1px;
-    border-style: ridge; }
-  main.itemSelect section.categories table.item-categories td.active {
-    padding: 0.8em 0.7em;
-    text-align: center;
-    border-width: 1px;
-    border-style: ridge;
-    background-color: #34cbc6; }
-main.itemSelect button.confirm {
-  padding: 8px;
-  font-size: 20px;
-  color: #fff;
-  background-color: #34cbc6;
-  border: none;
+main.item-select section.options {
   position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  height: 3em;
-  box-shadow: 0 -1px 0 #e7e8e9;
-  z-index: 10;
-  overflow: auto; }
+  background-color: #fff;
+  border-bottom: 1px solid #c5c5c5;
+  z-index: 10; }
+  main.item-select section.options ul {
+    padding: 4px 0;
+    width: 100%;
+    list-style: none;
+    overflow: auto; }
+    main.item-select section.options ul li {
+      float: left;
+      width: calc((100% - 1px) / 2);
+      padding: 5px 0; }
+      main.item-select section.options ul li i {
+        margin-right: 3px;
+        font-size: 20px;
+        color: #5F6D8B; }
+      main.item-select section.options ul li span {
+        padding: 2px 0;
+        font-size: 16px;
+        color: #5F6D8B; }
+    main.item-select section.options ul li:first-child {
+      padding-right: 20px;
+      border-right: 1px solid #eee;
+      text-align: right; }
+      main.item-select section.options ul li:first-child i, main.item-select section.options ul li:first-child span {
+        visibility: hidden; }
+    main.item-select section.options ul li:last-child {
+      padding-left: 20px;
+      text-align: left; }
+main.item-select section.search {
+  top: 41px; }
+main.item-select section.ingredients {
+  padding-top: 40px; }
+  main.item-select section.ingredients ul {
+    list-style: none; }
+    main.item-select section.ingredients ul li {
+      padding: 6px 10px 0 10px;
+      width: 100%;
+      overflow: auto; }
+      main.item-select section.ingredients ul li img {
+        float: left;
+        margin-right: 10px;
+        width: 60px;
+        vertical-align: top; }
+      main.item-select section.ingredients ul li div.ingredient-info {
+        float: left;
+        margin-right: 10px;
+        width: calc(100% - 60px - 40px - 10px - 10px);
+        vertical-align: top; }
+        main.item-select section.ingredients ul li div.ingredient-info h3 {
+          font-size: 17px;
+          color: #666; }
+        main.item-select section.ingredients ul li div.ingredient-info span {
+          font-size: 14px;
+          color: #aaa; }
+      main.item-select section.ingredients ul li div.meta-info {
+        float: right;
+        width: 40px;
+        vertical-align: top; }
+        main.item-select section.ingredients ul li div.meta-info span {
+          color: #bbb; }
+      main.item-select section.ingredients ul li hr {
+        clear: both;
+        float: right;
+        margin-top: 8px;
+        margin-bottom: 0;
+        width: calc(100% - 70px);
+        border: 1px solid #eee;
+        border-style: solid none none none; }
+    main.item-select section.ingredients ul li.selected {
+      background-color: #e7d4d8; }
+      main.item-select section.ingredients ul li.selected hr {
+        border-color: #e7d4d8; }
 
 main.item-menu {
   width: 100%; }
@@ -309,7 +611,6 @@ label, table, caption {
   padding: 0; }
 
 html, body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #eeeced; }
+  font-family: Arial, Arial, sans-serif; }
 
 /*# sourceMappingURL=main.css.map */

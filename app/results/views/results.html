@@ -3,10 +3,9 @@
 
 	<super-navbar class="navbar">
 	  	<super-navbar-title>Results</super-navbar-title>
-	  	<super-navbar-button side="right" location = "results#shoppingcart">Shopping List</super-navbar-button>
-			<!--<super-navbar-button side="left" ng-click="reset()">Reset</super-navbar-button>-->
 	</super-navbar>
 
+<<<<<<< HEAD
 	<section class="recipes">
 		<ul>
 			<h3 style="background-color:#60C497; margin-left:auto; margin-right:auto;" onclick="supersonic.ui.tabs.select(2)" ng-show="noRecipesDisplayed">Tap here to add some ingredients to your bar</h3>
@@ -36,46 +35,86 @@
 							</div>
 						</div>
 
-				</div>
+=======
 
-				<!--<div class="quantity">-->
-					<!--<span>{{recipe.count}}</span>-->
-					<!--<div class="quantity-buttons">-->
-						<!--<button ng-click="incrementCount($index)" style="background:#00EE99; border-radius: 2px">+</button>-->
-						<!--<button ng-click="decrementCount($index)" style="background:#EE2200; border-radius: 2px">-</button>-->
-					<!--</div>-->
-				<!--</div>-->
-			</li>
+	<section class="options">
+		<ul>
+			<super-navigate location="results#shoppingcart">
+				<li>
+					<i class="fa fa-list-alt"></i>
+					<span>SHOPPING LIST</span>
+				</li>
+			</super-navigate>
 		</ul>
 	</section>
 
 
-	<section class="active-recipe">
-		<h2 class="title none-active" ng-if="noneActive">Choose a recipe...</h2>
-		<div ng-if="!noneActive">
-			<h2 class="title">{{activeRecipe.name}}</h2>
-			<div class="have ingredient-list">
-				<ul>
-					<h3>Have</h3>
-					<li ng-repeat="ingredient in haveIngredients">{{ingredient.name}}</li>
-				</ul>
-			</div>
-			<div class="need ingredient-list">
-				<ul>
-					<h3>Need</h3>
-					<li ng-repeat="ingredient in neededIngredients">{{ingredient.name}}</li>
-				</ul>
-			</div>
-
-
-
-
-			<!--<div class="need ingredient-list">-->
-				<!--<ul>-->
-					<!--<h3>Preferences</h3>-->
-					<!--<li ng-repeat="ingredient in neededIngredients">{{ingredient.name}}</li>-->
-				<!--</ul>-->
-			<!--</div>-->
-		</div>
+	<section class="recipes">
+		<ul>
+			<li ng-class="{active: $index == selected}" ng-repeat = "recipe in recipes" ng-click="activateRecipe($index)">
+				<img src="http://img1.sunset.timeinc.net/sites/default/files/image/2005/07/mojito-mint-m-m.jpg" />
+				<div class="recipe-description">
+					<h3>{{recipe.name}}</h3>
+					<span>You have everything!</span>
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
+				</div>
+				
+				<div class="recipe-metas">
+					<i class="add-recipe fa fa-plus-square"></i>
+					<i class="recipe-info fa fa-info-circle" ng-click="show($index)"></i>
+				</div>
+				<div class="recipe-more" id="item-{{$index}}">
+					<h4>Description</h4>
+					<p>
+						{{recipe.description}}
+					</p>
+					<h4>Needed</h4>
+					<ul class="needed">
+					</ul>
+					<h4>Preparation</h4>
+					<p>{{recipe.directions}}</p>
+					<!-- <ul class="preparation">
+						<li>Add lime juice to sugar and mint leaves</li>
+						<li>Add rum and stir</li>
+						<li>Top it off with ice cubes and sparkling soda water</li>
+					</ul> -->
+				</div>
+				<hr>
+			</li>
+			
+			<!-- <li ng-class="{active: $index == selected}">
+				<img src="http://ateliervie.com/wp-content/uploads/2013/11/660-gin-tonic-sq-JNH_5920.jpg" />
+				<div class="recipe-description">
+					<h3>Gin and Tonic</h3>
+					<span>2 more ingredient needed</span>
+				</div>
+				<div class="recipe-metas">
+					<i class="add-recipe fa fa-plus-square"></i>
+					<i class="recipe-info fa fa-info-circle"></i>
+				</div>
+				<div ng-if="selected" class="recipe-more">
+					<h4>Description</h4>
+					<p>
+						A highball cocktail that is usually garnished with a slice
+						or wedge of lime. In some countries, it's even pre-mixed
+						in single-serving cans!
+					</p>
+					<h4>Needed</h4>
+					<ul class="needed">
+						<li>Gin</li>
+						<li>Tonic</li>
+					</ul>
+					<h4>Preparation</h4>
+					<ul class="preparation">
+						<li>Add lime juice to sugar and mint leaves</li>
+						<li>Add rum and stir</li>
+						<li>Top it off with ice cubes and sparkling soda water</li>
+					</ul>
+				</div>
+				<hr>
+			</li> -->
+		</ul>
 	</section>
+
+
 </main>

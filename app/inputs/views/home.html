@@ -1,12 +1,39 @@
 <main class="home" ng-controller="HomeCtrl">
 
 
-	<div class="banner">
-		<h1>Stock My Bar</h1>
-		<button class="preferences" style="display:block; margin-left:auto; margin-right:auto;" onclick="supersonic.ui.tabs.select(1)">Set Your Preferences</button>
-		<button class="ingredients" style="display:block; margin-left:auto; margin-right:auto;" onclick="supersonic.ui.tabs.select(2)">Add Your Drinks</button>
-		<button class="recipes" style="display:block; margin-left:auto; margin-right:auto;" onclick="supersonic.ui.tabs.select(3)">See Recipes</button>
-	</div>
+	<super-navbar class="navbar">
+		<super-navbar-title>Home</super-navbar-title>
+	</super-navbar>
+
+
+	<section class="dash">
+		<ul>
+			<super-navigate location="inputs#prefs">
+				<li id="prefs">
+					<i class="fa fa-sliders"></i>
+					<h3>Preferences</h3>
+				</li>
+			</super-navigate>
+			<super-navigate location="inputs#items">
+				<li id="bar">
+					<i class="fa fa-list"></i>
+					<h3>My Bar</h3>
+				</li>
+			</super-navigate>
+			<super-navigate location="results#results">
+				<li id="recipes">
+					<i class="fa fa-glass"></i>
+					<h3>Recipes</h3>
+				</li>
+			</super-navigate>
+			<super-navigate location="results#shoppingcart">
+				<li id="shopping">
+					<i class="fa fa-list-alt"></i>
+					<h3>Shoping List</h3>
+				</li>
+			</super-navigate>
+		</ul>
+	</section>
 
 
 </main>

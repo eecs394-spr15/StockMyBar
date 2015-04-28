@@ -1,26 +1,63 @@
-<main class="results" ng-controller="ShoppingCartCtrl">
+<main class="shopping-cart" ng-controller="ShoppingCartCtrl">
+
+
 	<super-navbar class="navbar">
 	  	<super-navbar-title>Shopping List</super-navbar-title>
-	  	<super-navbar-button side="right" ng-click="clearAllItems()">Clear All</super-navbar-button>
 	</super-navbar>
 
-	<section class="recipes">
+
+	<section class="options">
 		<ul>
+<<<<<<< HEAD
 			<li ng-repeat="ingred in ingredShoppingList" ng-click="selectIngred($index)" ng-class="{active: $index == selected}">
 				<div class="recipe-left">
 					<i class="fa fa-beer"></i>
 					<h2 class="title">{{ingred.name}}<span ng-if = "ingred.optional"> (optional)</span></h2>
 				</div>
+=======
+			<li ng-click="clearAllItems()">
+				<i class="fa fa-times"></i>
+				<span>CLEAR</span>
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
 			</li>
 		</ul>
 	</section>
 
-	<section class="active-recipe">
-		<h2 class="title none-active" ng-if="noneActive">Choose an ingredient...</h2>
-		<div ng-if="!noneActive">
-			<h2 class="title">{{activeIngred.name}}</h2>
-			<h3 class="description">{{activeIngred.description}}</h3>
-		</div>
+
+	<section class="ingredients">
+		<ul>
+			<li class="ingredient">
+				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
+				<span>Strawberries</span>
+				<hr>
+			</li>
+			<li class="ingredient">
+				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
+				<span>Chocolate milk</span>
+				<hr>
+			</li>
+			<li class="ingredient">
+				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
+				<span>Sprite</span>
+				<hr>
+			</li>
+			<li class="ingredient">
+				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />	
+				<span>Captain Morgan</span>
+				<hr>
+			</li>
+			<li class="ingredient">
+				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
+				<span>Jose Cuervo</span>
+				<hr>
+			</li>
+			<li class="ingredient">
+				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
+				<span>Mint Leaves</span>
+				<hr>
+			</li>
+		</ul>
 	</section>
+
 
 </main>

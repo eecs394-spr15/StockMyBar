@@ -4,10 +4,19 @@ angular
 	.module('inputs')
     .controller('ItemsCtrl', function ($scope, supersonic) {
 
+
+        /*********************
+         *                   *
+         *  Data management  *
+         *                   *
+         *********************/
+
+        // Initializations
         $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
         $scope.ingredList = [];
         $scope.showActions = false;
 
+<<<<<<< HEAD
 
         setTimeout(function() {
             supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
@@ -26,6 +35,17 @@ angular
             return obj;
         }
 
+=======
+        // Publish ingredient list to the appropriate channel
+        setTimeout(function() {
+            supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
+        }, 1000);
+
+        // Update ingredient list
+        updateIngredList();
+
+        // Update ingredient list
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
         function updateIngredList(){
             $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
             var newList = [];
@@ -35,16 +55,16 @@ angular
             $scope.ingredList = newList;
             $scope.$apply();
         }
-        
-
-        //need to implement deleting ingredient from recipe list after user swiped left
-        $scope.showDeleteButton = function(index){
-            $scope.showActions = true;
-            $scope.selected = index;
-            $scope.apply();
-        };
 
 
+       
+        /**********************************
+         *                                *
+         *  UI Interaction Functionality  *
+         *                                *
+         **********************************/
+
+        // Clear all ingredients from user's bar
         $scope.clearAllItems = function() {
             $scope.ingredIdList = [];
             $scope.ingredList = [];
@@ -54,25 +74,40 @@ angular
             $scope.apply();
         };
 
-		$scope.cancel = function(index) {
-            $scope.showActions = false;
-			var index1 = $scope.ingredIdList.indexOf($scope.ingredList[index].id);
-			$scope.ingredIdList.splice(index1,1);
-            $scope.ingredList.splice(index,1);
-			localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
-            localStorage.ingredList = JSON.stringify($scope.ingredList);
-			supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
-            $scope.apply();
-		};
+        // Navigate to categories view to add a user's ingredient
+        $scope.addIngredient = function() {
+            var view = new supersonic.ui.View("inputs#categories");
+            supersonic.ui.layers.push(view);
+        };
 
-        $scope.showButton = function(index){
-            return $scope.showActions && (index==$scope.selected);
-        }
+        // Select ingredient
+        $scope.selectIngredient = function() {
 
+<<<<<<< HEAD
         /* Open Add Items menu */
         /*
         $scope.addItems = function() {
             supersonic.ui.modal.show("inputs#itemMenu");
         }
         */
+=======
+        }
+
+
+
+        /*************
+         *           *
+         *  Styling  *
+         *           *
+         *************/
+
+        // Inject shelves
+        setTimeout(function() {
+            $('section.ingreds ul li:nth-child(4n)').each(function() {
+                $(this).after('<div class="shelf"></div>');
+            });
+        }, 1000);
+
+
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
     });

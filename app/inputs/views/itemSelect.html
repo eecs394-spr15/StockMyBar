@@ -1,13 +1,31 @@
-<main class="itemSelect" ng-controller="InputCtrl">
+<main class="item-select" ng-controller="InputCtrl">
 
 
     <super-navbar class="navbar">
+<<<<<<< HEAD
         <super-navbar-title>{{category}}</super-navbar-title>
         <super-navbar-button side="left" ng-click = "goBack()">Back</super-navbar-button>
+=======
+        <super-navbar-title>Items</super-navbar-title>
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
     </super-navbar>
 
 
-    <section class="bar bar-header item-input-inset">
+    <section class="options">
+        <ul>
+            <li ng-click="clearAllItems()">
+                <i class="fa fa-times"></i>
+                <span>Clear</span>
+            </li>
+            <li ng-click="addIngredient()">
+                <i class="icon super-checkmark-circled"></i>
+                <span>Done</span>
+            </li>
+        </ul>
+    </section>
+
+
+    <section class="search bar bar-header item-input-inset">
         <label class="item-input-wrapper">
             <i class="icon super-ios7-search placeholder-icon"></i>
             <input type="search" placeholder="Search" ng-model="searchBarText">
@@ -15,6 +33,7 @@
         </label>
     </section>
 
+<<<<<<< HEAD
     <!-- <section class="categories">
         <table class="item-categories list">
             <tr>
@@ -27,21 +46,24 @@
         </table>
     </section> -->
 
+=======
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
 
-    <section>
-        <ul class="item-list list">
-            <li class="item item-checkbox" ng-repeat="item in allIngredients | addItemsList:ingredIdList:searchBarText:category | orderBy: 'name'">
-                <label class="checkbox">
-                    <input type="checkbox" ng-model="checkedIngredients[item.id]" ng-click="supersonic.device.vibrate()">
-                </label>
-                <i class="fa fa-beer"></i>
-                {{item.name}}
+    <section class="ingredients">
+        <ul>
+            <li class="ingredient" ng-class="{selected: $index % 3 == 0}" ng-repeat="item in allIngredients | addItemsList:ingredIdList:searchBarText:category | orderBy: 'name'">
+                <img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />                
+                <div class="ingredient-info">
+                    <h3>Strawberries</h3>
+                    <span>Lorem ipsum dolor sit amet</span>
+                </div>
+                <div class="meta-info">
+                    <span>Liquor</span>
+                </div>
+                <hr>
             </li>
         </ul>
     </section>
 
-    <div class="item_select_buttons">
-        <button class="confirm" ng-click="confirm()">Confirm</button>
-    </div>
 
 </main>
