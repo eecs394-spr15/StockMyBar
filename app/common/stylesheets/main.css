@@ -10,11 +10,18 @@ main.splash {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #50CEE4; }
+  background: -webkit-linear-gradient(#50CEE4, #1c9cb2);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#50CEE4, #1c9cb2);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#50CEE4, #1c9cb2);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#50CEE4, #1c9cb2);
+  /* Standard syntax */ }
   main.splash section.banner {
     position: absolute;
     top: 50%;
-    margin-top: -220px;
+    margin-top: -245px;
     width: 100%;
     text-align: center; }
     main.splash section.banner img {
@@ -33,13 +40,14 @@ main.splash {
       opacity: 0.70; }
     main.splash section.banner button {
       margin-top: 40px;
-      padding: 14px 54px;
-      font-size: 14px;
+      padding: 15px 54px;
+      font-weight: 500;
+      font-size: 13px;
       color: #fff;
       border: 1px solid #fff; }
   main.splash section.bottom-icons {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     width: 100%; }
     main.splash section.bottom-icons ul {
       margin: 0 auto;
