@@ -20,6 +20,11 @@ angular
             supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
             $scope.apply();
         };
+        // Navigate to categories view to add a user's ingredient
+        $scope.addIngredient = function() {
+            var view = new supersonic.ui.View("inputs#categories");
+            supersonic.ui.layers.push(view);
+        };
 
 
 
