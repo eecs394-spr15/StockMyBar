@@ -43,9 +43,12 @@ main.home {
 			li#bar {
 				margin-right: 1px;
 			}
-			li#recipes {
+			li#recipes, li#shopping {
 				margin: 10px 0 1px 1px;
 				width: calc(100% - 2px);
+			}
+			li#shopping {
+				padding: 40px 20px;
 			}
 		}
 	}

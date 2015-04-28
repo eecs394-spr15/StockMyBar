@@ -24,13 +24,32 @@ angular
 			$scope.$apply();
 		});
 
+
+	
+		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
+		Parse.Cloud.run("search4Recipes", {ingredientIds: ["Zb6NA5RZaw"]}, {
+			success: function(results) {
+				supersonic.logger.log($scope.recipes)
+				$scope.recipes = results;
+				$scope.noneActive = true;
+				$scope.selected = null;
+				for (var i=0; i<$scope.recipes.length; i++) {
+					$scope.recipes[i].count = 0;
+				}
+				$scope.$apply();
+			}, error: function(error) {
+				supersonic.logger.log(error);
+			}
+		});
+
+
 		supersonic.data.channel('ingredIdList').subscribe( function(newVal) {
 			// Updates possible recipes anytime the user's bar contents change
 			ingList = newVal;
 			$scope.recipeShoppingList = [];
 			makeIngredShoppingList();
 			Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
-			Parse.Cloud.run("search4Recipes", {ingredientIds: ingList}, {
+			Parse.Cloud.run("search4Recipes", {ingredientIds: ["Zb6NA5RZaw"]}, {
 				success: function(results) {
 					supersonic.logger.log($scope.recipes)
 					$scope.recipes = results;
@@ -95,7 +114,7 @@ angular
 		};
 
 		$scope.show = function(index) {
-				$('#item-' + index).next(".text").slideToggle("fast");
+				$('#item-' + index).next(".recipe-more").slideToggle("fast");
 		};
 
 
