@@ -1,7 +1,59 @@
 main.item-select {
 
 
+    section.options {
+        position: fixed;
+        width: 100%;
+        background-color: #fff;
+        border-bottom: 1px solid #c5c5c5;
+        z-index: 10;
+
+        ul {
+            padding: 4px 0;
+            width: 100%;
+            list-style: none;
+            overflow: auto;
+
+            li {
+                float: left;
+                width: calc((100% - 1px) / 2);
+                padding: 5px 0;
+
+                i {
+                    margin-right: 3px;
+                    font-size: 20px;
+                    color: $color-7;
+                }
+                span {
+                    padding: 2px 0;
+                    font-size: 16px;
+                    color: $color-7;
+                }
+            }
+            li:first-child {
+                padding-right: 20px;
+                border-right: 1px solid #eee;
+                text-align: right;
+
+                i, span {
+                    visibility: hidden;
+                }
+            }
+            li:last-child {
+                padding-left: 20px;
+                text-align: left;
+            }
+        }
+    }
+
+
+    section.search {
+        top: 41px;
+    }
+
+
     section.ingredients {
+        padding-top: 40px;
 
     	ul {
     		list-style: none;
@@ -25,7 +77,7 @@ main.item-select {
 
     				h3 {
     					font-size: 17px;
-    					color: #888;
+    					color: #666;
     				}
     				span {
     					font-size: 14px;
@@ -38,7 +90,7 @@ main.item-select {
     				vertical-align: top;
 
     				span {
-    					color: #888;
+    					color: #bbb;
     				}
     			}
     			hr {
@@ -52,16 +104,19 @@ main.item-select {
     			}
     		}
             li.selected {
-                background-color: $color-1;
+                background-color: lighten($color-5, 15%);
 
                 div.ingredient-info {
 
-                    h3 { color: #fff; }
-                    span { color: #fff; }
+                    // h3 { color: #ccc; }
+                    // span { color: #ccc; }
                 }
                 div.meta-info {
 
-                    span { color: #fff; }
+                    // span { color: #ccc; }
+                }
+                hr {
+                    border-color: lighten($color-5, 15%);
                 }
             }
     	}

@@ -2,8 +2,22 @@
 
 
     <super-navbar class="navbar">
-        <super-navbar-title>Choose An Item</super-navbar-title>
+        <super-navbar-title>Items</super-navbar-title>
     </super-navbar>
+
+
+    <section class="options">
+        <ul>
+            <li ng-click="clearAllItems()">
+                <i class="fa fa-times"></i>
+                <span>Clear</span>
+            </li>
+            <li ng-click="addIngredient()">
+                <i class="icon super-checkmark-circled"></i>
+                <span>Done</span>
+            </li>
+        </ul>
+    </section>
 
 
     <section class="search bar bar-header item-input-inset">

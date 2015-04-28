@@ -12,16 +12,15 @@ main.items {
 		border-bottom: 1px solid #c5c5c5;
 
 		ul {
-			margin: 0 auto;
 			padding: 4px 0;
 			width: 100%;
 			list-style: none;
-			text-align: center;
+			overflow: auto;
 
 			li {
-				display: inline-block;
-				padding: 5px 20px;
-				text-align: center;
+				float: left;
+				width: calc((100% - 1px) / 2);
+				padding: 5px 0;
 
 				i {
 					margin-right: 3px;
@@ -35,7 +34,13 @@ main.items {
 				}
 			}
 			li:first-child {
+				padding-right: 20px;
 				border-right: 1px solid #eee;
+				text-align: right;
+			}
+			li:last-child {
+				padding-left: 20px;
+				text-align: left;
 			}
 		}
 	}

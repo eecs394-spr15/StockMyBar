@@ -111,15 +111,14 @@ main.items {
     background-color: #fff;
     border-bottom: 1px solid #c5c5c5; }
     main.items section.options ul {
-      margin: 0 auto;
       padding: 4px 0;
       width: 100%;
       list-style: none;
-      text-align: center; }
+      overflow: auto; }
       main.items section.options ul li {
-        display: inline-block;
-        padding: 5px 20px;
-        text-align: center; }
+        float: left;
+        width: calc((100% - 1px) / 2);
+        padding: 5px 0; }
         main.items section.options ul li i {
           margin-right: 3px;
           font-size: 20px;
@@ -129,7 +128,12 @@ main.items {
           font-size: 16px;
           color: #5F6D8B; }
       main.items section.options ul li:first-child {
-        border-right: 1px solid #eee; }
+        padding-right: 20px;
+        border-right: 1px solid #eee;
+        text-align: right; }
+      main.items section.options ul li:last-child {
+        padding-left: 20px;
+        text-align: left; }
   main.items section.ingreds {
     padding-top: 30px;
     width: 100%;
@@ -182,7 +186,7 @@ main.categories {
     width: 100%; }
     main.categories section.category-grid ul {
       margin: 0 auto;
-      padding: 25px 0 15px 0;
+      padding: 15px 0;
       width: 90%;
       list-style: none;
       overflow: auto; }
@@ -387,50 +391,82 @@ section.drawer {
         width: 100%;
         color: #ddd; }
 
-main.item-select section.ingredients ul {
-  list-style: none; }
-  main.item-select section.ingredients ul li {
-    padding: 6px 10px 0 10px;
+main.item-select section.options {
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #c5c5c5;
+  z-index: 10; }
+  main.item-select section.options ul {
+    padding: 4px 0;
     width: 100%;
+    list-style: none;
     overflow: auto; }
-    main.item-select section.ingredients ul li img {
+    main.item-select section.options ul li {
       float: left;
-      margin-right: 10px;
-      width: 60px;
-      vertical-align: top; }
-    main.item-select section.ingredients ul li div.ingredient-info {
-      float: left;
-      margin-right: 10px;
-      width: calc(100% - 60px - 40px - 10px - 10px);
-      vertical-align: top; }
-      main.item-select section.ingredients ul li div.ingredient-info h3 {
-        font-size: 17px;
-        color: #888; }
-      main.item-select section.ingredients ul li div.ingredient-info span {
-        font-size: 14px;
-        color: #aaa; }
-    main.item-select section.ingredients ul li div.meta-info {
-      float: right;
-      width: 40px;
-      vertical-align: top; }
-      main.item-select section.ingredients ul li div.meta-info span {
-        color: #888; }
-    main.item-select section.ingredients ul li hr {
-      clear: both;
-      float: right;
-      margin-top: 8px;
-      margin-bottom: 0;
-      width: calc(100% - 70px);
-      border: 1px solid #eee;
-      border-style: solid none none none; }
-  main.item-select section.ingredients ul li.selected {
-    background-color: #50CEE4; }
-    main.item-select section.ingredients ul li.selected div.ingredient-info h3 {
-      color: #fff; }
-    main.item-select section.ingredients ul li.selected div.ingredient-info span {
-      color: #fff; }
-    main.item-select section.ingredients ul li.selected div.meta-info span {
-      color: #fff; }
+      width: calc((100% - 1px) / 2);
+      padding: 5px 0; }
+      main.item-select section.options ul li i {
+        margin-right: 3px;
+        font-size: 20px;
+        color: #5F6D8B; }
+      main.item-select section.options ul li span {
+        padding: 2px 0;
+        font-size: 16px;
+        color: #5F6D8B; }
+    main.item-select section.options ul li:first-child {
+      padding-right: 20px;
+      border-right: 1px solid #eee;
+      text-align: right; }
+      main.item-select section.options ul li:first-child i, main.item-select section.options ul li:first-child span {
+        visibility: hidden; }
+    main.item-select section.options ul li:last-child {
+      padding-left: 20px;
+      text-align: left; }
+main.item-select section.search {
+  top: 41px; }
+main.item-select section.ingredients {
+  padding-top: 40px; }
+  main.item-select section.ingredients ul {
+    list-style: none; }
+    main.item-select section.ingredients ul li {
+      padding: 6px 10px 0 10px;
+      width: 100%;
+      overflow: auto; }
+      main.item-select section.ingredients ul li img {
+        float: left;
+        margin-right: 10px;
+        width: 60px;
+        vertical-align: top; }
+      main.item-select section.ingredients ul li div.ingredient-info {
+        float: left;
+        margin-right: 10px;
+        width: calc(100% - 60px - 40px - 10px - 10px);
+        vertical-align: top; }
+        main.item-select section.ingredients ul li div.ingredient-info h3 {
+          font-size: 17px;
+          color: #666; }
+        main.item-select section.ingredients ul li div.ingredient-info span {
+          font-size: 14px;
+          color: #aaa; }
+      main.item-select section.ingredients ul li div.meta-info {
+        float: right;
+        width: 40px;
+        vertical-align: top; }
+        main.item-select section.ingredients ul li div.meta-info span {
+          color: #bbb; }
+      main.item-select section.ingredients ul li hr {
+        clear: both;
+        float: right;
+        margin-top: 8px;
+        margin-bottom: 0;
+        width: calc(100% - 70px);
+        border: 1px solid #eee;
+        border-style: solid none none none; }
+    main.item-select section.ingredients ul li.selected {
+      background-color: #e7d4d8; }
+      main.item-select section.ingredients ul li.selected hr {
+        border-color: #e7d4d8; }
 
 /* Globals */
 html, body, div, span, h1, h2, h3, h4,
