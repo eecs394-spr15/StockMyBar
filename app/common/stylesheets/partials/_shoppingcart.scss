@@ -29,7 +29,8 @@ main.shopping-cart {
                     color: $color-7;
                 }
                 span {
-                    padding: 2px 0;
+                    position: relative;
+                    top: -1px;
                     font-size: 16px;
                     color: $color-7;
                 }
@@ -52,7 +53,7 @@ main.shopping-cart {
 
 
 	section.ingredients {
-		padding-top: 80px;
+		padding-top: 60px;
 		width: 100%;
 		min-height: 100%;
 		background-color: $color-4;

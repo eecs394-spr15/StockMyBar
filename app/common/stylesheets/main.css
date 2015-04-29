@@ -212,7 +212,8 @@ main.categories {
         main.categories section.category-grid ul li i + img {
           visibility: hidden; }
         main.categories section.category-grid ul li div.category-info {
-          padding: 2px 10px; }
+          padding: 1px 10px 3px 10px;
+          overflow: auto; }
           main.categories section.category-grid ul li div.category-info h4 {
             float: left;
             font-size: 17px;
@@ -349,7 +350,8 @@ main.shopping-cart {
           font-size: 20px;
           color: #5F6D8B; }
         main.shopping-cart section.options ul li span {
-          padding: 2px 0;
+          position: relative;
+          top: -1px;
           font-size: 16px;
           color: #5F6D8B; }
       main.shopping-cart section.options ul li:first-child {
@@ -362,7 +364,7 @@ main.shopping-cart {
         padding-left: 20px;
         text-align: left; }
   main.shopping-cart section.ingredients {
-    padding-top: 80px;
+    padding-top: 60px;
     width: 100%;
     min-height: 100%;
     background-color: #F8F6F7; }
