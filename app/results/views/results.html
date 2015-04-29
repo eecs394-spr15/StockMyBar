@@ -5,37 +5,6 @@
 	  	<super-navbar-title>Results</super-navbar-title>
 	</super-navbar>
 
-<<<<<<< HEAD
-	<section class="recipes">
-		<ul>
-			<h3 style="background-color:#60C497; margin-left:auto; margin-right:auto;" onclick="supersonic.ui.tabs.select(2)" ng-show="noRecipesDisplayed">Tap here to add some ingredients to your bar</h3>
-			<li ng-repeat="recipe in recipes" ng-click="activateRecipe($index)" ng-class="{active: $index == selected}">
-				<div class="recipe-left">
-					<i class="fa fa-glass" ng-hide="recipe.addedToCart"></i>
-					<i class="fa fa-cart-plus" ng-click="addToCart($index)" ng-hide="recipe.addedToCart"></i>
-					<i class="fa fa-cart-arrow-down" ng-click="removeFromCart($index)" ng-show="recipe.addedToCart"></i>
-					<h2 ng-show="noRecipesDisplayed">Pick some ingredients in order to get some recipes!</h2>
-					<h2 ng-click="show($index)">{{recipe.name}}</br><font ng-if= "!recipe.completed" size="1" style="line-height:1px" color="#CC2200">{{recipe.ingredListOffHand.length}} more ingredients needed</font><font ng-if= "recipe.completed" size="1" style="line-height:1px" color="#00CCCC">You have everything!</font></h2>
-						<div id="item-{{$index}}" class="text">
-							<h4>Description</h4>
-							<p>{{recipe.description}}</p>
-							<h4>Directions</h4>
-							<p>{{recipe.directions}}</p>
-							<div class="have ingredient-list">
-								<ul>
-									<h3>Have</h3>
-									<li ng-repeat="ingredient in recipe.ingredListInHand">{{ingredient.name}}</li>
-								</ul>
-							</div>
-							<div ng-if= "!recipe.completed" class="need ingredient-list">
-								<ul>
-									<h3>Need</h3>
-									<li ng-repeat="ingredient in recipe.ingredListOffHand">{{ingredient.name}}</li>
-								</ul>
-							</div>
-						</div>
-
-=======
 
 	<section class="options">
 		<ul>
@@ -51,12 +20,11 @@
 
 	<section class="recipes">
 		<ul>
-			<li ng-class="{active: $index == selected}" ng-repeat = "recipe in recipes" ng-click="activateRecipe($index)">
+			<li ng-class="{active: $index == selected}" ng-repeat="recipe in recipes" ng-click="activateRecipe($index)">
 				<img src="http://img1.sunset.timeinc.net/sites/default/files/image/2005/07/mojito-mint-m-m.jpg" />
 				<div class="recipe-description">
 					<h3>{{recipe.name}}</h3>
 					<span>You have everything!</span>
->>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
 				</div>
 				
 				<div class="recipe-metas">
@@ -73,46 +41,10 @@
 					</ul>
 					<h4>Preparation</h4>
 					<p>{{recipe.directions}}</p>
-					<!-- <ul class="preparation">
-						<li>Add lime juice to sugar and mint leaves</li>
-						<li>Add rum and stir</li>
-						<li>Top it off with ice cubes and sparkling soda water</li>
-					</ul> -->
 				</div>
 				<hr>
 			</li>
 			
-			<!-- <li ng-class="{active: $index == selected}">
-				<img src="http://ateliervie.com/wp-content/uploads/2013/11/660-gin-tonic-sq-JNH_5920.jpg" />
-				<div class="recipe-description">
-					<h3>Gin and Tonic</h3>
-					<span>2 more ingredient needed</span>
-				</div>
-				<div class="recipe-metas">
-					<i class="add-recipe fa fa-plus-square"></i>
-					<i class="recipe-info fa fa-info-circle"></i>
-				</div>
-				<div ng-if="selected" class="recipe-more">
-					<h4>Description</h4>
-					<p>
-						A highball cocktail that is usually garnished with a slice
-						or wedge of lime. In some countries, it's even pre-mixed
-						in single-serving cans!
-					</p>
-					<h4>Needed</h4>
-					<ul class="needed">
-						<li>Gin</li>
-						<li>Tonic</li>
-					</ul>
-					<h4>Preparation</h4>
-					<ul class="preparation">
-						<li>Add lime juice to sugar and mint leaves</li>
-						<li>Add rum and stir</li>
-						<li>Top it off with ice cubes and sparkling soda water</li>
-					</ul>
-				</div>
-				<hr>
-			</li> -->
 		</ul>
 	</section>
 
