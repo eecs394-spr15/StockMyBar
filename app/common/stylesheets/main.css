@@ -269,6 +269,103 @@ main.results {
         overflow: auto; }
         main.results section.recipes ul li img {
           float: left;
+<<<<<<< HEAD
+          padding: 5px 10px; }
+          main.results section.recipes ul li div.recipe-left i {
+            margin-right: 7px;
+            padding: 8px;
+            width: 35px;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            background-color: #ddd;
+            border-radius: 50%; }
+          main.results section.recipes ul li div.recipe-left i.fa-glass {
+            display: inline-block; }
+          main.results section.recipes ul li div.recipe-left i.fa-cart-plus {
+            display: none; }
+          main.results section.recipes ul li div.recipe-left i.fa-cart-arrow-down {
+            display: inline-block;
+            background-color: #60C497; }
+          main.results section.recipes ul li div.recipe-left i.fa-beer {
+            display: inline-block; }
+          main.results section.recipes ul li div.recipe-left h2 {
+            line-height: 15px;
+            display: inline-block;
+            width: 200px;
+            vertical-align: top;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 6px 0;
+            font-size: 18px;
+            color: #555; }
+            main.results section.recipes ul li div.recipe-left h2 span {
+              color: #00cc00; }
+          main.results section.recipes ul li div.recipe-left div.text {
+            display: none; }
+            main.results section.recipes ul li div.recipe-left div.text h4 {
+              color: #00BB99; }
+            main.results section.recipes ul li div.recipe-left div.text p {
+              color: grey; }
+            main.results section.recipes ul li div.recipe-left div.text div.ingredient-list ul {
+              padding: 0px 0px; }
+              main.results section.recipes ul li div.recipe-left div.text div.ingredient-list ul h3 {
+                display: inline-block;
+                margin-right: 3px;
+                font-size: 16px;
+                color: #505050; }
+              main.results section.recipes ul li div.recipe-left div.text div.ingredient-list ul li {
+                display: inline-block;
+                margin-right: 6px;
+                margin-bottom: 4px;
+                padding: 0px 6px;
+                font-size: 14px;
+                color: #eee;
+                border-radius: 3px; }
+              main.results section.recipes ul li div.recipe-left div.text div.ingredient-list ul li:last-child {
+                margin-right: 0; }
+            main.results section.recipes ul li div.recipe-left div.text div.ingredient-list.have {
+              margin-bottom: 5px;
+              margin-top: 5px; }
+              main.results section.recipes ul li div.recipe-left div.text div.ingredient-list.have ul li {
+                background-color: #60C497; }
+            main.results section.recipes ul li div.recipe-left div.text div.ingredient-list.need ul li {
+              background-color: #FF7566; }
+        main.results section.recipes ul li div.quantity {
+          float: right; }
+          main.results section.recipes ul li div.quantity span {
+            float: left;
+            vertical-align: top;
+            padding: 15px 10px;
+            color: #fff;
+            background-color: #bbb; }
+          main.results section.recipes ul li div.quantity div.quantity-buttons {
+            float: left; }
+            main.results section.recipes ul li div.quantity div.quantity-buttons button {
+              display: block;
+              padding: 3px 10px;
+              width: 28px;
+              text-align: center;
+              color: #fff;
+              background-color: #aaa;
+              border: none; }
+      main.results section.recipes ul li.active div.recipe-left i.fa-glass {
+        display: none; }
+      main.results section.recipes ul li.active div.recipe-left i.fa-cart-plus {
+        display: inline-block;
+        background-color: #777; }
+      main.results section.recipes ul li.active div.recipe-left i.fa-cart-arrow-down {
+        display: inline-block;
+        background-color: #60C497; }
+      main.results section.recipes ul li.active div.recipe-left i.fa-beer {
+        display: inline-block;
+        background-color: #777; }
+      main.results section.recipes ul li.active div.recipe-left h2 {
+        color: #56bcd5; }
+  main.results section.active-recipe {
+    display: none;
+=======
           margin-right: 10px;
           width: 110px;
           vertical-align: top; }
@@ -330,6 +427,7 @@ main.shopping-cart {
   height: 100%;
   background-color: #F8F6F7; }
   main.shopping-cart section.options {
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
     position: fixed;
     width: 100%;
     background-color: #fff;
@@ -478,6 +576,43 @@ main.item-select section.ingredients {
       background-color: #e7d4d8; }
       main.item-select section.ingredients ul li.selected hr {
         border-color: #e7d4d8; }
+
+main.item-menu {
+  width: 100%; }
+  main.item-menu ul.container {
+    margin-left: 1em;
+    margin-right: 1em;
+    width: auto;
+    margin-top: 1em;
+    list-style: none; }
+    main.item-menu ul.container li.row {
+      width: 100%;
+      display: block; }
+      main.item-menu ul.container li.row ul {
+        list-style: none; }
+        main.item-menu ul.container li.row ul li {
+          float: left;
+          margin-bottom: 1em;
+          padding: 50px 0;
+          height: 10em;
+          width: calc((100% - 1em) / 2);
+          background-color: #33FFFF;
+          text-align: center; }
+          main.item-menu ul.container li.row ul li span {
+            font-family: Arial;
+            font-size: 2em; }
+        main.item-menu ul.container li.row ul li:first-child {
+          margin-right: 1em; }
+        main.item-menu ul.container li.row ul li#liquor {
+          background-color: #FF0000; }
+        main.item-menu ul.container li.row ul li#mixer {
+          background-color: #FF8000; }
+        main.item-menu ul.container li.row ul li#fruit {
+          background-color: #FFFF00; }
+        main.item-menu ul.container li.row ul li#spice {
+          background-color: #00CC00; }
+        main.item-menu ul.container li.row ul li#other {
+          background-color: #0000FF; }
 
 /* Globals */
 html, body, div, span, h1, h2, h3, h4,

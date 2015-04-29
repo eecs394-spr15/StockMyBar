@@ -9,8 +9,7 @@ angular
 
         $scope.prefIdList = angular.isDefined(localStorage.prefIdList) ? JSON.parse(localStorage.prefIdList) : [];
         $scope.prefList = angular.isDefined(localStorage.prefList) ? JSON.parse(localStorage.prefList) : [];
-
-
+    
         supersonic.device.ready.then( function() {
             supersonic.logger.log(localStorage.prefIdList);
             supersonic.data.channel('prefIdList').publish(JSON.parse(localStorage.prefIdList));
@@ -31,7 +30,7 @@ angular
                 if (value) {
                     for(var i=0;i<$scope.allPreferences.length;i++){
                         if ($scope.allPreferences[i].id == key){
-                            $scope.prefList.push($scope.allPreferences[i]);
+                            $scope.prefList.push({id:$scope.allPreferences[i].id, name:$scope.allPreferences[i].name});
                             $scope.prefIdList.push(key);
                             break;
                         }
@@ -45,7 +44,7 @@ angular
             localStorage.prefList = JSON.stringify($scope.prefList);
             //supersonic.logger.log("ingredList:"+localStorage.ingredList);
             supersonic.data.channel('prefIdList').publish($scope.prefIdList);
-            supersonic.data.channel('prefList').publish($scope.prefList);
+            supersonic.data.channel('prefList').publish("go!");
             supersonic.ui.modal.hide();
 
         };

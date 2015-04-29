@@ -64,12 +64,18 @@ def read_spreadsheet(csv_filename):
     column_headers = []
     result_list = []
     for row in csv_reader:
+        if row[0] == '\n':
+            continue
         if i == 0:
             column_headers = row
         else:
             result_line = {}
             for j in range(len(column_headers)):
-                result_line[column_headers[j]] = row[j]
+                try:
+                    result_line[column_headers[j]] = row[j]
+                except IndexError:
+                    print row, i, j
+                    sys.exit()
             result_list.append(result_line)
         i += 1
     return result_list
@@ -131,12 +137,20 @@ def process_raw_ingredient(raw_ingredient):
         ingredient['common'] = False
     else:
         ingredient['common'] = True
-    if raw_ingredient['price']:
+    if not raw_ingredient['assumed'] or raw_ingredient['assumed'].lower() == 'no':
+        ingredient['assumed'] = False
+    else:
+        ingredient['assumed'] = True
+    if raw_ingredient['price'] and raw_ingredient['price'] != '\n':
         if raw_ingredient['price'][0] == '$':
             price = raw_ingredient['price'][1:]
         else:
             price = raw_ingredient['price']
-        ingredient['price'] = float(price)
+        try:
+            ingredient['price'] = float(price)
+        except ValueError:
+            print raw_ingredient, float
+            sys.exit()
     else:
         ingredient['price'] = 0
     return ingredient
@@ -157,6 +171,7 @@ def apply_recipe_data_to_ingredients_list(recipes, ingredients_csv_filename):
             changed = True
     with open(ingredients_csv_filename, 'ab') as fp:
         csv_writer = csv.writer(fp, delimiter=',')
+        csv_writer.writerows(['\n'])
         csv_writer.writerows(new_rows)
     return changed
 

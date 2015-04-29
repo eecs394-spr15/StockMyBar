@@ -16,6 +16,26 @@ angular
         $scope.ingredList = [];
         $scope.showActions = false;
 
+<<<<<<< HEAD
+
+        setTimeout(function() {
+            supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
+        }, 1000);
+        
+        updateIngredList();
+
+        supersonic.data.channel('ingredList').subscribe(function(message) {
+            updateIngredList();
+        });
+
+        function createIngredPartJS(id,name){
+            var obj = new Object();
+            obj.id = id;
+            obj.name = name;
+            return obj;
+        }
+
+=======
         // Publish ingredient list to the appropriate channel
         setTimeout(function() {
             supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
@@ -25,6 +45,7 @@ angular
         updateIngredList();
 
         // Update ingredient list
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
         function updateIngredList(){
             $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
             var newList = [];
@@ -62,6 +83,14 @@ angular
         // Select ingredient
         $scope.selectIngredient = function() {
 
+<<<<<<< HEAD
+        /* Open Add Items menu */
+        /*
+        $scope.addItems = function() {
+            supersonic.ui.modal.show("inputs#itemMenu");
+        }
+        */
+=======
         }
 
 
@@ -80,4 +109,5 @@ angular
         }, 1000);
 
 
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
     });

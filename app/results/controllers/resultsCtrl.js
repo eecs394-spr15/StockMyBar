@@ -10,9 +10,11 @@ angular
 
 		var ingList = [];
 		$scope.recipes = [];
+		$scope.noRecipesDisplayed = true;
 		$scope.noneActive = true;
 		$scope.ingredShoppingList = angular.isDefined(localStorage.ingredShoppingList) ? JSON.parse(localStorage.ingredShoppingList) : [];
 		$scope.recipeShoppingList = [];
+		$scope.prefList = angular.isDefined(localStorage.prefList) ? JSON.parse(localStorage.prefList) : [];
 
 		// Update recipes' cart icons when shopping list is cleared
 		supersonic.data.channel('clearShoppingList').subscribe(function() {
@@ -24,6 +26,14 @@ angular
 			$scope.$apply();
 		});
 
+<<<<<<< HEAD
+		supersonic.data.channel('prefList').subscribe(function(){
+			$scope.prefList = angular.isDefined(localStorage.prefList) ? JSON.parse(localStorage.prefList) : [];
+			updateRecipeListByPreferences();
+			$scope.$apply();
+		});
+
+=======
 
 	
 		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
@@ -43,12 +53,31 @@ angular
 		});
 
 
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
 		supersonic.data.channel('ingredIdList').subscribe( function(newVal) {
 			// Updates possible recipes anytime the user's bar contents change
 			ingList = newVal;
 			$scope.recipeShoppingList = [];
 			makeIngredShoppingList();
 			Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
+<<<<<<< HEAD
+			if (ingList.length > 0){
+				Parse.Cloud.run("search4Recipes", {ingredientIds: ingList}, {
+					success: function(results) {
+						$scope.recipesBefore = results;
+						updateRecipeListByPreferences();
+						//$scope.recipes = results;
+						$scope.noneActive = true;
+						$scope.selected = null;
+						/*
+						for (var i=0; i<$scope.recipes.length; i++) {
+							$scope.recipes[i].count = 0;
+						}
+						*/
+						$scope.$apply();
+					}, error: function(error) {
+						supersonic.logger.log(error);
+=======
 			Parse.Cloud.run("search4Recipes", {ingredientIds: ["Zb6NA5RZaw"]}, {
 				success: function(results) {
 					supersonic.logger.log($scope.recipes)
@@ -57,13 +86,49 @@ angular
 					$scope.selected = null;
 					for (var i=0; i<$scope.recipes.length; i++) {
 						$scope.recipes[i].count = 0;
+>>>>>>> 984d0c054e65a5cce00790163af132a59fe974bd
 					}
-					$scope.$apply();
-				}, error: function(error) {
-					supersonic.logger.log(error);
+				});
+			}else{
+				var tagNameList = [];
+				for(var i=0;i<$scope.prefList.length;i++){
+					tagNameList.push($scope.prefList[i].name);
 				}
-			});
+				Parse.Cloud.run("search4RecipesByPreferences", {preferenceNames: tagNameList}, {
+					success: function(results1){
+						$scope.recipes = results1;
+						$scope.noneActive = true;
+						$scope.selected = null;
+						$scope.$apply();
+					},
+					error: function(error){
+						supersonic.logger.log(error);
+					}
+				});
+			}
 		});
+
+		function updateRecipeListByPreferences(){
+			if ($scope.prefList.length == 0){
+				$scope.recipes = $scope.recipesBefore;
+			}
+			else{
+				$scope.recipes = [];
+				var addToList = false;
+				for(var i=0;i<$scope.recipesBefore.length;i++){
+					addToList = false;
+					for(var j=0;j<$scope.prefList.length;j++){
+						if ($scope.recipesBefore[i].tags.indexOf($scope.prefList[j].name) != -1){
+							addToList = true;
+							break;
+						}
+					}
+					if(addToList){
+						$scope.recipes.push($scope.recipesBefore[i]);
+					}
+				}
+			}
+		}
 
 		function makeIngredShoppingList(){
 			$scope.ingredShoppingList = [];
@@ -75,12 +140,14 @@ angular
 					for(var k=0; k<$scope.ingredShoppingList.length; k++){
 						if ($scope.ingredShoppingList[k].id == $scope.recipeShoppingList[i].ingredListOffHand[j].id){
 							$scope.ingredShoppingList[k].optional = $scope.ingredShoppingList[k].optional && $scope.recipeShoppingList[i].ingredListOffHand[j].optional;
+							$scope.ingredShoppingList[k].recipes.push({id: $scope.recipeShoppingList[i].id, name: $scope.recipeShoppingList[i].name});
 							addToList = false;
 							break;
 						}
 					}
 					if(addToList){
 						temp  = JSON.parse( JSON.stringify( $scope.recipeShoppingList[i].ingredListOffHand[j] ) );
+						temp.recipes.push({id: $scope.recipeShoppingList[i].id, name: $scope.recipeShoppingList[i].name});
 						$scope.ingredShoppingList.push(temp);
 					}
 				}
@@ -122,6 +189,10 @@ angular
 			$('#item-' + index).slideToggle("fast");
 		};
 
+		$scope.goToItems = function(){
+			$location.path("inputs#items");
+		}
+
 		/* Change activeRecipe on UI click */
 		$scope.activateRecipe = function(index) {
 			$scope.noneActive = false;
@@ -140,7 +211,7 @@ angular
 			$scope.recipeShoppingList.push($scope.recipes[index]);
 			makeIngredShoppingList();
 			//supersonic.logger.log($scope.recipeShoppingList.length);
-			$scope.apply();
+			$scope.$apply();
 		};
 
 		$scope.removeFromCart = function(index){
@@ -154,7 +225,7 @@ angular
 			}
 			makeIngredShoppingList();
 			//supersonic.logger.log($scope.recipeShoppingList.length);
-			$scope.apply();
+			$scope.$apply();
 
 		};
 
