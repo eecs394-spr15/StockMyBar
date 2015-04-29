@@ -333,23 +333,34 @@ main.shopping-cart {
     position: fixed;
     width: 100%;
     background-color: #fff;
-    border-bottom: 1px solid #ddd; }
+    border-bottom: 1px solid #c5c5c5;
+    z-index: 10; }
     main.shopping-cart section.options ul {
-      margin: 0 auto;
-      padding: 10px 0;
-      width: 60%;
+      padding: 4px 0;
+      width: 100%;
       list-style: none;
       overflow: auto; }
       main.shopping-cart section.options ul li {
-        float: right;
-        text-align: center; }
+        float: left;
+        width: calc((100% - 1px) / 2);
+        padding: 5px 0; }
         main.shopping-cart section.options ul li i {
-          display: block;
-          font-size: 35px;
-          color: #aaa; }
+          margin-right: 3px;
+          font-size: 20px;
+          color: #5F6D8B; }
         main.shopping-cart section.options ul li span {
-          font-size: 13px;
-          color: #aaa; }
+          padding: 2px 0;
+          font-size: 16px;
+          color: #5F6D8B; }
+      main.shopping-cart section.options ul li:first-child {
+        padding-right: 20px;
+        border-right: 1px solid #eee;
+        text-align: right; }
+        main.shopping-cart section.options ul li:first-child i, main.shopping-cart section.options ul li:first-child span {
+          visibility: hidden; }
+      main.shopping-cart section.options ul li:last-child {
+        padding-left: 20px;
+        text-align: left; }
   main.shopping-cart section.ingredients {
     padding-top: 80px;
     width: 100%;
