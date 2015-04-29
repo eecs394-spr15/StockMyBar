@@ -7,15 +7,17 @@
 
 
 	<section class="options">
-		<ul>
-			<super-navigate location="results#shoppingcart">
-				<li>
-					<i class="fa fa-list-alt"></i>
-					<span>SHOPPING LIST</span>
-				</li>
-			</super-navigate>
-		</ul>
-	</section>
+        <ul>
+            <li ng-click="clearAllItems()">
+                <i class="icon super-close"></i>
+                <span>Clear</span>
+            </li>
+            <li ng-click="clearAllItems()">
+				<i class="fa fa-list-alt"></i>
+				<span>Shopping List</span>
+			</li>
+        </ul>
+    </section>
 
 
 	<section class="recipes">
