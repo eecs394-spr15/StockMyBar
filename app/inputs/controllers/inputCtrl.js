@@ -9,7 +9,7 @@ angular
         $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
         $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
         $scope.ingredNum = angular.isDefined(localStorage.ingredNum) ? JSON.parse(localStorage.ingredNum) : {'liquor':0,'mixer':0,'fruit':0,'spice':0,'other':0};
-        
+
         supersonic.device.ready.then( function() {
             localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
             supersonic.data.channel('ingredIdList').publish(JSON.parse(localStorage.ingredIdList));
@@ -60,9 +60,6 @@ angular
             //supersonic.ui.modal.hide();
         };
 
-        $scope.goBack = function(){
-            supersonic.ui.modal.hide();
-        };
 
         /*
         $scope.setCategory = function(category){
