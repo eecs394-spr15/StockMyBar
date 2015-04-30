@@ -100,10 +100,8 @@ angular
 		function updateRecipeListByPreferences(){
 			if ($scope.prefList.length == 0){
 				$scope.recipes = $scope.recipesBefore;
-<<<<<<< HEAD
 				$scope.noRecipes = true;
-=======
->>>>>>> parent of dce1899... pref view added, but not working
+
 			}
 			else{
 				$scope.noRecipes = false;
