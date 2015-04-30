@@ -3,9 +3,9 @@
 Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!!!!!");
 });
- 
- 
- 
+  
+  
+  
 function createRecipeJS(id,name,description,directions){
     var obj = new Object();
     obj.id = id;
@@ -20,7 +20,7 @@ function createRecipeJS(id,name,description,directions){
     obj.unit = "";
     return obj;
 }
- 
+  
 function createIngredPartJS(id,name,optional,assumed){
     var obj = new Object();
     obj.id = id;
@@ -30,8 +30,8 @@ function createIngredPartJS(id,name,optional,assumed){
     obj.recipes = new Array();
     return obj;
 }
- 
- 
+  
+  
 function createIngredJS(id,name,description){
     var obj = new Object();
     obj.id = id;
@@ -39,15 +39,15 @@ function createIngredJS(id,name,description){
     obj.description = description;
     return obj;
 }
- 
- 
+  
+  
 function createPrefJS(){
     var obj = new Object();
     obj.id = id;
     obj.name = name;
     return obj;
 }
- 
+  
 Parse.Cloud.define("search4Recipes", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("objectId", request.params.ingredientIds);
@@ -68,7 +68,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             for(var i = 0; i < results2.length; i++){
                 var repeat = false;
                 addRecipe = results2[i].get("recipe");
- 
+  
                 addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"), addRecipe.get("description"), addRecipe.get("directions"));
                 addIngredPartJS = createIngredPartJS(results2[i].get("ingredient").id, results2[i].get("ingredient").get("name"), results2[i].get("ingredient").get("optional"), results2[i].get("ingredient").get("assumed"));
                 addIngredPartJS.quantity = results2[i].get("quantity");
@@ -161,9 +161,9 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
     }
     });
 });
- 
- 
- 
+  
+  
+  
 Parse.Cloud.define("search4Ingreds", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("objectId", request.params.ingredientIds);
@@ -182,8 +182,8 @@ Parse.Cloud.define("search4Ingreds", function(request, response) {
     }
     });
 });
- 
- 
+  
+  
 Parse.Cloud.define("search4RecipesByPreferences", function(request, response) {
     var queryRecipe = new Parse.Query("Recipes");
     queryRecipe.containedIn("tags", request.params.preferenceNames);
@@ -198,6 +198,9 @@ Parse.Cloud.define("search4RecipesByPreferences", function(request, response) {
             addRecipe = results[i];
             addRecipeJS = createRecipeJS(results[i].id, results[i].get("name"), results[i].get("description"),results[i].get("directions"));
             recipeList.push(addRecipe);
+            for(var k=0;k<results[i].get("recipe").get("tags").length;k++){
+                addRecipeJS.tags.push(results[i].get("recipe").get("tags")[k]);
+            }
             recipeJSList.push(addRecipeJS);
         }
         //response.success(recipeJSList);
