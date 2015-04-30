@@ -1,3 +1,11 @@
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 main.results {
 	position: absolute;
 	width: 100%;
@@ -51,6 +59,12 @@ main.results {
         }
     }
 
+    	h4.none {
+	    	font-size: 37px;
+			color: #888;
+			text-align: center;
+			@include vertical-align();	
+			}
 
 	section.recipes {
 		padding-top: 50px;

@@ -10,6 +10,7 @@ angular
 		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
 
 		$scope.recipes = [];
+		$scope.noRecipes = false;
 		$scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
 		$scope.noRecipesDisplayed = true;
 		$scope.noneActive = true;
@@ -79,6 +80,12 @@ angular
 					$scope.recipes = results;
 					$scope.noneActive = true;
 					$scope.selected = null;
+					if ($scope.recipes.length == 0){
+						$scope.noRecipes = true;
+					}
+					else{
+						$scope.noRecipes = false;
+					}
 					// for (var i=0; i<$scope.recipes.length; i++) {
 					// 	$scope.recipes[i].count = 0;
 					// }
@@ -93,8 +100,10 @@ angular
 		function updateRecipeListByPreferences(){
 			if ($scope.prefList.length == 0){
 				$scope.recipes = $scope.recipesBefore;
+				$scope.noRecipes = true;
 			}
 			else{
+				$scope.noRecipes = false;
 				$scope.recipes = [];
 				var addToList = false;
 				for(var i=0;i<$scope.recipesBefore.length;i++){

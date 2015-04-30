@@ -64,6 +64,11 @@ angular
             supersonic.ui.modal.hide();
         };
 
+        $scope.getImageFilename = function(name) {
+            supersonic.logger.log('../../ing_icns/'+name+'.jpg');
+            return '../../ing_icns/'+name+'.jpg';
+        };
+
         /*
         $scope.setCategory = function(category){
             $scope.category = category;
