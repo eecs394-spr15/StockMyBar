@@ -112,7 +112,6 @@ angular
 
         // Get icon for items
         $scope.getImageFilename = function(name) {
-            supersonic.logger.log('../../ing_icns/'+name+'.jpg');
             return '../../ing_icns/'+name+'.jpg';
         };
 
