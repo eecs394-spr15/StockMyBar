@@ -227,6 +227,10 @@ angular
             supersonic.ui.layers.push(view);
 		}
 
+		$scope.goToItems = function(){
+			$window.open("inputs#items");
+		}
+
 
 		// Update recipes' cart icons when shopping list is cleared
 		supersonic.data.channel('clearShoppingList').subscribe(function() {
