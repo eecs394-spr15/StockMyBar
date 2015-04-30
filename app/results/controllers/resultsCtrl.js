@@ -249,5 +249,10 @@ angular
 			$scope.$apply();
 		});
 
+		// Get icon for recipes
+		$scope.getImageFilename = function(name) {
+			return '../../recipe_icns/'+name+'.jpg';
+		};
+
 
 	});

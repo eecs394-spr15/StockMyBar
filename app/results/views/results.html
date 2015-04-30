@@ -26,7 +26,7 @@
 	<section class="recipes">
 		<ul>
 			<li ng-class="{active: $index == selected}" ng-repeat="recipe in recipes" ng-click="activateRecipe($index)">
-				<img src="http://img1.sunset.timeinc.net/sites/default/files/image/2005/07/mojito-mint-m-m.jpg" />
+				<img src="{{getImageFilename(recipe.name)}}" />
 				<div class="recipe-description">
 					<h3>{{recipe.name}}</h3>
 					<span ng-show = "recipe.ingredListOffHand.length==0">You have everything!</span>
