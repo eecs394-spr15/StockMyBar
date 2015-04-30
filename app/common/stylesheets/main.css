@@ -149,6 +149,7 @@ main.items {
         border: 1px solid #e8e8e8;
         border-radius: 1px; }
         main.items section.ingreds ul li div.ingred-content {
+          position: relative;
           width: 100%; }
           main.items section.ingreds ul li div.ingred-content img {
             display: block;
@@ -161,6 +162,20 @@ main.items {
             text-overflow: ellipsis;
             font-size: 10px;
             color: #666; }
+          main.items section.ingreds ul li div.ingred-content i {
+            display: none;
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            padding: 0 6px;
+            font-size: 9px;
+            color: #fff;
+            background-color: red;
+            border-radius: 50%; }
+      main.items section.ingreds ul li.active {
+        opacity: 0.7; }
+        main.items section.ingreds ul li.active div.ingred-content i {
+          display: block; }
       main.items section.ingreds ul li:nth-child(5n-1) {
         margin-right: 0; }
       main.items section.ingreds ul div.shelf {
