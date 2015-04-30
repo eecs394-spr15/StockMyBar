@@ -135,17 +135,12 @@ angular
 		}
 
 		function updateRecipeListByPreferences(){
-<<<<<<< HEAD
-			if ($scope.prefList.length == 0){
-				$scope.recipes = $scope.recipesBefore;
-				$scope.noRecipes = true;
 
-=======
 			var recipesBefore = $scope.recipes;
 
 			if ($scope.prefIdList.length == 0){
 				$scope.recipes = recipesBefore;
->>>>>>> feature/controller-fix
+
 			}
 			else{
 				$scope.recipes = [];
@@ -227,9 +222,6 @@ angular
 			$('#item-' + index).slideToggle("fast");
 		};
 
-		$scope.goToItems = function(){
-			$location.path("inputs#items");
-		}
 
 		/* Change activeRecipe on UI click */
 		$scope.activateRecipe = function(index) {
@@ -272,15 +264,8 @@ angular
             supersonic.ui.layers.push(view);
 		}
 
-<<<<<<< HEAD
-		$scope.goToItems = function(){
-			$window.open("inputs#items");
-		}
 
-
-=======
 		/*
->>>>>>> feature/controller-fix
 		// Update recipes' cart icons when shopping list is cleared
 		supersonic.data.channel('clearShoppingList').subscribe(function() {
 			$scope.ingredShoppingList = [];
