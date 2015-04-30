@@ -4,29 +4,21 @@ angular
 	.module('results')
 	.controller('ResultsCtrl', function ($scope, supersonic) {
 
-		supersonic.logger.log("wtf!!");
+
+
 
 		Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
 
 		$scope.recipes = [];
+		$scope.noRecipes = false;
 		$scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
 		$scope.noRecipesDisplayed = true;
 		$scope.noneActive = true;
 		$scope.ingredShoppingList = angular.isDefined(localStorage.ingredShoppingList) ? JSON.parse(localStorage.ingredShoppingList) : [];
 		$scope.recipeShoppingList = [];
-		$scope.prefIdList = angular.isDefined(localStorage.prefIdList) ? JSON.parse(localStorage.prefIdList) : [];
-		
-		supersonic.logger.log($scope.prefIdList);
+		$scope.prefList = angular.isDefined(localStorage.prefList) ? JSON.parse(localStorage.prefList) : [];
+		search4RecipesByIds();
 
-		if ($scope.ingredIdList.length == 0){
-			search4RecipesByPrefs();
-		}
-		else{
-			search4RecipesByIds();
-			updateRecipeListByPreferences();
-		}
-		makeIngredShoppingList();
-		
 		// Update recipes' cart icons when shopping list is cleared
 		supersonic.data.channel('clearShoppingList').subscribe(function() {
 			$scope.ingredShoppingList = [];
@@ -41,28 +33,7 @@ angular
 			// Updates possible recipes anytime the user's bar contents change
 			$scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
 			$scope.recipeShoppingList = [];
-			if ($scope.ingredIdList.length == 0){
-				search4RecipesByPrefs();
-			}
-			else{
-				search4RecipesByIds();
-				updateRecipeListByPreferences();
-			}
-			makeIngredShoppingList();
-		});
-
-		supersonic.data.channel('prefIdList').subscribe( function(newVal) {
-			// Updates possible recipes anytime the user's bar contents change
-			supersonic.logger.log("wtf!!");
-			$scope.prefIdList = angular.isDefined(localStorage.prefIdList) ? JSON.parse(localStorage.prefIdList) : [];
-			$scope.recipeShoppingList = [];
-			if ($scope.ingredIdList.length == 0){
-				search4RecipesByPrefs();
-			}
-			else{
-				search4RecipesByIds();
-				updateRecipeListByPreferences();
-			}
+			search4RecipesByIds();
 			makeIngredShoppingList();
 		});
 		/*
@@ -109,25 +80,16 @@ angular
 					$scope.recipes = results;
 					$scope.noneActive = true;
 					$scope.selected = null;
+					if ($scope.recipes.length == 0){
+						$scope.noRecipes = true;
+					}
+					else{
+						$scope.noRecipes = false;
+					}
 					// for (var i=0; i<$scope.recipes.length; i++) {
 					// 	$scope.recipes[i].count = 0;
 					// }
-					$scope.$apply();
-				}, error: function(error) {
-					supersonic.logger.log(error);
-				}
-			});
-		}
-
-		function search4RecipesByPrefs(){
-			Parse.Cloud.run("search4RecipesByPreferences", {preferenceNames: $scope.prefIdList}, {
-				success: function(results) {
-					$scope.recipes = results;
-					$scope.noneActive = true;
-					$scope.selected = null;
-					// for (var i=0; i<$scope.recipes.length; i++) {
-					// 	$scope.recipes[i].count = 0;
-					// }
+					supersonic.logger.log("haha"+$scope.recipes)
 					$scope.$apply();
 				}, error: function(error) {
 					supersonic.logger.log(error);
@@ -136,28 +98,30 @@ angular
 		}
 
 		function updateRecipeListByPreferences(){
-			var recipesBefore = $scope.recipes;
-
-			if ($scope.prefIdList.length == 0){
-				$scope.recipes = recipesBefore;
+			if ($scope.prefList.length == 0){
+				$scope.recipes = $scope.recipesBefore;
+<<<<<<< HEAD
+				$scope.noRecipes = true;
+=======
+>>>>>>> parent of dce1899... pref view added, but not working
 			}
 			else{
+				$scope.noRecipes = false;
 				$scope.recipes = [];
 				var addToList = false;
-				for(var i=0;i<recipesBefore.length;i++){
+				for(var i=0;i<$scope.recipesBefore.length;i++){
 					addToList = false;
-					for(var j=0;j<$scope.prefIdList.length;j++){
-						if (recipesBefore[i].tags.indexOf($scope.prefIdList[j]) != -1){
+					for(var j=0;j<$scope.prefList.length;j++){
+						if ($scope.recipesBefore[i].tags.indexOf($scope.prefList[j].name) != -1){
 							addToList = true;
 							break;
 						}
 					}
 					if(addToList){
-						$scope.recipes.push(recipesBefore[i]);
+						$scope.recipes.push($scope.recipesBefore[i]);
 					}
 				}
 			}
-			$scope.$apply();
 		}
 
 		function makeIngredShoppingList(){
@@ -191,7 +155,6 @@ angular
 				}
 			});
 			localStorage.ingredShoppingList = JSON.stringify($scope.ingredShoppingList);
-			$scope.$apply();
 		}
 
 		/*
@@ -221,6 +184,12 @@ angular
 		$scope.show = function(index) {
 			$('#item-' + index).slideToggle("fast");
 		};
+
+		// Navigate to home view
+        $scope.goHome = function() {
+            var view = new supersonic.ui.View("inputs#home");
+            supersonic.ui.layers.push(view);
+        }
 
 		$scope.goToItems = function(){
 			$location.path("inputs#items");
@@ -267,7 +236,14 @@ angular
             supersonic.ui.layers.push(view);
 		}
 
-		/*
+<<<<<<< HEAD
+		$scope.goToItems = function(){
+			$window.open("inputs#items");
+		}
+
+=======
+>>>>>>> parent of dce1899... pref view added, but not working
+
 		// Update recipes' cart icons when shopping list is cleared
 		supersonic.data.channel('clearShoppingList').subscribe(function() {
 			$scope.ingredShoppingList = [];
@@ -277,7 +253,6 @@ angular
 			}
 			$scope.$apply();
 		});
-		*/
 
 
 	});

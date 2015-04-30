@@ -3,55 +3,19 @@
 
 	<super-navbar class="navbar">
 		<super-navbar-title>Preferences</super-navbar-title>
+		<super-navbar-button side="left" ng-click="clearAllItems()">Clear All</super-navbar-button>
+		<super-navbar-button side="right" class="add" ng-click="addItems()">Add Preferences</super-navbar-button>
 	</super-navbar>
 
 
 	<section>
-		<!-- <ul class="item-list list">
+		<ul class="item-list list">
 			<div  ng-swipe-right="showActions = false">
 				<li class="item" ng-swipe-left="showDeleteButton($index)" ng-repeat="pref in prefList | orderBy: 'name' ">
 					{{pref.name}}
 					<button  ng-show="showButton($index)" ng-click="cancel($index)" style="height:100%; width:25%;background-color: #CC0022; color: white;float:right">Delete</button>
 				</li>
 			</div>
-		</ul> -->
-		<div class="list">
-			<div class="item range range-positive">
-				<h2>tequila</h2>
-				<input type="range" name="tequila" min="-1" max="1" value="1" ng-model = "prefNum['tequila']" ng-change = "updateprefList()">
-			</div>
-			<div class="item range range-positive">
-				<h2>gin</h2>
-				<input type="range" name="gin" min="-1" max="1" value="1" ng-model = "prefNum['gin']" ng-change = "updateprefList()">
-			</div>
-			<div class="item range range-positive">
-				<h2>rum</h2>
-				<input type="range" name="rum" min="-1" max="1" value="1" ng-model = "prefNum['rum']" ng-change = "updateprefList()">
-			</div>
-			<div class="item range range-positive">
-				<h2>vodka</h2>
-				<input type="range" name="vodka" min="-1" max="1" value="1" ng-model = "prefNum['vodka']" ng-change = "updateprefList()">
-			</div>
-			<div class="item range range-positive">
-				<h2>whiskey</h2>
-				<input type="range" name="whiskey" min="-1" max="1" value="1" ng-model = "prefNum['whiskey']" ng-change = "updateprefList()">
-			</div>
-			<div class="item range range-positive">
-				<h2>bitter</h2>
-				<input type="range" name="bitter" min="-1" max="1" value="1" ng-model = "prefNum['bitter']" ng-change = "updateprefList()">
-			</div>
-			<div class="item range range-positive">
-				<h2>salty</h2>
-				<input type="range" name="salty" min="-1" max="1" value="1" ng-model = "prefNum['salty']" ng-change = "updateprefList()">
-			</div>
-			<div class="item range range-positive">
-				<h2>sour</h2>
-				<input type="range" name="sour" min="-1" max="1" value="1" ng-model = "prefNum['sour']" ng-change = "updateprefList()">
-			</div>
-			<div class="item range range-positive">
-				<h2>sweet</h2>
-				<input type="range" name="sweet" min="-1" max="1" value="1" ng-model = "prefNum['sweet']" ng-change = "updateprefList()">
-			</div>
-		</div>
+		</ul>
 	</section>
 </main>

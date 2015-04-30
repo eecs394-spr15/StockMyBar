@@ -8,10 +8,10 @@
 
 	<section class="options">
         <ul>
-            <li ng-click="clearAllItems()">
-                <i class="icon super-close"></i>
-                <span>Clear</span>
-            </li>
+            <li ng-click="goHome()">
+        		<i class="fa fa-bars"></i>
+        		<span>Home</span>
+        	</li>
             <li ng-click="clearAllItems()">
 				<i class="icon super-close"></i>
 				<span>Clear</span>
@@ -23,7 +23,7 @@
 	<section class="ingredients">
 		<ul>
 			<li class="ingredient" ng-repeat="item in ingredShoppingList">
-				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
+				<img src="{{getImageFilename(item.name)}}" />
 				<span>{{item.name}}</span>
 				<hr>
 			</li>

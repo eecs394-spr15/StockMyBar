@@ -198,9 +198,6 @@ Parse.Cloud.define("search4RecipesByPreferences", function(request, response) {
             addRecipe = results[i];
             addRecipeJS = createRecipeJS(results[i].id, results[i].get("name"), results[i].get("description"),results[i].get("directions"));
             recipeList.push(addRecipe);
-            for(var k=0;k<results[i].get("recipe").get("tags").length;k++){
-                addRecipeJS.tags.push(results[i].get("recipe").get("tags")[k]);
-            }
             recipeJSList.push(addRecipeJS);
         }
         //response.success(recipeJSList);

@@ -34,6 +34,7 @@ angular
             $scope.ingredNum = angular.isDefined(localStorage.ingredNum) ? JSON.parse(localStorage.ingredNum) : {'liquor':0,'mixer':0,'fruit':0,'spice':0,'other':0};
         });
 
+        // Create Ingredient javascript object
         function createIngredJS(id,name,category){
             var obj = new Object();
             obj.id = id;
@@ -42,6 +43,7 @@ angular
             return obj;
         }
 
+        // Update ingredient list
         function updateIngredList(){
             $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
             var newList = [];
@@ -50,8 +52,7 @@ angular
             }
             $scope.ingredList = newList;
             $scope.$apply();
-        }   
-        // Update ingredient list
+        }
         
 
 
@@ -77,13 +78,13 @@ angular
             $scope.$apply();
         };
 
+        // Delete item from My Bar
         $scope.cancel = function(index) {
             $scope.showActions = false;
             var index1 = $scope.ingredIdList.indexOf($scope.ingredList[index].id);
             $scope.ingredIdList.splice(index1,1);
             $scope.ingredNum[$scope.ingredList[index].category]--;
             $scope.ingredList.splice(index,1);
-
             localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
             localStorage.ingredList = JSON.stringify($scope.ingredList);
             localStorage.ingredNum = JSON.stringify($scope.ingredNum);
@@ -91,17 +92,34 @@ angular
             supersonic.data.channel('ingredNum').publish($scope.ingredNum);
             $scope.$apply();
         };
+
+        // Navigate to home view
+        $scope.goHome = function() {
+            var view = new supersonic.ui.View("inputs#home");
+            supersonic.ui.layers.push(view);
+        }
                 
-        // Navigate to categories view to add a user's ingredient
+        // Navigate to categories view
         $scope.addIngredient = function() {
             var view = new supersonic.ui.View("inputs#categories");
             supersonic.ui.layers.push(view);
         };
 
         // Select ingredient
-        $scope.selectIngredient = function() {
+        $scope.selectIngredient = function(index) {
+            if ($scope.selected == index) {
+                $scope.selected = -1;
+            }
+            else {
+                $scope.selected = index;
+            }
+            $scope.$apply();
+        };
 
-        }
+        // Get icon for items
+        $scope.getImageFilename = function(name) {
+            return '../../ing_icns/'+name+'.jpg';
+        };
 
 
 
@@ -112,10 +130,13 @@ angular
          *************/
 
         // Inject shelves
-        setTimeout(function() {
+        var injectShelves = function() {
             $('section.ingreds ul li:nth-child(4n)').each(function() {
                 $(this).after('<div class="shelf"></div>');
             });
+        };
+        setTimeout(function() {
+            injectShelves();
         }, 1000);
 
 

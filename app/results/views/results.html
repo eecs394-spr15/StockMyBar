@@ -8,10 +8,10 @@
 
 	<section class="options">
         <ul>
-            <li ng-click="clearAllItems()">
-                <i class="icon super-close"></i>
-                <span>Clear</span>
-            </li>
+        	<li ng-click="goHome()">
+        		<i class="fa fa-bars"></i>
+        		<span>Home</span>
+        	</li>
             <li ng-click="openShoppingList()">
 				<i class="fa fa-list-alt"></i>
 				<span>Shopping List</span>
@@ -19,6 +19,9 @@
         </ul>
     </section>
 
+    <super-navigate class="none" action="click" location="inputs#items">
+   		<h4 ng-show="noRecipes">Tap here to add some ingredients in order to get some recipes</h4>
+   	</super-navigate>
 
 	<section class="recipes">
 		<ul>
@@ -40,13 +43,13 @@
 						{{recipe.description}}
 					</p>
 					<h4>Have</h4>
-						<ul class="have">
-							<li ng-repeat="ingredient in recipe.ingredListInHand">{{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}}</li>
-						</ul>
+					<ul class="have">
+						<li ng-repeat="ingredient in recipe.ingredListInHand">{{ingredient.name}}</li>
+					</ul>
 					<h4>Needed</h4>
-						<ul class="needed">
-							<li ng-repeat="ingredient in recipe.ingredListOffHand">{{ingredient.name}}</li>
-						</ul>
+					<ul class="needed">
+						<li ng-repeat="ingredient in recipe.ingredListOffHand">{{ingredient.name}}</li>
+					</ul>
 					<h4>Preparation</h4>
 					<p>{{recipe.directions}}</p>
 					

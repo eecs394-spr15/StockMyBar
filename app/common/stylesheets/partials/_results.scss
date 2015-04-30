@@ -1,3 +1,11 @@
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    transform: translateY(50%);
+}
+
 main.results {
 	position: absolute;
 	width: 100%;
@@ -40,9 +48,6 @@ main.results {
                 border-right: 1px solid #eee;
                 text-align: right;
 
-                i, span {
-                    visibility: hidden;
-                }
             }
             li:last-child {
                 padding-left: 20px;
@@ -51,17 +56,25 @@ main.results {
         }
     }
 
+    super-navigate.none {
+    	h4{
+	    	font-size: 37px;
+			color: #888;
+			text-align: center;
+			@include vertical-align();	
+			}
+		}
 
 	section.recipes {
-		padding-top: 80px;
+		padding-top: 50px;
 		width: 100%;
 		background-color: #fff;
 
-		ul {
+		> ul {
 			width: 100%;
 			list-style: none;
 
-			li {
+			> li {
 				padding: 6px 10px 0 10px;
 				width: 100%;
 				overflow: auto;
@@ -88,42 +101,72 @@ main.results {
 					}
 				}
 				div.recipe-metas {
+					position: relative;
 					float: right;
 					width: 30px;
+					height: 110px;
 					vertical-align: top;
 
 					i {
 						display: block;
-						font-size: 35px;
+						font-size: 25px;
 					}
 					i.add-recipe {
-						margin-bottom: 15px;
-						color: $color-1;
+						position: absolute;
+						top: 0px;
+						color: darken($color-1, 15%);
 					}
-					i.recipe-info { color: $color-7; }
+					i.remove-recipe {
+						position: absolute;
+						top: 0px;
+						color: red;
+					}
+					i.recipe-info { 
+						position: absolute;
+						bottom: 0px;
+						color: $color-7;
+					}
 				}
 				div.recipe-more {
 					display: none;
 					float: left;
 					clear: both;
+					width: 100%;
 
 					h4 {
+						margin: 10px 0 5px 0;
 						font-size: 16px;
-						color: #aaa;
+						color: #777;
 					}
 					p {
 						font-size: 14px;
 						color: #aaa;
 					}
-					ul.needed {
+					ul.have, ul.needed {
 						list-style: none;
+						overflow: auto;
 
 						li {
-							display: inline-block;
+							float: left;
 							margin-right: 8px;
+							padding: 2px 5px;
+							color: #fff;
+							border-radius: 10px;
 						}
 						li:last-child {
 							margin-right: 0;
+						}
+					}
+					ul.have {
+
+						li {
+							background-color: #62D968;
+						}
+					}
+					ul.needed {
+
+						li {
+							background-color: #ED5248;
 						}
 					}
 					ul.preparation {

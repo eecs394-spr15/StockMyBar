@@ -24,4 +24,16 @@ angular
 				}
 			});
 		};
+
+
+		// Navigate to home view
+        $scope.goHome = function() {
+            var view = new supersonic.ui.View("inputs#home");
+            supersonic.ui.layers.push(view);
+        }
+
+		// Get icon for items
+		$scope.getImageFilename = function(name) {
+			return '../../ing_icns/'+name+'.jpg';
+		};
     });

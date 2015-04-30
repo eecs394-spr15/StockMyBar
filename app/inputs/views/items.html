@@ -8,6 +8,10 @@
 
 	<section class="options">
 		<ul>
+			<li ng-click="goHome()">
+				<i class="fa fa-bars"></i>
+				<span>Home</span>
+			</li>
 			<li ng-click="clearAllItems()">
 				<i class="icon super-close"></i>
 				<span>Clear</span>
@@ -23,11 +27,11 @@
 	<section class="ingreds">
 		<ul>
 			<div  ng-swipe-right="showActions = false">
-				<li ng-swipe-left="showDeleteButton($index)" ng-repeat="ingred in ingredList | orderBy: 'name' ">
+				<li ng-repeat="ingred in ingredList | orderBy: 'name'" ng-class="{active: $index == selected}">
 					<div class="ingred-content">
 						<span>{{ingred.name}}</span>
-						<img src="http://farm1.static.flickr.com/118/275996337_f7713b3022.jpg" />
-						<button ng-show="showButton($index)" ng-click="cancel($index)" style="  width:25%; background-color: #CC0022; color: white;float:right;">Delete</button>
+						<img ng-click="selectIngredient($index)" src="{{getImageFilename(ingred.name)}}" />
+						<i ng-click="cancel($index)" class="icon super-close"></i>
 					</div>
 				</li>
 			</div>
