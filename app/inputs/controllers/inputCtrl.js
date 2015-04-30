@@ -57,7 +57,13 @@ angular
             supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
             supersonic.data.channel('ingredList').publish($scope.ingredList);
             supersonic.data.channel('ingredNum').publish($scope.ingredNum);
-            //supersonic.ui.modal.hide();
+            view = new supersonic.ui.View("inputs#items");
+            view.start("items").then( function(startedView) {
+                supersonic.ui.layers.replace(startedView);
+            });
+
+            // You can also use the View identifier
+            supersonic.ui.layers.replace("items");
         };
 
 
