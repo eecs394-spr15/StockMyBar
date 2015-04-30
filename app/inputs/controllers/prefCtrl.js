@@ -7,8 +7,6 @@ angular
         $scope.prefIdList = angular.isDefined(localStorage.prefIdList) ? JSON.parse(localStorage.prefIdList) : [];
         $scope.prefList = angular.isDefined(localStorage.prefList) ? JSON.parse(localStorage.prefList) : [];
         $scope.showActions = false;
-        $scope.prefNum = angular.isDefined(localStorage.prefNum) ? JSON.parse(localStorage.prefNum):{'tequila':0,'gin':0,'rum':0,'vodka':0,'whiskey':0,'bitter':0,'salty':0,'sour':0,'sweet':0};
-        //$scope.updateprefList();
 
         function createprefPartJS(id,name){
             var obj = new Object(); 
@@ -17,31 +15,68 @@ angular
             return obj; 
         }
 
-        $scope.updateprefList = function(){
+        function updateprefList(){
+            $scope.prefList = angular.isDefined(localStorage.prefList) ? JSON.parse(localStorage.prefList) : [];
             var newList = [];
-            $scope.prefIdList = angular.isDefined(localStorage.prefIdList) ? JSON.parse(localStorage.prefIdList) : [];
-            angular.forEach($scope.prefNum, function(value, key) {
-                if (value>0){
-                    newList.push(key);
-                }
-            });
-            $scope.prefIdList = newList;
-            localStorage.prefIdList = JSON.stringify($scope.prefIdList);
-            localStorage.prefNum = JSON.stringify($scope.prefNum);
-            supersonic.data.channel('prefIdList').publish($scope.prefIdList);
-            supersonic.logger.log($scope.prefIdList);
+            for(var i=0;i<$scope.prefList.length;i++){
+                newList.push(createprefPartJS($scope.prefList[i].id,$scope.prefList[i].name));
+            }
+            $scope.prefList = newList;
             $scope.$apply();
         } 
-        
-
         /*
+        setTimeout(function() {
+            supersonic.data.channel('prefIdList').publish($scope.prefIdList);
+        }, 1000);
+        */
+
+        supersonic.data.channel('prefList').subscribe(function(message) {
+            updateprefList();
+        });
+
+        
         supersonic.data.channel('prefIdList').subscribe(function(message) {
             $scope.prefIdList = angular.isDefined(localStorage.prefIdList) ? JSON.parse(localStorage.prefIdList) : [];
             $scope.$apply();
         });
-        */
 
 
         //need to implement deleting prefient from recipe list after user swiped left
-        
+        $scope.showDeleteButton = function(index){
+            $scope.showActions = true;
+            $scope.selected = index;
+            $scope.apply();
+        };
+
+
+        $scope.clearAllItems = function() {
+            $scope.prefIdList = [];
+            $scope.prefList = [];
+            localStorage.prefIdList = JSON.stringify($scope.prefIdList);
+            localStorage.prefList = JSON.stringify($scope.prefList);
+            supersonic.data.channel('prefIdList').publish($scope.prefIdList);
+            supersonic.data.channel('prefList').publish($scope.prefList);
+            $scope.apply();
+        };
+
+		$scope.cancel = function(index) {
+            $scope.showActions = false;
+			var index1 = $scope.prefIdList.indexOf($scope.prefList[index].id);
+			$scope.prefIdList.splice(index1,1);  
+            $scope.prefList.splice(index,1);
+			localStorage.prefIdList = JSON.stringify($scope.prefIdList);
+            localStorage.prefList = JSON.stringify($scope.prefList);
+			supersonic.data.channel('prefIdList').publish($scope.prefIdList);
+            $scope.apply();
+		};
+
+        $scope.showButton = function(index){
+            return $scope.showActions && (index==$scope.selected);
+        }
+
+        /* Open Add Items menu */
+        $scope.addItems = function() {
+            supersonic.ui.modal.show("inputs#prefsSelect");
+            supersonic.logger.log($scope.prefIdList);
+        }
     });
