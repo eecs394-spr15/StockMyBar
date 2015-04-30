@@ -286,65 +286,84 @@ main.results {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%); }
   main.results section.recipes {
-    padding-top: 80px;
+    padding-top: 50px;
     width: 100%;
     background-color: #fff; }
-    main.results section.recipes ul {
+    main.results section.recipes > ul {
       width: 100%;
       list-style: none; }
-      main.results section.recipes ul li {
+      main.results section.recipes > ul > li {
         padding: 6px 10px 0 10px;
         width: 100%;
         overflow: auto; }
-        main.results section.recipes ul li img {
+        main.results section.recipes > ul > li img {
           float: left;
           margin-right: 10px;
           width: 110px;
           vertical-align: top; }
-        main.results section.recipes ul li div.recipe-description {
+        main.results section.recipes > ul > li div.recipe-description {
           float: left;
           margin-right: 10px;
           width: calc(100% - 110px - 30px - 10px - 10px);
           vertical-align: top; }
-          main.results section.recipes ul li div.recipe-description h3 {
+          main.results section.recipes > ul > li div.recipe-description h3 {
             font-size: 17px;
             color: #888; }
-          main.results section.recipes ul li div.recipe-description span {
+          main.results section.recipes > ul > li div.recipe-description span {
             font-size: 14px;
             color: #aaa; }
-        main.results section.recipes ul li div.recipe-metas {
+        main.results section.recipes > ul > li div.recipe-metas {
+          position: relative;
           float: right;
           width: 30px;
+          height: 110px;
           vertical-align: top; }
-          main.results section.recipes ul li div.recipe-metas i {
+          main.results section.recipes > ul > li div.recipe-metas i {
             display: block;
-            font-size: 35px; }
-          main.results section.recipes ul li div.recipe-metas i.add-recipe {
-            margin-bottom: 15px;
-            color: #50CEE4; }
-          main.results section.recipes ul li div.recipe-metas i.recipe-info {
+            font-size: 25px; }
+          main.results section.recipes > ul > li div.recipe-metas i.add-recipe {
+            position: absolute;
+            top: 0px;
+            color: #1fafc9; }
+          main.results section.recipes > ul > li div.recipe-metas i.remove-recipe {
+            position: absolute;
+            top: 0px;
+            color: red; }
+          main.results section.recipes > ul > li div.recipe-metas i.recipe-info {
+            position: absolute;
+            bottom: 0px;
             color: #5F6D8B; }
-        main.results section.recipes ul li div.recipe-more {
+        main.results section.recipes > ul > li div.recipe-more {
           display: none;
           float: left;
-          clear: both; }
-          main.results section.recipes ul li div.recipe-more h4 {
+          clear: both;
+          width: 100%; }
+          main.results section.recipes > ul > li div.recipe-more h4 {
+            margin: 10px 0 5px 0;
             font-size: 16px;
-            color: #aaa; }
-          main.results section.recipes ul li div.recipe-more p {
+            color: #777; }
+          main.results section.recipes > ul > li div.recipe-more p {
             font-size: 14px;
             color: #aaa; }
-          main.results section.recipes ul li div.recipe-more ul.needed {
-            list-style: none; }
-            main.results section.recipes ul li div.recipe-more ul.needed li {
-              display: inline-block;
-              margin-right: 8px; }
-            main.results section.recipes ul li div.recipe-more ul.needed li:last-child {
+          main.results section.recipes > ul > li div.recipe-more ul.have, main.results section.recipes > ul > li div.recipe-more ul.needed {
+            list-style: none;
+            overflow: auto; }
+            main.results section.recipes > ul > li div.recipe-more ul.have li, main.results section.recipes > ul > li div.recipe-more ul.needed li {
+              float: left;
+              margin-right: 8px;
+              padding: 2px 5px;
+              color: #fff;
+              border-radius: 10px; }
+            main.results section.recipes > ul > li div.recipe-more ul.have li:last-child, main.results section.recipes > ul > li div.recipe-more ul.needed li:last-child {
               margin-right: 0; }
-          main.results section.recipes ul li div.recipe-more ul.preparation {
+          main.results section.recipes > ul > li div.recipe-more ul.have li {
+            background-color: #62D968; }
+          main.results section.recipes > ul > li div.recipe-more ul.needed li {
+            background-color: #ED5248; }
+          main.results section.recipes > ul > li div.recipe-more ul.preparation {
             padding-left: 20px;
             list-style-type: square; }
-        main.results section.recipes ul li hr {
+        main.results section.recipes > ul > li hr {
           float: right;
           clear: both;
           margin-top: 8px;
