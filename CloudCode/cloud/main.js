@@ -3,9 +3,9 @@
 Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!!!!!");
 });
-
-
-
+ 
+ 
+ 
 function createRecipeJS(id,name,description,directions){
     var obj = new Object();
     obj.id = id;
@@ -18,7 +18,7 @@ function createRecipeJS(id,name,description,directions){
     obj.tags = new Array();
     return obj;
 }
-
+ 
 function createIngredPartJS(id,name,optional,assumed){
     var obj = new Object();
     obj.id = id;
@@ -28,8 +28,8 @@ function createIngredPartJS(id,name,optional,assumed){
     obj.recipes = new Array();
     return obj;
 }
-
-
+ 
+ 
 function createIngredJS(id,name,description){
     var obj = new Object();
     obj.id = id;
@@ -37,15 +37,15 @@ function createIngredJS(id,name,description){
     obj.description = description;
     return obj;
 }
-
-
+ 
+ 
 function createPrefJS(){
     var obj = new Object();
     obj.id = id;
     obj.name = name;
     return obj;
 }
-
+ 
 Parse.Cloud.define("search4Recipes", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("objectId", request.params.ingredientIds);
@@ -66,7 +66,7 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             for(var i = 0; i < results2.length; i++){
                 var repeat = false;
                 addRecipe = results2[i].get("recipe");
-
+ 
                 addRecipeJS = createRecipeJS(addRecipe.id, addRecipe.get("name"), addRecipe.get("description"), addRecipe.get("directions"));
                 addIngredPartJS = createIngredPartJS(results2[i].get("ingredient").id, results2[i].get("ingredient").get("name"), results2[i].get("ingredient").get("optional"), results2[i].get("ingredient").get("assumed"));
                 for(var j = 0; j < recipeJSList.length; j++){
@@ -93,14 +93,23 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
             queryAllIngred.find({
             success: function(results3) {
                 var addToOffHand = true;
+                var assumedAdd = true;
                 for(var n=0; n < results3.length; n++){
                     addIngredPartJS = createIngredPartJS(results3[n].get("ingredient").id, results3[n].get("ingredient").get("name"), results3[n].get("ingredient").get("optional"), results3[n].get("ingredient").get("assumed"));
                     for(var m=0; m < recipeJSList.length; m++){
                         if (results3[n].get("recipe").id == recipeJSList[m].id){
                             addToOffHand = true;
+                            assumedAdd = true;
                             if (addIngredPartJS.assumed) {
-                                recipeJSList[m].ingredListInHand.push(addIngredPartJS);
-                                break;
+                                for(var p=0;p<recipeJSList[m].ingredListInHand.length;p++){
+                                    if (recipeJSList[m].ingredListInHand[p].id == addIngredPartJS.id){
+                                        assumedAdd = false;
+                                    }
+                                }
+                                if (assumedAdd){
+                                    recipeJSList[m].ingredListInHand.push(addIngredPartJS);
+                                    break;
+                                }
                             }
                             for(var l=0; l<(recipeJSList[m].ingredListInHand).length;l++){
                                 if(recipeJSList[m].ingredListInHand[l].id == addIngredPartJS.id){
@@ -146,9 +155,9 @@ Parse.Cloud.define("search4Recipes", function(request, response) {
     }
     });
 });
-
-
-
+ 
+ 
+ 
 Parse.Cloud.define("search4Ingreds", function(request, response) {
     var queryIngred = new Parse.Query("Ingredients");
     queryIngred.containedIn("objectId", request.params.ingredientIds);
@@ -167,8 +176,8 @@ Parse.Cloud.define("search4Ingreds", function(request, response) {
     }
     });
 });
-
-
+ 
+ 
 Parse.Cloud.define("search4RecipesByPreferences", function(request, response) {
     var queryRecipe = new Parse.Query("Recipes");
     queryRecipe.containedIn("tags", request.params.preferenceNames);

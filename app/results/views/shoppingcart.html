@@ -22,34 +22,9 @@
 
 	<section class="ingredients">
 		<ul>
-			<li class="ingredient">
+			<li class="ingredient" ng-repeat="item in ingredShoppingList">
 				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
-				<span>Strawberries</span>
-				<hr>
-			</li>
-			<li class="ingredient">
-				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
-				<span>Chocolate milk</span>
-				<hr>
-			</li>
-			<li class="ingredient">
-				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
-				<span>Sprite</span>
-				<hr>
-			</li>
-			<li class="ingredient">
-				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
-				<span>Captain Morgan</span>
-				<hr>
-			</li>
-			<li class="ingredient">
-				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
-				<span>Jose Cuervo</span>
-				<hr>
-			</li>
-			<li class="ingredient">
-				<img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />
-				<span>Mint Leaves</span>
+				<span>{{item.name}}</span>
 				<hr>
 			</li>
 		</ul>

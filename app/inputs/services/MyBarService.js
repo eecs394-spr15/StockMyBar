@@ -31,6 +31,7 @@ angular
         Parse.initialize("Et6HrDXxBYdz4eQRUTnqH6HtTOTWwW9chrKXRYTe", "gIPArJcAQFVGCoVLKuJoIRGGzoG9gL5IDCq1NWPI");
 
         var query = new Parse.Query("Ingredients");
+        query.limit(1000);
         query.find({
             success: function (results) {
                 factory.allIngredients = [];

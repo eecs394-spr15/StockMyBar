@@ -5,7 +5,34 @@
 		<super-navbar-title>Categories</super-navbar-title>
 	</super-navbar>
 
-
+	<!-- <section class="category-grid">
+		<ul>
+			<li ng-click="chooseCategory('liquor')">
+				<span>{{ingredNum['liquor']}} selected</span>
+				<h4>Liquors</h4>
+			</li>
+			<li ng-click="chooseCategory('mixer')">
+				<span>{{ingredNum['mixer']}} selected</span>
+				<h4>Mixers</h4>
+			</li>
+			<li ng-click="chooseCategory('fruit')">
+				<span>{{ingredNum['fruit']}} selected</span>
+				<h4>Fruits</h4>
+			</li>
+			<li ng-click="chooseCategory('spice')">
+				<span>{{ingredNum['spice']}} selected</span>
+				<h4>Spices</h4>
+			</li>
+			<li ng-click="chooseCategory('other')">
+				<span>{{ingredNum['other']}} selected</span>
+				<h4>Other</h4>
+			</li>
+			<li ng-click="chooseCategory('')">
+				<span>{{ingredNum['liquor']+ingredNum['mixer']+ingredNum['fruit']+ingredNum['spice']+ingredNum['other']}} selected</span>
+				<h4>View All</h4>
+			</li>
+		</ul>
+	</section> -->
 	<section class="category-grid">
 		<ul>
 			<li ng-click="chooseCategory('liquor')">
@@ -14,7 +41,7 @@
 					<h4>Liquors</h4>
 					<div class="info">
 						<i class="icon super-checkmark-circled"></i>
-						<span>12</span>
+						<span>{{ingredNum['liquor']}}</span>
 					</div>
 				</div>
 			</li>
@@ -24,7 +51,7 @@
 					<h4>Mixers</h4>
 					<div class="info">
 						<i class="icon super-checkmark-circled"></i>
-						<span>2</span>
+						<span>{{ingredNum['mixer']}}</span>
 					</div>
 				</div>
 			</li>
@@ -34,7 +61,7 @@
 					<h4>Fruits</h4>
 					<div class="info">
 						<i class="icon super-checkmark-circled"></i>
-						<span>0</span>
+						<span>{{ingredNum['fruit']}}</span>
 					</div>
 				</div>
 			</li>
@@ -44,7 +71,7 @@
 					<h4>Spices</h4>
 					<div class="info">
 						<i class="icon super-checkmark-circled"></i>
-						<span>8</span>
+						<span>{{ingredNum['spice']}}</span>
 					</div>
 				</div>
 			</li>
@@ -54,7 +81,7 @@
 					<h4>Other</h4>
 					<div class="info">
 						<i class="icon super-checkmark-circled"></i>
-						<span>5</span>
+						<span>{{ingredNum['other']}}</span>
 					</div>
 				</div>
 			</li>
@@ -63,6 +90,10 @@
 				<img src="http://blog.khymos.org/wp-content/2009/04/egg-tray.jpg" />
 				<div class="category-info">
 					<h4>View All</h4>
+					<div class="info">
+						<i class="icon super-checkmark-circled"></i>
+						<span>{{ingredNum['liquor']+ingredNum['mixer']+ingredNum['fruit']+ingredNum['spice']+ingredNum['other']}}</span>
+					</div>
 				</div>
 			</li>
 		</ul>

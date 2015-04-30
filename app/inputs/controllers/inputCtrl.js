@@ -8,9 +8,10 @@ angular
         $scope.category = localStorage.category;
         $scope.ingredIdList = angular.isDefined(localStorage.ingredIdList) ? JSON.parse(localStorage.ingredIdList) : [];
         $scope.ingredList = angular.isDefined(localStorage.ingredList) ? JSON.parse(localStorage.ingredList) : [];
+        $scope.ingredNum = angular.isDefined(localStorage.ingredNum) ? JSON.parse(localStorage.ingredNum) : {'liquor':0,'mixer':0,'fruit':0,'spice':0,'other':0};
         
         supersonic.device.ready.then( function() {
-            supersonic.logger.log(localStorage.ingredIdList);
+            localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
             supersonic.data.channel('ingredIdList').publish(JSON.parse(localStorage.ingredIdList));
         });
 
@@ -43,18 +44,25 @@ angular
                     }
                 }
             });
+            $scope.ingredNum = {'liquor':0,'mixer':0,'fruit':0,'spice':0,'other':0};
+            for(var i=0;i<$scope.ingredList.length;i++){
+                $scope.ingredNum[$scope.ingredList[i].category]++;
+            }
 
             // Save and share changes to user's bar
             localStorage.ingredIdList = JSON.stringify($scope.ingredIdList);
             localStorage.ingredList = JSON.stringify($scope.ingredList);
+            localStorage.ingredNum = JSON.stringify($scope.ingredNum);
+            //supersonic.logger.log("ingredList:"+localStorage.ingredList);
             supersonic.data.channel('ingredIdList').publish($scope.ingredIdList);
             supersonic.data.channel('ingredList').publish($scope.ingredList);
-            supersonic.ui.modal.hide();
+            supersonic.data.channel('ingredNum').publish($scope.ingredNum);
+            //supersonic.ui.modal.hide();
         };
 
         $scope.goBack = function(){
             supersonic.ui.modal.hide();
-        }
+        };
 
         /*
         $scope.setCategory = function(category){

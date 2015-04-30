@@ -12,7 +12,7 @@
                 <i class="icon super-android-cancel"></i>
                 <span>Clear</span>
             </li>
-            <li ng-click="addIngredient()">
+            <li ng-click="confirm()">
                 <i class="icon super-checkmark-circled"></i>
                 <span>Done</span>
             </li>
@@ -31,11 +31,11 @@
 
     <section class="ingredients">
         <ul>
-            <li class="ingredient" ng-class="{selected: $index % 3 == 0}" ng-repeat="item in allIngredients | addItemsList:ingredIdList:searchBarText:category | orderBy: 'name'">
+             <li class="ingredient" ng-click="checkedIngredients[item.id]= !checkedIngredients[item.id]" ng-class="{selected: checkedIngredients[item.id]}"  ng-repeat="item in allIngredients | addItemsList:ingredIdList:searchBarText:category | orderBy: 'name'">
                 <img src="http://www.allotment-garden.org/store/fruit-nut-tree/assets/strawberry_plants.jpg" />                
-                <div class="ingredient-info">
-                    <h3>Strawberries</h3>
-                    <span>Lorem ipsum dolor sit amet</span>
+                <div ng-model="checkedIngredients[item.id]" class="ingredient-info">
+                    <h3>{{item.name}}</h3>
+                    <span>{{item.description}}</span>
                 </div>
                 <div class="meta-info">
                     <span>Liquor</span>
