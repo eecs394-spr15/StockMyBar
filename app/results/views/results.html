@@ -43,9 +43,15 @@
 						{{recipe.description}}
 					</p>
 					<h4>Have</h4>
+<<<<<<< HEAD
 					<ul class="have">
 						<li ng-repeat="ingredient in recipe.ingredListInHand">{{ingredient.name}}</li>
 					</ul>
+=======
+						<ul class="have">
+							<li ng-repeat="ingredient in recipe.ingredListInHand">{{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}}</li>
+						</ul>
+>>>>>>> feature/controller-fix
 					<h4>Needed</h4>
 					<ul class="needed">
 						<li ng-repeat="ingredient in recipe.ingredListOffHand">{{ingredient.name}}</li>
