@@ -101,6 +101,7 @@ angular
 			if ($scope.prefList.length == 0){
 				$scope.recipes = $scope.recipesBefore;
 				$scope.noRecipes = true;
+
 			}
 			else{
 				$scope.noRecipes = false;
@@ -247,6 +248,11 @@ angular
 			}
 			$scope.$apply();
 		});
+
+		// Get icon for recipes
+		$scope.getImageFilename = function(name) {
+			return '../../recipe_icns/'+name+'.jpg';
+		};
 
 
 	});
