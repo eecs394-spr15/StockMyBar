@@ -182,6 +182,12 @@ angular
 			$('#item-' + index).slideToggle("fast");
 		};
 
+		// Navigate to home view
+        $scope.goHome = function() {
+            var view = new supersonic.ui.View("inputs#home");
+            supersonic.ui.layers.push(view);
+        }
+
 		$scope.goToItems = function(){
 			$location.path("inputs#items");
 		}
@@ -225,6 +231,10 @@ angular
 		$scope.openShoppingList = function(){
 			var view = new supersonic.ui.View("results#shoppingcart");
             supersonic.ui.layers.push(view);
+		}
+
+		$scope.goToItems = function(){
+			$window.open("inputs#items");
 		}
 
 

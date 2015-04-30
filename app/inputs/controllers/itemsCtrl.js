@@ -92,6 +92,12 @@ angular
             supersonic.data.channel('ingredNum').publish($scope.ingredNum);
             $scope.$apply();
         };
+
+        // Navigate to home view
+        $scope.goHome = function() {
+            var view = new supersonic.ui.View("inputs#home");
+            supersonic.ui.layers.push(view);
+        }
                 
         // Navigate to categories view
         $scope.addIngredient = function() {
@@ -108,7 +114,12 @@ angular
                 $scope.selected = index;
             }
             $scope.$apply();
-        }
+        };
+
+        // Get icon for items
+        $scope.getImageFilename = function(name) {
+            return '../../ing_icns/'+name+'.jpg';
+        };
 
 
 
