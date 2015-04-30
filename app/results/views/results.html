@@ -19,7 +19,9 @@
         </ul>
     </section>
 
-   		<h4 class="none" ng-show="noRecipes">Tap here to add some ingredients in order to get some recipes</h4>
+    <super-navigate class="none" action="click" location="inputs#items">
+   		<h4 ng-show="noRecipes">Tap here to add some ingredients in order to get some recipes</h4>
+   	</super-navigate>
 
 	<section class="recipes">
 		<ul>
