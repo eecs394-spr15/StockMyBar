@@ -182,6 +182,12 @@ angular
 			$('#item-' + index).slideToggle("fast");
 		};
 
+		// Navigate to home view
+        $scope.goHome = function() {
+            var view = new supersonic.ui.View("inputs#home");
+            supersonic.ui.layers.push(view);
+        }
+
 		$scope.goToItems = function(){
 			$location.path("inputs#items");
 		}

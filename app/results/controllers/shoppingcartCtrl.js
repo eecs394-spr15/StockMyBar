@@ -24,4 +24,11 @@ angular
 				}
 			});
 		};
+
+
+		// Navigate to home view
+        $scope.goHome = function() {
+            var view = new supersonic.ui.View("inputs#home");
+            supersonic.ui.layers.push(view);
+        }
     });

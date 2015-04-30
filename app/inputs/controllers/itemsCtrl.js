@@ -92,6 +92,12 @@ angular
             supersonic.data.channel('ingredNum').publish($scope.ingredNum);
             $scope.$apply();
         };
+
+        // Navigate to home view
+        $scope.goHome = function() {
+            var view = new supersonic.ui.View("inputs#home");
+            supersonic.ui.layers.push(view);
+        }
                 
         // Navigate to categories view
         $scope.addIngredient = function() {
