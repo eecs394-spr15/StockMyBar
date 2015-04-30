@@ -276,15 +276,15 @@ main.results {
       main.results section.options ul li:last-child {
         padding-left: 20px;
         text-align: left; }
-  main.results h4.none {
+  main.results super-navigate.none h4 {
     font-size: 37px;
     color: #888;
     text-align: center;
     position: relative;
     top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
+    -webkit-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    transform: translateY(50%); }
   main.results section.recipes {
     padding-top: 80px;
     width: 100%;
