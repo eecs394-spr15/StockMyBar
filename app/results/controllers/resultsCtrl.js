@@ -236,13 +236,10 @@ angular
             supersonic.ui.layers.push(view);
 		}
 
-<<<<<<< HEAD
 		$scope.goToItems = function(){
 			$window.open("inputs#items");
 		}
 
-=======
->>>>>>> parent of dce1899... pref view added, but not working
 
 		// Update recipes' cart icons when shopping list is cleared
 		supersonic.data.channel('clearShoppingList').subscribe(function() {
