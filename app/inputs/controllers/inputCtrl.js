@@ -61,10 +61,6 @@ angular
         };
 
 
-        $scope.getImageFilename = function(name) {
-            return '../../ing_icns/'+name+'.jpg';
-        };
-
         /*
         $scope.setCategory = function(category){
             $scope.category = category;

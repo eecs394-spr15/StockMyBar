@@ -32,7 +32,7 @@
     <section class="ingredients">
         <ul>
              <li class="ingredient" ng-click="checkedIngredients[item.id]= !checkedIngredients[item.id]" ng-class="{selected: checkedIngredients[item.id]}"  ng-repeat="item in allIngredients | addItemsList:ingredIdList:searchBarText:category | orderBy: 'name'">
-                <img src="{{getImageFilename(item.name)}}" />
+                <img ng-controller="ItemsCtrl" src="{{getImageFilename(item.name)}}" />
                 <div ng-model="checkedIngredients[item.id]" class="ingredient-info">
                     <h3>{{item.name}}</h3>
                     <span>{{item.description}}</span>
