@@ -110,16 +110,6 @@ angular
             supersonic.ui.layers.push(view);
         };
 
-        // Select ingredient
-        $scope.selectIngredient = function(index) {
-            if ($scope.selected == index) {
-                $scope.selected = -1;
-            }
-            else {
-                $scope.selected = index;
-            }
-            $scope.$apply();
-        };
 
         // Get icon for items
         $scope.getImageFilename = function(name) {
