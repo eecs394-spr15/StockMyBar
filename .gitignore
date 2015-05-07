@@ -6,3 +6,4 @@ bower_components
 logs/
 config/cloud.json
 /.idea
+cloudcode/config/global.json
