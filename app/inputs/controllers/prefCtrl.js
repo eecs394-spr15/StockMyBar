@@ -38,6 +38,7 @@ angular
         supersonic.data.channel('prefIdList').subscribe(function(message) {
             $scope.prefIdList = angular.isDefined(localStorage.prefIdList) ? JSON.parse(localStorage.prefIdList) : [];
             $scope.$apply();
+            ////
         });
         */
 
